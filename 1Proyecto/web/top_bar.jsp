@@ -13,16 +13,16 @@
     </head>
     <body>
         <div id="wrapper">
-            <div id="title">
-                <a href="index.jsp"><h1>CursosLibres.com</h1></a>
-            </div>    
-            <div id="options">
-                <ul>
-                    <li><a href="cursos.jsp">Cursos</a></li>
-                    <li><a href="login.jsp">Ingresar</a></li>
-                    <li><a href="any.jsp">AUX</a></li>
-                </ul>
-            </div>  
+            <div class="header">
+                <h2>CursosLibres.com</h2>
+                <p>Donde encontrarás cursos irónicamente útiles</p>
+            </div>
+
+            <ul>
+              <li><a class="active" href="index.jsp">Inicio</a></li>
+              <li><a href="cursos.jsp">Cursos</a></li>
+              <li><a href="login.jsp">Ingresar</a></li>
+            </ul>
         </div>    
     </body>
 </html>

@@ -16,7 +16,7 @@
     <body>
         <%@include file = "top_bar.jsp"%>
         <div id="wrapper">
-                <p>Bienvenido al portal CursosLibres.com, donde encontrarás cursos irónicamente últiles.</p>
+               
         </div>     
     </body>
 </html>
