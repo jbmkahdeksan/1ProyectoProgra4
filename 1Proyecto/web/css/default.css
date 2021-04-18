@@ -49,42 +49,5 @@ li a:hover {
     background-color:#ff6633;
 }
 
-form {
-    border: 3px solid #f1f1f1;
-    width: 25%;
-    
-}
-.container {
-  padding: 16px;
-}
-.iconologin {
-  text-align: center;
-  margin: 8px 0 10px 0;
-}
 
-.icono {
-  width: 25%;
-  border-radius: 30%;
-}
-input[type=text], input[type=password] {
-  width: 90%;
-  padding: 12px 20px;
-  margin: 8px 0;
-
-  border: 1px solid #ccc;
-  box-sizing: border-box;
-}
-button {
-  background-color: #333;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  cursor: pointer;
-  width: 90%;
-}
-
-button:hover {
-  opacity: 0.6;
-}
 
