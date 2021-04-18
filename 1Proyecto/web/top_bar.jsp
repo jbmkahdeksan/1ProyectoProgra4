@@ -21,7 +21,8 @@
             <ul>
               <li><a class="active" href="index.jsp">Inicio</a></li>
               <li><a href="cursos.jsp">Cursos</a></li>
-              <li><a href="login.jsp">Ingresar</a></li>
+              <li ><a href="login.jsp">Ingresar</a></li>
+              <li><a href="buscar.jsp">Buscar</a></li>
             </ul>
         </div>    
     </body>
