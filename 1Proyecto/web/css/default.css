@@ -1,0 +1,62 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Apr 17, 2021, 9:04:11 PM
+    Author     : Joaquin
+*/
+
+@font-face {
+    font-family: Raleway;
+    src: url('fonts/static/Raleway-Regular.ttf');
+}
+
+@font-face {
+    font-family: RalewayBold;
+    src: url('fonts/static/Raleway-Bold.ttf');
+}
+
+body {}
+
+#wrapper {
+    font-family: Raleway;
+    font-size: 12pt;
+}
+
+#title {
+    padding-left: 30px;
+}
+#title h1 {
+    color: maroon;    
+}
+
+#options{
+    border-bottom: 2px solid darkslateblue;    
+}
+
+#options ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+#option li {
+    display: inline;
+    float: left;
+}
+
+#options li a {
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+#options li a:hover {
+  background-color: #111;
+}
