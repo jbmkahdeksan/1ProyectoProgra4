@@ -1,0 +1,60 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 18/04/2021, 03:22:32 PM
+    Author     : ksand
+*/
+/* formato general del form */
+form {
+    
+    border: 3px solid #f1f1f1;
+    width: 25%;
+    
+}
+
+.container {
+  padding: 16px;
+}
+/*Configuracion del icono de login*/
+.iconologin {
+  text-align: center;
+  margin: 8px 0 10px 0;
+}
+
+.icono {
+  width: 20%;
+  border-radius: 30%;
+}
+
+/* estilo para los campos para ingresar informacion*/
+input[type=text], input[type=password] {
+  width: 90%;
+  padding: 12px 20px;
+  margin: 8px 0;
+
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+/*estilo del boton para ingresar*/
+button {
+  background-color: #333;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 90%;
+}
+
+button:hover {
+  opacity: 0.6;
+}
+/*estilo para label de registro*/
+
+.registro {
+    float: left;
+    font-size: 12px;
+}
