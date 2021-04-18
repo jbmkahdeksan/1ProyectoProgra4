@@ -16,7 +16,10 @@
     <body>
         <%@include file = "top_bar.jsp"%>
         <div id="wrapper">
-               
-        </div>     
+            <table>
+                
+            </table>  
+        </div>  
+        <%@include file = "footer.jsp"%>
     </body>
 </html>
