@@ -15,7 +15,14 @@
         <link href="css/register.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
-        <%@include file = "top_bar.jsp"%>
+        <div class="header">
+                <h2>CursosLibres.com</h2>
+                <p>Donde encontrarás cursos irónicamente útiles.</p>
+        </div>
+        <div class = "topbar">
+            <a class="active" href="index.jsp">Inicio</a>
+            <a href="login.jsp">Ingresar</a>   
+        </div>
         <div id="wrapper"> 
             <div id = "Bienvenido">  
                 <p> <strong>Registro</strong></p>
@@ -32,11 +39,11 @@
                         <input type="text" placeholder="Número de télefono" name="telefono" required>
                         <button type="submit">Registrar</button>
                         <div class="container">
-                            <span class="registro">¿Ya tienes cuenta? <a href="login.jsp">Ingresa aquí</a></span>
+                            <span class="registro">¿Ya tienes cuenta?<a href="login.jsp">Ingresa aquí</a></span>
                         </div>
-
                 </form>
             </div>
+            <%@include file="footer.jsp" %>
         </div>
     </body>
 </html>

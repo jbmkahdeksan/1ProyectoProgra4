@@ -15,7 +15,14 @@
         <link href="css/login.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
-        <%@include file = "top_bar.jsp"%>
+        <div class="header">
+                <h2>CursosLibres.com</h2>
+                <p>Donde encontrarás cursos irónicamente útiles.</p>
+        </div>
+        <div class = "topbar">
+            <a class="active" href="index.jsp">Inicio</a>
+            <a href="login.jsp">Ingresar</a>   
+        </div>
         <div id="wrapper"> 
             <div id = "Bienvenido">  
                 <p> <strong>Ingreso</strong></p>
@@ -38,6 +45,7 @@
 
                 </form>
             </div>
+            <%@include file="footer.jsp" %>
         </div>
     </body>
 </html>
