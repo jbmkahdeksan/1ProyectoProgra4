@@ -16,4 +16,58 @@ public class usuario {
     private String clave;
     private Date ultimo_acceso;
     private int activo;
+    private int rol_id;
+    
+    public usuario() {
+        
+    }
+    
+    public usuario(int id, String clave, Date ultimo_acceso, int activo, int rol_id) {
+        this.id = id;
+        this.clave = clave;
+        this.ultimo_acceso = ultimo_acceso;
+        this.activo = activo;
+        this.rol_id = rol_id;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getClave() {
+        return clave;
+    }
+
+    public void setClave(String clave) {
+        this.clave = clave;
+    }
+
+    public Date getUltimo_acceso() {
+        return ultimo_acceso;
+    }
+
+    public void setUltimo_acceso(Date ultimo_acceso) {
+        this.ultimo_acceso = ultimo_acceso;
+    }
+
+    public int getActivo() {
+        return activo;
+    }
+
+    public void setActivo(int activo) {
+        this.activo = activo;
+    }   
+
+    public int getRol_id() {
+        return rol_id;
+    }
+
+    public void setRol_id(int rol_id) {
+        this.rol_id = rol_id;
+    }  
 }
+
