@@ -17,12 +17,16 @@
                 <h2>CursosLibres.com</h2>
                 <p>Donde encontrarás cursos irónicamente útiles.</p>
             </div>
-
-            <ul>
-              <li><a class="active" href="index.jsp">Inicio</a></li>
-              <li ><a href="login.jsp">Ingresar</a></li>
-              <li><a href="buscar.jsp">Buscar</a></li>
-            </ul>
+            <div class = "topbar">
+              <a class="active" href="index.jsp">Inicio</a>
+              <a href="login.jsp">Ingresar</a>   
+              <div class="search-container">
+                  <form action="#">
+                        <input id="search" type="text" placeholder="Buscar curso..." name="search">
+                        <button type="submit">🔍</button>
+                  </form>                   
+              </div>
+            </div>            
         </div>    
     </body>
 </html>

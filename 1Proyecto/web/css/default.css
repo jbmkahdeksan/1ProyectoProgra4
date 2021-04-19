@@ -17,38 +17,58 @@ body {
     color:blue;
 }
 
-ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
+footer {
+    text-align:center;
+}
+
+.topbar {
   overflow: hidden;
-  background-color: #333;
-  position: -webkit-sticky; /* Safari */
-  position: sticky;
-  top: 0;
+  background-color:#333;
 }
 
-li {
+.topbar a {
   float: left;
-}
-
-li a {
   display: block;
   color: white;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
+  font-size: 17px;
 }
 
-
-li a:hover {
+.topbar a:hover {
   background-color: #111;
+  color: white;
 }
 
-.active {
-    background-color:#ff6633;
+.topbar a.active {
+  background-color:#ff6633 ;
+  color: white;
 }
 
-footer {
-    text-align:center;
+.topbar .search-container {
+  float: right;
 }
+
+.topbar input[type=text] {
+  padding: 6px;
+  margin-top: 8px;
+  font-size: 17px;
+  border: none;
+}
+
+.topbar .search-container button {
+  float: right;
+  padding: 6px 10px;
+  margin-top: 8px;
+  margin-right: 16px;
+  background: #ddd;
+  font-size: 14.6px;
+  border: none;
+  cursor: pointer;
+}
+
+.topbar .search-container button:hover {
+  background: #ccc;
+}
+
