@@ -27,12 +27,16 @@
             <div id = "Bienvenido">  
                 <p> <strong>Registro</strong></p>
                 <p>Por favor llenar los siguientes campos para registrarse. </p>
-                <form>
+                <form action="ServicioFormulario" method="GET">
                     <div class="container">
                         <label for="cedula"><b>Cédula</b></label>
                         <input type="text" placeholder="Ingrese su cédula" name="cedula" required>
                         <label for="nombre"><b>Nombre</b></label>
                         <input type="text" placeholder="Nombre" name="nombre" required>
+                        <label for="apellido1"><b>Primer Apellido</b></label>
+                        <input type="text" placeholder="Nombre" name="apellido1" required>
+                        <label for="apellido2"><b>Segundo Apellido</b></label>
+                        <input type="text" placeholder="Nombre" name="apellido2" >
                         <label for="correo"><b>Correo electronico</b></label>
                         <input type="text" placeholder="Correo electronico" name="correo" required>
                         <label for="telefono"><b>Teléfono</b></label>
