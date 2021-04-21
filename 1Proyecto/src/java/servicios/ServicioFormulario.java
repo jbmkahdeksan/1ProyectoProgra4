@@ -5,7 +5,7 @@
  */
 package servicios;
 
-import Logic.Estudiante;
+import Logic.estudiante;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.ParseException;
@@ -36,7 +36,7 @@ public class ServicioFormulario extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         
         try {
-            Estudiante e = new Estudiante (
+            estudiante e = new estudiante (
                Integer.parseInt(request.getParameter("cedula")),
                 request.getParameter("cedula"),
                 request.getParameter("nombre"),

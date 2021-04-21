@@ -32,15 +32,15 @@
                         <label for="cedula"><b>Cédula</b></label>
                         <input type="text" placeholder="Ingrese su cédula" name="cedula" required>
                         <label for="nombre"><b>Nombre</b></label>
-                        <input type="text" placeholder="Nombre" name="nombre" required>
+                        <input type="text" name="nombre" required>
                         <label for="apellido1"><b>Primer Apellido</b></label>
-                        <input type="text" placeholder="Nombre" name="apellido1" required>
+                        <input type="text" name="apellido1" required>
                         <label for="apellido2"><b>Segundo Apellido</b></label>
-                        <input type="text" placeholder="Nombre" name="apellido2" >
+                        <input type="text"  name="apellido2" >
                         <label for="correo"><b>Correo electronico</b></label>
-                        <input type="text" placeholder="Correo electronico" name="correo" required>
+                        <input type="text"  name="correo" required>
                         <label for="telefono"><b>Teléfono</b></label>
-                        <input type="text" placeholder="Número de télefono" name="telefono" required>
+                        <input type="text" name="telefono" required>
                         <button type="submit">Registrar</button>
                         <div class="container">
                             <span class="registro">¿Ya tienes cuenta?<a href="login.jsp">Ingresa aquí</a></span>
