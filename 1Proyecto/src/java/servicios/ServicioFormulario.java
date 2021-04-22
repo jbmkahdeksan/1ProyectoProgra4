@@ -5,7 +5,7 @@
  */
 package servicios;
 
-import Logic.estudiante;
+import Logic.Estudiante;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.ParseException;
@@ -30,13 +30,21 @@ public class ServicioFormulario extends HttpServlet {
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
+     * 
+     *   private int id_estudiante;
+         private String usuario_id;
+         private String nombre;
+         private String apellido1;
+         private String apellido2;
+         private String telefono;
+         private String e_mail;
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
         try {
-            estudiante e = new estudiante (
+            Estudiante e = new Estudiante (
                Integer.parseInt(request.getParameter("cedula")),
                 request.getParameter("cedula"),
                 request.getParameter("nombre"),

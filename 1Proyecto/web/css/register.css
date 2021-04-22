@@ -8,10 +8,8 @@ and open the template in the editor.
     Author     : ksand
 */
 form {
-    
     border: 3px solid #f1f1f1;
-    width: 30%;
-    
+    width: 30%;  
 }
 
 .container {

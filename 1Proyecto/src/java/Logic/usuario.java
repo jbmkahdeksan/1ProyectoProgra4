@@ -12,7 +12,7 @@ import java.util.Date;
  * @author Joaquin
  */
 public class usuario {
-    private int id;
+    private String id;
     private String clave;
     private Date ultimo_acceso;
     private int activo;
@@ -22,7 +22,7 @@ public class usuario {
         
     }
     
-    public usuario(int id, String clave, Date ultimo_acceso, int activo, int rol_id) {
+    public usuario(String id, String clave, Date ultimo_acceso, int activo, int rol_id) {
         this.id = id;
         this.clave = clave;
         this.ultimo_acceso = ultimo_acceso;
@@ -30,11 +30,11 @@ public class usuario {
         this.rol_id = rol_id;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
