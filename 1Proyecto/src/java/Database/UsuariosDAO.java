@@ -58,7 +58,7 @@ public class UsuariosDAO {
     public usuario from (ResultSet rs){
         try {
             usuario u = new usuario();
-            u.setId(rs.getString("id"));
+            u.setId(rs.getString("id_usuario"));
             u.setClave(rs.getString("clave"));            
             u.setUltimo_acceso(rs.getDate("ultimo_aceso"));
             u.setActivo(rs.getInt("activo"));
