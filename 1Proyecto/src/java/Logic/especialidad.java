@@ -17,6 +17,9 @@ public class especialidad {
         this.profesor_id_profesor = profesor_id_profesor;
         this.area_tematica_id = area_tematica_id;
     }
+    public especialidad() {
+        this(0,0); 
+    }
 
     public int getProfesor_id_profesor() {
         return profesor_id_profesor;
