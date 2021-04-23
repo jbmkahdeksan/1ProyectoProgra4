@@ -30,10 +30,8 @@ public class EstudiantesDAO {
         stm.setString(7,cl.getE_mail());    
         System.out.println(stm);
         int count = Database.instance().executeUpdate(stm);
-        if (count == 0) {
-            
+        if (count == 0) {            
             throw new Exception("Ya existe un estudiante con esa información");
-            
         }
         return cl;
         
@@ -44,13 +42,10 @@ public class EstudiantesDAO {
         PreparedStatement stm = Database.instance().prepareStatement(sqlcommand);
         stm.setString(1, id);
         ResultSet rs =  Database.instance().executeQuery(stm);           
-        if (rs.next()) {
-            System.out.println("Se encontró al estudiante");
-            
+        if (rs.next()) {            
             return from(rs);
         }
         else{
-            System.out.println("No se encontró el estudiante");
             throw new Exception ("No se encontró el estudiante");
         }
     }
@@ -69,7 +64,6 @@ public class EstudiantesDAO {
             System.out.println("Estudiante registrado");
             return e;
         } catch(SQLException ex){
-            System.out.println("Error al registrar ");
             return null;
         }
     }

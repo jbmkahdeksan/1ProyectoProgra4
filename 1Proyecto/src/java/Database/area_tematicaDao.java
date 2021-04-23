@@ -46,7 +46,7 @@ public class area_tematicaDao {
     }
     
     public void update(area_tematica o) throws Exception{
-        String sql="update area_tematica set descripcion=? "+
+        String sql="update area_tematica set descripcion=?"+
                 "where id_area=?";
         PreparedStatement stm = Database.instance().prepareStatement(sql);
         stm.setString(1, o.getDescripcion());

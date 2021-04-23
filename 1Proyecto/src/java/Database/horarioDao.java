@@ -30,7 +30,7 @@ public class horarioDao {
         stm.setString(5, Integer.toString(o.getHora()));
         int count = Database.instance().executeUpdate(stm);
         if (count == 0) {
-            throw new Exception("Hprario ya existe");
+            throw new Exception("Horario ya existe");
         }
     }
 

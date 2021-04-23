@@ -20,6 +20,9 @@ public class rol {
         this.descripcion = descripcion;
     }
 
+    public rol() {}    
+    
+
     public int getId_rol() {
         return id_rol;
     }

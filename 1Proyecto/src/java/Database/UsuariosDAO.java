@@ -30,9 +30,7 @@ public class UsuariosDAO {
         System.out.println(stm);
         int count = Database.instance().executeUpdate(stm);
         if (count == 0) {
-            
             throw new Exception("Ya existe un usuario con esa información");
-            
         }
         return cl;
         
@@ -44,12 +42,9 @@ public class UsuariosDAO {
         stm.setString(1, id);
         ResultSet rs =  Database.instance().executeQuery(stm);           
         if (rs.next()) {
-            System.out.println("Se encontró el usuario");
-            
             return from(rs);
         }
         else{
-            System.out.println("No se encontró el usuario");
             throw new Exception ("No se encontró el usuario");
         }
     }
@@ -66,7 +61,6 @@ public class UsuariosDAO {
             System.out.println("Usuario registrado");
             return u;
         } catch (SQLException ex) {
-            System.out.println("Error al crear usuario");
             return null;
         }
     }
