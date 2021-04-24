@@ -20,15 +20,15 @@
                 <p>Donde encontrarás cursos irónicamente útiles.</p>
         </div>
         <div class = "topbar">
-            <a class="active" href="index.jsp">Inicio</a>
-            <a href="login.jsp">Ingresar</a>   
+            <a href="home">Inicio</a>
+            <a class="active" href="login.jsp">Ingresar</a>   
         </div>
         <div id="wrapper"> 
             <div id = "Bienvenido">  
                 <p> <strong>Ingreso</strong></p>
                 <p>Ingresa su numero de cedula y contraseña.</p>
 
-                <form>
+                <form action="Ingresar" method="POST">
                     <div class="iconologin">
                         <img src="images/login.png" alt="Avatar" class="icono">
                     </div>

@@ -267,3 +267,9 @@ ENGINE = InnoDB;
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+insert into rol(id_rol, descripcion) values(1, "Administrador");
+insert into rol(id_rol, descripcion) values(2, "Profesor");
+insert into rol(id_rol, descripcion) values(3, "Estudiante");
+insert into usuario(id_usuario, rol_id, clave, ultimo_aceso, activo) 
+    values("12345", 1, "qwerty", '2008-01-01 00:00:01', 1);

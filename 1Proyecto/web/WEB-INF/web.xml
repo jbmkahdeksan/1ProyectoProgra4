@@ -2,11 +2,27 @@
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <servlet>
         <servlet-name>ServicioFormulario</servlet-name>
-        <servlet-class>servicios.ServicioFormulario</servlet-class>
+        <servlet-class>Servlets.ServicioFormulario</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Controller_Login</servlet-name>
+        <servlet-class>Servlets.Controller_Login</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Controller_Index</servlet-name>
+        <servlet-class>Servlets.Controller_Index</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>ServicioFormulario</servlet-name>
         <url-pattern>/ServicioFormulario</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Controller_Login</servlet-name>
+        <url-pattern>/Controller_Login</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Controller_Index</servlet-name>
+        <url-pattern>/Controller_Index</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

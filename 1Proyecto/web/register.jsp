@@ -20,30 +20,31 @@
                 <p>Donde encontrarás cursos irónicamente útiles.</p>
         </div>
         <div class = "topbar">
-            <a class="active" href="index.jsp">Inicio</a>
-            <a href="login.jsp">Ingresar</a>   
+            <a href="home">Inicio</a>
+            <a href="login.jsp">Ingresar</a>             
+            <a class="active">Registrarse</a>
         </div>
         <div id="wrapper"> 
             <div id = "Bienvenido">  
                 <p> <strong>Registro</strong></p>
                 <p>Por favor llenar los siguientes campos para registrarse. </p>
-                <form action="ServicioFormulario" method="GET">
+                <form action="ServicioFormulario" method="POST">
                     <div class="container">
                         <label for="cedula"><b>Cédula</b></label>
                         <input type="text" placeholder="Ingrese su cédula" name="cedula" required>
                         <label for="nombre"><b>Nombre</b></label>
-                        <input type="text" name="nombre" required>
+                        <input type="text" placeholder="Ingrese su nombre" name="nombre" required>
                         <label for="apellido1"><b>Primer Apellido</b></label>
-                        <input type="text" name="apellido1" required>
+                        <input type="text" placeholder="Ingrese su primer apellido" name="apellido1" required>
                         <label for="apellido2"><b>Segundo Apellido</b></label>
-                        <input type="text"  name="apellido2" >
+                        <input type="text" placeholder="Ingrese su segundo apellido" name="apellido2" >
                         <label for="correo"><b>Correo electronico</b></label>
-                        <input type="text"  name="correo" required>
+                        <input type="text" placeholder="Ingrese su email" name="correo" required>
                         <label for="telefono"><b>Teléfono</b></label>
-                        <input type="text" name="telefono" required>
+                        <input type="text" placeholder="Ingrese su número de teléfono" name="telefono" required>
                         <button type="submit">Registrar</button>
                         <div class="container">
-                            <span class="registro">¿Ya tienes cuenta?<a href="login.jsp">Ingresa aquí</a></span>
+                            <span class="registro">¿Ya tienes cuenta? <a href="login.jsp">Ingresa aquí</a></span>
                         </div>
                 </form>
             </div>
