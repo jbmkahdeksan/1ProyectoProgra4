@@ -37,6 +37,7 @@ public class Controller_Login extends javax.servlet.http.HttpServlet {
         Date date = new Date();        
         try {
             usuario u = Service.instance().login(new usuario(cedula_request,contrasena_request, date, 1, 1));
+            System.out.println("Se ingreso el usuario");
         } catch (Exception ex) {
             
         }

@@ -1,0 +1,64 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 24/04/2021, 11:05:43 PM
+    Author     : ksand
+*/
+
+/* Contenedor de menu */
+.Menu {
+  float: left;
+  overflow: hidden;
+}
+
+/* Dropdown button */
+.Menu .BotonMenu {
+  font-size: 16px;
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit; /* Important for vertical align on mobile phones */
+  margin: 0; /* Important for vertical align on mobile phones */
+}
+
+/* Add a red background color to navbar links on hover */
+.Menu:hover .BotonMenu {
+  background-color: #111;
+  color: white;
+}
+
+/* Dropdown content (hidden by default) */
+.Menu-Contenido {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.Menu-Contenido a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+/* Add a grey background color to dropdown links on hover */
+.Menu-Contenido a:hover {
+  background-color: #111;
+  color: white;
+}
+
+/* Show the dropdown menu on hover */
+.Menu:hover .Menu-Contenido {
+  display: block;
+}

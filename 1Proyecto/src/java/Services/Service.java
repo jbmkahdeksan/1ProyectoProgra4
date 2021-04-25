@@ -63,21 +63,7 @@ public class Service {
         matricula_dao = new matriculaDao();
         
     }
-//    public List<curso> lista_cursos() throws Exception{
-//        
-//        try{    
-//            return curso_dao.read_all_cursos();
-//        }
-//        catch(Exception e){
-//            return null;
-//        }    
-//    }
-//    
-//    
-//    public List<curso> cursos_descuento() throws Exception{
-//        return curso_dao.read_discount_cursos();   
-//    }
-//    
+
 //    
 ////crear nuevo matricula
 //   public Matricula  crear_matricula(Matricula u){
@@ -105,18 +91,7 @@ public class Service {
 //         }
 //   
 //    }   
-////crear nuevo curso
-//     public Curso crear_curso(Curso u){
-//         Curso result = null;
-//         try{
-//            result=cursosdao.create(u);
-//            System.out.println(u.getId());
-//              return result;
-//         }
-//         catch(Exception e){
-//           return null ;//usuario ya existe 
-//         }
-//   
+   
 //    }
 //    //crear usario nuevo en la base de datos
 //    public Usuarios crear_usario(Usuarios u){
@@ -147,6 +122,30 @@ public class Service {
         }
         
         return result;
+    }
+    
+    
+    // ------------ Cursos -------------    
+
+    public List<curso> getCursos() {
+        return curso_dao.findAll();
+    }
+    
+    public void addCurso(curso o)throws Exception{
+        curso_dao.create(o);
+    }
+
+    public curso getCurso(curso o) throws Exception{
+        return curso_dao.read(o.getCurso());
+    }  
+
+    public void updateCurso(curso o)throws Exception{
+        curso_dao.update(o);
+        curso stored=this.getCurso(o);
+    }
+    
+    public List<curso> searchCurso(curso o){
+        return curso_dao.findByDescripcion(o); 
     }
     
     //falta solo de implementar en service, ya exise el metodo en dao respectivo

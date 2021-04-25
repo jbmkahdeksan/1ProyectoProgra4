@@ -20,7 +20,8 @@
         </div>
         <div class = "topbar">
             <a class="active" href="home">Inicio</a>
-            <a href="login.jsp">Ingresar</a>   
+            <a href="login.jsp">Ingresar</a>
+            <a href="admin.jsp">Administrador</a>
         </div>
         <div id="wrapper">
             <table>

@@ -273,3 +273,7 @@ insert into rol(id_rol, descripcion) values(2, "Profesor");
 insert into rol(id_rol, descripcion) values(3, "Estudiante");
 insert into usuario(id_usuario, rol_id, clave, ultimo_aceso, activo) 
     values("12345", 1, "qwerty", '2008-01-01 00:00:01', 1);
+
+insert into area_tematica (id_area, descripcion) values (100, "Redes");
+insert into area_tematica (id_area, descripcion) values (200, "Base de Datos");
+insert into area_tematica (id_area, descripcion) values (300, "Idiomas");
