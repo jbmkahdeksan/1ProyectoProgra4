@@ -37,11 +37,14 @@ public class UsuariosDAO {
     }
     
     public usuario read(String id) throws Exception{        
-        String sqlcommand = "select * from usuario where id = ?";
+        String sqlcommand = "select * from usuario where id_usuario = ?";
         PreparedStatement stm = Database.instance().prepareStatement(sqlcommand);
         stm.setString(1, id);
-        ResultSet rs =  Database.instance().executeQuery(stm);           
+        ResultSet rs =  Database.instance().executeQuery(stm);   
+        System.out.println(stm);
+        System.out.println(rs);
         if (rs.next()) {
+            System.out.println("Hace read del usuario");
             return from(rs);
         }
         else{

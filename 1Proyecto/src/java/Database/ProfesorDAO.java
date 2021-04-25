@@ -43,7 +43,7 @@ public class ProfesorDAO {
     }
     
     public profesor read(String id) throws Exception{        
-        String sqlcommand = "select * from profesor where id = ?";
+        String sqlcommand = "select * from profesor where usuario_id = ?";
         PreparedStatement stm = Database.instance().prepareStatement(sqlcommand);
         stm.setString(1, id);
         ResultSet rs =  Database.instance().executeQuery(stm);           

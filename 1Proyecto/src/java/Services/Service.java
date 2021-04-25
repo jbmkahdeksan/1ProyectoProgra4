@@ -17,7 +17,10 @@ import Database.estadoDao;
 import Database.grupoDao;
 import Database.horarioDao;
 import Database.matriculaDao;
+import Logic.Estudiante;
+import Logic.administrador;
 import Logic.curso;
+import Logic.profesor;
 import Logic.usuario;
 import java.util.List;
 
@@ -63,49 +66,24 @@ public class Service {
         matricula_dao = new matriculaDao();
         
     }
+    public profesor buscar_profesor(String id) throws Exception{
+        profesor result = null;
+        result = profesor_dao.read(id);
+        return result;        
+    }
+    
+    public administrador buscar_administrador(String id) throws Exception{
+        administrador result = null;
+        result = administrador_dao.read(id);
+        return result;        
+    }
+    
+    public Estudiante buscar_estudiante(String id) throws Exception{
+        Estudiante result = null;
+        result = estudiantes_dao.read(id);
+        return result;        
+    }
 
-//    
-////crear nuevo matricula
-//   public Matricula  crear_matricula(Matricula u){
-//         Matricula result = null;
-//         try{
-//            result=matriculasdao.create(u);
-//        //    System.out.println(u.getId());
-//              return result;
-//         }
-//         catch(Exception e){
-//           return null ;//usuario ya existe 
-//         }
-//   
-//    }    
-////crear nuevp grupo
-//    public Grupo crear_grupo(Grupo u){
-//         Grupo result = null;
-//         try{
-//            result=gruposdao.create(u);
-//            //System.out.println(u.getId());
-//              return result;
-//         }
-//         catch(Exception e){
-//           return null ;//Grupo ya existe 
-//         }
-//   
-//    }   
-   
-//    }
-//    //crear usario nuevo en la base de datos
-//    public Usuarios crear_usario(Usuarios u){
-//         Usuarios result = null;
-//         try{
-//            result=usuarioDao.create(u);
-//            System.out.println(u.getId());
-//              return result;
-//         }
-//         catch(Exception e){
-//           return null ;//usuario ya existe 
-//         }
-//   
-//    }
     public usuario login(usuario u) throws Exception{
         usuario result = null;
         

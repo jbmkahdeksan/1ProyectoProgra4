@@ -50,14 +50,15 @@ public class Database {
             String user = prop.getProperty("database_user");
             String password = prop.getProperty("database_password");
             String database = prop.getProperty("database_name");
-            
+            String ssl= prop.getProperty("ssl");
             String URL_conexion="jdbc:mysql://"+ server+":"+port+"/"+
-                    database+"?user="+user+"&password="+password+"&serverTimezone=UTC";            
+                    database+"&user="+user+"&password="+password+"&serverTimezone=UTC";            
             Class.forName(driver).newInstance();
             
             System.out.println("Database: Database inicializada");
             return DriverManager.getConnection(URL_conexion);
         } catch (Exception e) {
+            System.out.println("Hay errores");
             System.err.println(e.getMessage());
             System.exit(-1);
         } 

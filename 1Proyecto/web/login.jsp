@@ -34,15 +34,13 @@
                     </div>
                     <div class="container">
                         <label for="cedula"><b>Cédula</b></label>
-                        <input type="text" placeholder="Ingrese su cédula" name="cedula" required>
-
+                        <input type="text" placeholder="Ingrese su cédula" id="cedula" name="cedula" required>
                         <label for="contrasena"><b>Contraseña</b></label>
-                        <input type="password" placeholder="Ingrese su contraseña" name="contrasena" required>
+                        <input type="password" placeholder="Ingrese su contraseña" id="contrasena" name="contrasena" required>
                         <button type="submit">Ingresar</button>
                         <div class="container">
                             <span class="registro">¿No tienes cuenta? <a href="register.jsp">Registrate aquí</a></span>
                         </div>
-
                 </form>
             </div>
             <%@include file="footer.jsp" %>
