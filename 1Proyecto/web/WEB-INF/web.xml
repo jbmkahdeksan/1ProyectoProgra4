@@ -12,6 +12,10 @@
         <servlet-name>Controller_Index</servlet-name>
         <servlet-class>Servlets.Controller_Index</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Controller_Admin</servlet-name>
+        <servlet-class>Servlets.Controller_Admin</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ServicioFormulario</servlet-name>
         <url-pattern>/ServicioFormulario</url-pattern>
@@ -23,6 +27,10 @@
     <servlet-mapping>
         <servlet-name>Controller_Index</servlet-name>
         <url-pattern>/Controller_Index</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Controller_Admin</servlet-name>
+        <url-pattern>/Controller_Admin</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

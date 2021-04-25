@@ -27,26 +27,10 @@
         </div>
         <div class = "topbar">
             <a class="active" href="home">Inicio</a>
-            <div class="Menu">
-                <button class="BotonMenu">Cursos
-                    <i class="fa fa-caret-down"></i>
-                </button>
-                <div class="Menu-Contenido">
-                    <a href="#">Ver Cursos</a>
-                    <a href="#">Buscar Cursos</a>
-                    <a href="#">Agregar Cursos</a>
-                </div> </div>
-                <div class="Menu">
-                <button class="BotonMenu">Profesores
-                    <i class="fa fa-caret-down"></i>
-                </button>
-                <div class="Menu-Contenido">
-                    <a href="#">Ver Profesores</a>
-                    <a href="#">Buscar Profesores</a>
-                    <a href="#">Agregar Profesores</a>
-                </div>
+            <a href="cursos.jsp">Cursos</a>
+            <a href="profesores.jsp">Profesores</a>
                 
-            </div> </div> 
+            </div>  
 
             
 <div <%@include file = "footer.jsp"%>   </div>
