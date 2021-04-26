@@ -23,7 +23,7 @@
             <div style="text-align: left">
                 <center><h2>Pagina de Administrador</h2></center>
 
-                Bienvenido/a <%=request.getAttribute("userName")%> </div>
+                Bienvenido/a ${administrador.getNombre()} </div>
         </div>
         <div class = "topbar">
             <a class="active" href="home">Inicio</a>
