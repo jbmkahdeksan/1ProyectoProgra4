@@ -74,7 +74,9 @@ public class Service {
     
     public administrador buscar_administrador(String id) throws Exception{
         administrador result = null;
+        System.out.println("ANTES");
         result = administrador_dao.read(id);
+        System.out.println("DESPUES");
         return result;        
     }
     

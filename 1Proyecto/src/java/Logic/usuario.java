@@ -21,6 +21,13 @@ public class usuario {
     public usuario() {
         
     }
+
+    public usuario(String id, String clave) {
+        this.id = id;
+        this.clave = clave;
+    }
+    
+    
     
     public usuario(String id, String clave, Date ultimo_acceso, int activo, int rol_id) {
         this.id = id;

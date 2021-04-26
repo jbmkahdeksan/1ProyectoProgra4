@@ -36,9 +36,10 @@ public class AdministradorDAO {
     }
     
     public administrador read(String id) throws Exception{        
-        String sqlcommand = "select * from administrador where id = ?";
+        String sqlcommand = "select * from administrador where usuario_id = ?";
         PreparedStatement stm = Database.instance().prepareStatement(sqlcommand);
-        stm.setString(1, id);
+        stm.setString(1, id);        
+        System.out.println(stm);
         ResultSet rs =  Database.instance().executeQuery(stm);           
         if (rs.next()) {            
             return from(rs);
@@ -52,8 +53,8 @@ public class AdministradorDAO {
     public administrador from (ResultSet rs){
         try {
             administrador a = new administrador();
-            a.setId_administrador(rs.getInt("id_profesor"));            
-            a.setUsuario_id(rs.getString("id_usuario"));            
+            a.setId_administrador(rs.getInt("id_administrador"));            
+            a.setUsuario_id(rs.getString("usuario_id"));            
             a.setApellido1(rs.getString("apellido1"));
             a.setApellido2(rs.getString("apellido2"));
             a.setNombre(rs.getString("nombre"));
@@ -61,7 +62,7 @@ public class AdministradorDAO {
             a.setE_mail(rs.getString("e_mail"));  
             return a;
         } catch (SQLException ex) {
-            System.out.println("Error al crear profesor");
+            System.out.println("Error al crear administrador");
             return null;
         }
     }

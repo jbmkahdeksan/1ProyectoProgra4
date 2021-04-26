@@ -272,7 +272,9 @@ insert into rol(id_rol, descripcion) values(1, "Administrador");
 insert into rol(id_rol, descripcion) values(2, "Profesor");
 insert into rol(id_rol, descripcion) values(3, "Estudiante");
 insert into usuario(id_usuario, rol_id, clave, ultimo_aceso, activo) 
-    values("12345", 1, "qwerty", '2008-01-01 00:00:01', 1);
+    values("12345", 1, "qwerty", CURDATE(), 1);
+insert into administrador(id_administrador, usuario_id, apellido1, apellido2, nombre, telefono, e_mail)
+        values(123456, "12345", "Barrientos", "Monge", "Joaquin", "1010911", "admin@cursoslibres.com");
 
 insert into area_tematica (id_area, descripcion) values (100, "Redes");
 insert into area_tematica (id_area, descripcion) values (200, "Base de Datos");

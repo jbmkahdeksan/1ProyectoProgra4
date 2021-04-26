@@ -24,7 +24,6 @@ public class Controller_Index extends javax.servlet.http.HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         
         String respuesta = "index.jsp";
-        System.out.println ("HOLA, ESTE ES EL CONTROLLER DEL INDEX");
         request.getRequestDispatcher(respuesta).forward(request, response);
         
     }

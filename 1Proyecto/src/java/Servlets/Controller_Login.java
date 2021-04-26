@@ -5,6 +5,9 @@
  */
 package Servlets;
 
+import Logic.Estudiante;
+import Logic.administrador;
+import Logic.profesor;
 import Logic.usuario;
 import Models.Model_Login;
 import Services.Service;
@@ -27,11 +30,31 @@ import javax.servlet.http.HttpSession;
  * @author Joaquin
  */
 @WebServlet(name="Ingresar", urlPatterns = {"/Ingresar"})
-public class Controller_Login extends javax.servlet.http.HttpServlet {
+public class Controller_Login extends HttpServlet {
     
     private Service service;
     private Model_Login model;
 
+    public Controller_Login() {
+        this.service = new Service();
+        this.model = new Model_Login();
+    } 
+    
+    public Service getService() {
+        return service;
+    }
+
+    public void setService(Service service) {
+        this.service = service;
+    }
+
+    public Model_Login getModel() {
+        return model;
+    }
+
+    public void setModel(Model_Login model) {
+        this.model = model;
+    }  
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -39,10 +62,10 @@ public class Controller_Login extends javax.servlet.http.HttpServlet {
         String respuesta = "index.jsp";
         String cedula_request = request.getParameter("cedula");
         String contrasena_request = request.getParameter("contrasena");
-        Date date = new Date();        
+        Date date = new Date(System.currentTimeMillis());        
         try {
             usuario u = Service.instance().login(new usuario(cedula_request,contrasena_request, date, 1, 1));
-            System.out.println("Se ingreso el usuario");
+            
         } catch (Exception ex) {
             
         }
@@ -61,25 +84,48 @@ public class Controller_Login extends javax.servlet.http.HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {   
-                System.out.println("Entrando al servlet de ingresar");
+        System.out.println("Entrando al servlet de ingresar");
         response.setContentType("text/html;charset=UTF-8");
         String respuesta = "index.jsp";
         String cedula_request = request.getParameter("cedula");
-        String contrasena_request = request.getParameter("contrasena");
-        Date date = new Date();   
+        String contrasena_request = request.getParameter("contrasena");        
+        Date date = new Date(System.currentTimeMillis());          
         usuario u = null;
-        System.out.println("Antes de verificar session");
         try {
-           u = Service.instance().login(new usuario(cedula_request,contrasena_request, date, 1, 1));    
+            u = Service.instance().login(new usuario(cedula_request, contrasena_request));
         } catch (Exception ex) {
-            if (u == null){
-                 request.getRequestDispatcher("login.jsp").forward(request, response);
-            }            
-        }         
-        System.out.println("Antes de crear session");
-        HttpSession session = request.getSession(true);
-        session.setAttribute("Usuario", u);        
-        request.setAttribute("Model_Login", model);
+            Logger.getLogger(Controller_Login.class.getName()).log(Level.SEVERE, null, ex);
+            if (u == null) {
+            request.getRequestDispatcher("login.jsp").forward(request, response);
+            }        
+        } 
+        HttpSession session = request.getSession(true);  
+        session.setAttribute("Usuario", u);
+        if(u.getRol_id()==1){            
+            try {
+                administrador admin = Service.instance().buscar_administrador(u.getId());
+                System.out.println(admin.getNombre());
+                request.setAttribute("administrador", admin);
+            } catch (Exception ex) {
+                Logger.getLogger(Controller_Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        if(u.getRol_id()==2){
+            try {
+                profesor p = Service.instance().buscar_profesor(u.getId());
+                session.setAttribute("profesor", p);
+            } catch (Exception ex) {
+                Logger.getLogger(Controller_Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        if(u.getRol_id()==3){
+            try {
+                Estudiante e = Service.instance().buscar_estudiante(u.getId());
+                session.setAttribute("Estudiante", e);
+            } catch (Exception ex) {
+                Logger.getLogger(Controller_Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
         request.getRequestDispatcher(respuesta).forward(request, response);
     }
 

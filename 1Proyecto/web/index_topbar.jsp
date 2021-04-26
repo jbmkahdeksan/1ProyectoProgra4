@@ -4,6 +4,7 @@
     Author     : Joaquin
 --%>
 
+<%@page import="Services.Service"%>
 <%@page import="Logic.Estudiante"%>
 <%@page import="Logic.profesor"%>
 <%@page import="Logic.administrador"%>
@@ -28,20 +29,16 @@
             <%}else{%>
                 <a href="#">Cerrar sesión</a>
                 <%if(u.getRol_id()==1){%>
-                    <%administrador a = (administrador) session.getAttribute("Administrador");
-                    if(a == null){
-                        System.out.println("a es NULL :(");
-                    }                    
-                    %>
-                    <a href="#">Perfil de </a>
+                    <jsp:useBean class="Logic.administrador" id="administrador" scope="session"></jsp:useBean>
+                    <a href="#">Perfil de ${administrador.getNombre()}</a>
                 <%}%>
                 <%if(u.getRol_id()==2){%>
-                    <%profesor p = (profesor) session.getAttribute("Profesor");%>
-                    <a href="#">Perfil de <%p.getNombre();%></a>
+                    <jsp:useBean class="Logic.profesor" id="profesor" scope="session"></jsp:useBean>
+                    <a href="#">Perfil de ${profesor.getNombre()}</a>
                 <%}%>
                 <%if(u.getRol_id()==3){%>
-                    <%Estudiante e = (Estudiante) session.getAttribute("Profesor");%>
-                    <a href="#">Perfil de <%e.getNombre();%></a>
+                    <jsp:useBean class="Logic.Estudiante" id="Estudiante" scope="session"></jsp:useBean>
+                    <a href="#">Perfil de ${Estudiante.getNombre()}</a>
                 <%}%>
             <%}%>                 
             <div class="search-container">

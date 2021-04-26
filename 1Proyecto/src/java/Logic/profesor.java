@@ -5,13 +5,14 @@
  */
 package Logic;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 /**
  *
  * @author ksand
  */
-public class profesor {
+public class profesor implements Serializable{
   private int id_profesor;
   private String usuario_id;
   private String nombre;

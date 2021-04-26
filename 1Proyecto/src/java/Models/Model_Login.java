@@ -6,6 +6,7 @@
 package Models;
 
 import Logic.usuario;
+import java.io.Serializable;
 
 /**
  *
