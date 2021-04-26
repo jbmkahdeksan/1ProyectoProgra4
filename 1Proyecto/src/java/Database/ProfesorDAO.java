@@ -5,13 +5,16 @@
  */
 package Database;
 
+import Logic.curso;
 import Logic.profesor;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 
 
 /**
@@ -54,6 +57,59 @@ public class ProfesorDAO {
             throw new Exception ("No se encontró el profesor");
         }
     }
+    public void update(profesor o) throws Exception{
+        String sql="update profesor set usuario_id=?,apellido1=?,apellido2=?, ,nombre=?, ,telefono=?, ,email=?  "+
+                "where id_profesor=?";
+        PreparedStatement stm = Database.instance().prepareStatement(sql);
+        stm.setString(1, o.getUsuario_id());
+        stm.setString(2, o.getApellido1());
+        stm.setString(3, o.getApellido2());
+        stm.setString(4, o.getNombre());
+        stm.setString(5, o.getTelefono());
+        stm.setString(6, o.getE_mail());
+        stm.setString(7, Integer.toString(o.getId_profesor()));        
+        int count=Database.instance().executeUpdate(stm);
+        if (count==0){
+            throw new Exception("Profesor no existe");
+        }
+    }    
+
+    public void delete(profesor o) throws Exception{
+        String sql="delete from profesor where id_profesor=?";
+        PreparedStatement stm = Database.instance().prepareStatement(sql);
+        stm.setString(1, Integer.toString(o.getId_profesor()));        
+        int count=Database.instance().executeUpdate(stm);        
+        if (count==0){
+            throw new Exception("Profesor no existe");
+        }
+    }
+    
+    public List<profesor> findAll(){
+        List<profesor> r= new ArrayList<>();
+        String sql="select * from profesor";
+        try {        
+            PreparedStatement stm = Database.instance().prepareStatement(sql);
+            ResultSet rs =  Database.instance().executeQuery(stm);     
+            while (rs.next()) {
+                r.add(from(rs));
+            }
+        } catch (SQLException ex) { }
+        return r;
+    }
+
+    public List<profesor> findByNombre(profesor o){
+        List<profesor> r= new ArrayList<>();
+        String sql="select * from profesor where nombre like ?";
+        try {        
+            PreparedStatement stm = Database.instance().prepareStatement(sql);
+            stm.setString(1, "%"+o.getNombre()+"%");   
+            ResultSet rs =  Database.instance().executeQuery(stm); 
+            while (rs.next()) {
+                r.add(from(rs));
+            }
+        } catch (SQLException ex) { }
+        return r;
+    }
     
     
     public profesor from (ResultSet rs){
@@ -71,5 +127,7 @@ public class ProfesorDAO {
         } catch (SQLException ex) {
             return null;
         }
+    }
+    public  void close(){
     }
 }

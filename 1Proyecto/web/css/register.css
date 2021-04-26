@@ -25,6 +25,14 @@ input[type=text] {
   border: 1px solid #ccc;
   box-sizing: border-box;
 }
+input[type=number]{
+    width: 90%;
+  padding: 12px 20px;
+  margin: 8px 0;
+
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
 
 /*estilo del boton para ingresar*/
 button {
@@ -40,3 +48,56 @@ button {
 button:hover {
   opacity: 0.6;
 }
+
+  /* estilo para los campos para ingresar informacion*/
+input[type=submit] {
+  background-color: #333;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 90%;
+}
+
+.Opciones {
+  background-color: #333;
+  color: white;
+  padding: 6px 10px;
+  margin: 20px 2px;
+  border: none;
+  text-decoration: none;
+  width: 20%;
+  cursor: pointer;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.Opciones:hover {
+    opacity: 0.6;
+}
+table {
+  margin: 15px 0px;
+  width: 90%;
+  border: 1px solid black;
+  text-align: center;
+}
+th {
+  height: 50px;
+}
+td {
+  height: 30px;
+}
+
+.buscar {
+    width: 100%;
+    display:flex;
+    border:none;
+}
+
+.formbuscar {
+    display: flex;
+    padding-left: 515px;
+    border: none;
+}
+

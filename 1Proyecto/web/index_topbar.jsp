@@ -30,7 +30,7 @@
                 <a href="#">Cerrar sesión</a>
                 <%if(u.getRol_id()==1){%>
                     <jsp:useBean class="Logic.administrador" id="administrador" scope="session"></jsp:useBean>
-                    <a href="#">Perfil de ${administrador.getNombre()}</a>
+                    <a href="admin.jsp">Perfil de ${administrador.getNombre()}</a>
                 <%}%>
                 <%if(u.getRol_id()==2){%>
                     <jsp:useBean class="Logic.profesor" id="profesor" scope="session"></jsp:useBean>

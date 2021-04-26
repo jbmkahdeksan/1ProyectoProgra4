@@ -13,8 +13,16 @@
         <servlet-class>Servlets.Controller_Index</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>Controller_Admin</servlet-name>
-        <servlet-class>Servlets.Controller_Admin</servlet-class>
+        <servlet-name>Controller_Cursos_Admin</servlet-name>
+        <servlet-class>Servlets.Controller_Cursos_Admin</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Controller_AreaTematica</servlet-name>
+        <servlet-class>Servlets.Controller_AreaTematica</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Controller_Profesores_Admin</servlet-name>
+        <servlet-class>Servlets.Controller_Profesores_Admin</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>ServicioFormulario</servlet-name>
@@ -29,8 +37,16 @@
         <url-pattern>/Controller_Index</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>Controller_Admin</servlet-name>
-        <url-pattern>/Controller_Admin</url-pattern>
+        <servlet-name>Controller_Cursos_Admin</servlet-name>
+        <url-pattern>/Controller_Cursos_Admin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Controller_AreaTematica</servlet-name>
+        <url-pattern>/Controller_AreaTematica</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Controller_Profesores_Admin</servlet-name>
+        <url-pattern>/Controller_Profesores_Admin</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
