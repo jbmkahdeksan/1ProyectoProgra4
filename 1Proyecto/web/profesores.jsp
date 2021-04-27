@@ -9,7 +9,6 @@
 <%@page import="Logic.profesor"%>
 <%@page import="Logic.profesor"%>
 <%@page import="Database.ProfesorDAO"%>
-<%@page import="Database.cursoDao"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -30,12 +29,7 @@
 
                
         </div>
-        <div class = "topbar">
-            <a class="active" href="home">Inicio</a>
-            <a href="Controller_Cursos_Admin?accion=listar">Cursos</a>
-            <a href="Controller_Profesores_Admin?accion=listar">Profesores</a>
-                
-            </div>
+            <%@include file="index_topbar.jsp"%>
         <div>
             <h1>Profesores</h1>
             <div class="buscar">
@@ -74,7 +68,7 @@
                         <td><%=p.getApellido1()%></td>
                         <td><%=p.getApellido2()%></td>
                         <td><%=p.getNombre()%></td>
-                        <td><%=p.getTelefono() %></td>
+                        <td><%=p.getTelefono()%></td>
                         <td><%=p.getE_mail() %></td>
                         <td>
                             <a class="Opciones" >Ver Especialidades</a>

@@ -23,15 +23,13 @@
         <div class="header">
             <h2>CursosLibres.com</h2>
             <p>Donde encontrarás cursos irónicamente útiles.</p>
+            
             <div style="text-align: left">
-                <center><h2>Pagina de Administrador</h2></center>
-
-                
+                <center><h2>Pagina de Administrador</h2></center>  
         </div>
+            <%@include file="index_topbar.jsp"%>
         <div class = "topbar">
-            <a class="active" href="home">Inicio</a>
-            <a href="Controller_Cursos_Admin?accion=listar">Cursos</a>
-            <a href="Controller_Profesores_Admin?accion=listar">Profesores</a>
+            
                 
             </div>
         <div>

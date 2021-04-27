@@ -29,8 +29,8 @@
             <div class="dropdown">
                 <button class="dropbtn">Opciones de Administrador</button>
                 <div class="dropdown-content">
-                    <a href="#">Profesores</a>
-                    <a href="#">Cursos</a>
+                    <a href="Controller_Profesores_Admin?accion=listar">Profesores</a>
+                    <a href="Controller_Cursos_Admin?accion=listar">Cursos</a>
                 </div>
             </div> 
             <%}%>

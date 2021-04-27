@@ -26,12 +26,7 @@
 
                 
         </div>
-        <div class = "topbar">
-            <a class="active" href="home">Inicio</a>
-            <a href="Controller_Cursos_Admin?accion=listar">Cursos</a>
-            <a href="Controller_Profesores_Admin?accion=listar">Profesores</a>
-                
-            </div>
+        <%@include file="index_topbar.jsp"%>
         <div id="wrapper"> 
             <div id="AddCurso">
                 <p> <strong>Crear curso nuevo</strong></p>

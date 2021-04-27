@@ -5,7 +5,7 @@
  */
 package Database;
 
-import Logic.area_tematica;
+
 import Logic.curso;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
