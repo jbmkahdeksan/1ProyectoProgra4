@@ -116,7 +116,7 @@ public class ProfesorDAO {
         try {
             profesor p = new profesor();
             p.setId_profesor(rs.getInt("id_profesor"));            
-            p.setUsuario_id(rs.getString("id_usuario"));            
+            p.setUsuario_id(rs.getString("usuario_id"));            
             p.setApellido1(rs.getString("apellido1"));
             p.setApellido2(rs.getString("apellido2"));
             p.setNombre(rs.getString("nombre"));

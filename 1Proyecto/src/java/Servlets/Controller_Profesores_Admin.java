@@ -23,7 +23,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "AdminProfes", urlPatterns = {"/AdminProfes"})
 public class Controller_Profesores_Admin extends HttpServlet {
-String listarprofesores = "profesores.jsp";
+    String listarprofesores = "profesores.jsp";
     String agregarprofesores = "addprofesor.jsp";
     String editarprofesores = "editprofesor.jsp";
     profesor p = new profesor();

@@ -23,17 +23,10 @@
             <p>Donde encontrarás cursos irónicamente útiles.</p>
             <div style="text-align: left">
                 <center><h2>Pagina de Administrador</h2></center>
-
-                Bienvenido/a <%=request.getAttribute("userName")%> </div>
         </div>
-        <div class = "topbar">
-            <a class="active" href="home">Inicio</a>
-            <a href="Controller_Cursos_Admin?accion=listar">Cursos</a>
-            <a href="Controller_Profesores_Admin?accion=listar">Profesores</a>
-                
-            </div>
+         <%@include file="index_topbar.jsp"%>
         <div id="wrapper"> 
-            <div id="AddProfesor">
+            <div class="adminfunc" id="AddProfesor">
                 <p> <strong>Agregar nuevo</strong></p>
                 <p>Por favor llenar los siguientes campos para agregar un profesor nuevo. </p>
                 <form action="AdminProfes">
@@ -53,7 +46,6 @@
                         <label for="correos"><b>Correo</b></label>
                         <input type="text"  name="e_mail" required>
                         <input type="submit" name="accion" value="Agregar" href="profesores.jsp">
-                        
                 </form>
             </div>
             </div>

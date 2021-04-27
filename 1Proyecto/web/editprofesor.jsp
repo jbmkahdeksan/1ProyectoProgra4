@@ -12,6 +12,13 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <div class="header">
+            <h2>CursosLibres.com</h2>
+            <p>Donde encontrarás cursos irónicamente útiles.</p>
+            <div style="text-align: left">
+                <center><h2>Pagina de Administrador</h2></center>
+        </div>
+         <%@include file="index_topbar.jsp"%>
+         <%@include file="footer.jsp"%>
     </body>
 </html>

@@ -115,6 +115,7 @@ public class Controller_Login extends HttpServlet {
         if(u.getRol_id()==2){
             try {
                 profesor p = Service.instance().buscar_profesor(u.getId());
+                System.out.println(p.getNombre());
                 session.setAttribute("profesor", p);
             } catch (Exception ex) {
                 Logger.getLogger(Controller_Login.class.getName()).log(Level.SEVERE, null, ex);

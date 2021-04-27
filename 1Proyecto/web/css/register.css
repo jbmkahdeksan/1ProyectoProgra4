@@ -7,25 +7,24 @@ and open the template in the editor.
     Created on : 18/04/2021, 05:02:56 PM
     Author     : ksand
 */
-form {
+#adminfunc form {
     border: 3px solid #f1f1f1;
     width: 30%;  
 }
 
-.container {
+#adminfunc .container {
   padding: 16px;
 }
 
 /* estilo para los campos para ingresar informacion*/
-input[type=text] {
+#adminfunc input[type=text] {
   width: 90%;
   padding: 12px 20px;
   margin: 8px 0;
-
   border: 1px solid #ccc;
   box-sizing: border-box;
 }
-input[type=number]{
+#adminfunc input[type=number]{
     width: 90%;
   padding: 12px 20px;
   margin: 8px 0;
@@ -35,7 +34,7 @@ input[type=number]{
 }
 
 /*estilo del boton para ingresar*/
-button {
+#adminfunc button {
   background-color: #333;
   color: white;
   padding: 14px 20px;
@@ -45,12 +44,12 @@ button {
   width: 90%;
 }
 
-button:hover {
+#adminfunc button:hover {
   opacity: 0.6;
 }
 
   /* estilo para los campos para ingresar informacion*/
-input[type=submit] {
+#adminfunc input[type=submit] {
   background-color: #333;
   color: white;
   padding: 14px 20px;
@@ -76,15 +75,18 @@ input[type=submit] {
 .Opciones:hover {
     opacity: 0.6;
 }
+
 table {
   margin: 15px 0px;
   width: 90%;
   border: 1px solid black;
   text-align: center;
 }
+
 th {
   height: 50px;
 }
+
 td {
   height: 30px;
 }
@@ -95,9 +97,35 @@ td {
     border:none;
 }
 
+
 .formbuscar {
     display: flex;
     padding-left: 515px;
     border: none;
+}
+
+
+
+
+
+.topbar .search-container button {
+  float: right;
+  padding: 6px 10px;
+  margin-top: 8px;
+  margin-right: 16px;
+  background: #ddd;
+  font-size: 14.6px;
+  border: none;
+  cursor: pointer;
+}
+
+
+
+.topbar .search-container {
+  float: right;
+}
+
+.topbar .search-container button:hover {
+  background: #ccc;
 }
 

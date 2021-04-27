@@ -38,7 +38,7 @@ public class EstudiantesDAO {
     }
     
     public Estudiante read(String id) throws Exception{        
-        String sqlcommand = "select * from estudiante where id = ?";
+        String sqlcommand = "select * from estudiante where usuario_id = ?";
         PreparedStatement stm = Database.instance().prepareStatement(sqlcommand);
         stm.setString(1, id);
         ResultSet rs =  Database.instance().executeQuery(stm);           

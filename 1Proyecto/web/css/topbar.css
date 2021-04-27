@@ -1,0 +1,109 @@
+@font-face {
+    font-family: Raleway;
+    src: url('fonts/static/Raleway-Regular.ttf');
+}
+
+@font-face {
+    font-family: RalewayBold;
+    src: url('fonts/static/Raleway-Bold.ttf');
+}
+
+body {
+  font-family: Raleway;
+}
+
+#header h2 {
+    font-size: 72pt;
+    color:blue;
+}
+
+footer {
+    text-align:center;
+}
+
+.topbar {
+  overflow: hidden;
+  background-color: #333;
+}
+
+.topbar a {
+  float: left;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+.dropdown .dropbtn {
+  font-size: 16px;  
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+.topbar a:hover, .dropdown:hover .dropbtn {
+    background-color:#ff6633;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.topbar .search-container button {
+  float: right;
+  padding: 6px 10px;
+  margin-top: 8px;
+  margin-right: 16px;
+  background: #ddd;
+  font-size: 14.6px;
+  border: none;
+  cursor: pointer;
+}
+
+.topbar .search-container {
+  float: right;
+}
+
+.topbar input[type=text] {
+  padding: 6px;
+  margin-top: 8px;
+  font-size: 17px;
+  border: none;
+}
+
+
+.topbar .search-container button:hover {
+  background: #ccc;
+}

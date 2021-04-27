@@ -22,10 +22,11 @@
             <p>Donde encontrarás cursos irónicamente útiles.</p>
             <div style="text-align: left">
                 <center><h2>Pagina de Administrador</h2></center>
+
                 Bienvenido/a ${administrador.getNombre()} </div>
         </div>
-            <%@include file="index_topbar.jsp"%>
-         
-            <%@include file = "footer.jsp"%>
+        <%@include file="index_topbar.jsp" %>
+
+        <%@include file = "footer.jsp"%>  
     </body>
 </html>
