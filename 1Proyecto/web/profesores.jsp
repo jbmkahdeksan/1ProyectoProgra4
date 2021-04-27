@@ -9,7 +9,6 @@
 <%@page import="Logic.profesor"%>
 <%@page import="Logic.profesor"%>
 <%@page import="Database.ProfesorDAO"%>
-<%@page import="Database.cursoDao"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -74,12 +73,60 @@
                                 <a class="Opciones" href="Controller_Profesores_Admin?accion=editar&id_profesor=<%=p.getId_profesor()%>">Editar </a>
                                 <a class="Opciones" href="Controller_Profesores_Admin?accion=eliminar&id_profesor=<%=p.getId_profesor()%>"">Eliminar</a>
 
-                            </td>
-                        </tr>
-                        <%}%>
-                    </tbody>
-                </table>
+               
+        </div>
+            <%@include file="index_topbar.jsp"%>
+        <div>
+            <h1>Profesores</h1>
+            <div class="buscar">
+            <a class="Opciones" href="addprofesor.jsp">Agregar</a>
+            <form  class="formbuscar">
+                    <input type="text" placeholder="Buscar profesor/a..." name ="buscar">
+                    <input class="botonbuscar"type="submit" name="accion" value="Buscar">
+                </form> 
             </div>
-            <%@include file = "footer.jsp"%> 
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID Profesor</th>
+                        <th>ID Usuario</th>
+                        <th>Primer Apellido</th>
+                        <th>Segundo Apellido</th>
+                        <th>Nombre</th>
+                        <th>Telefono</th>
+                        <th>Correo</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <%
+                 ProfesorDAO dao= new ProfesorDAO();
+                 Iterator<profesor> iter;
+                    List<profesor>lista= dao.findAll();
+                    iter= lista.iterator();
+                    profesor p = null;
+                    while(iter.hasNext()){
+                        p= iter.next();
+                %>
+                <tbody>
+                    <tr>
+                        <td><%=p.getId_profesor()%></td>
+                        <td><%=p.getUsuario_id()%></td>
+                        <td><%=p.getApellido1()%></td>
+                        <td><%=p.getApellido2()%></td>
+                        <td><%=p.getNombre()%></td>
+                        <td><%=p.getTelefono()%></td>
+                        <td><%=p.getE_mail() %></td>
+                        <td>
+                            <a class="Opciones" >Ver Especialidades</a>
+                            <a class="Opciones" href="Controller_Profesores_Admin?accion=editar&id_profesor=<%=p.getId_profesor()%>">Editar </a>
+                            <a class="Opciones" href="Controller_Profesores_Admin?accion=eliminar&id_profesor=<%=p.getId_profesor()%>"">Eliminar</a>
+                            
+                        </td>
+                    </tr>
+                    <%}%>
+                </tbody>
+            </table>
+        </div>
+                <div> <%@include file = "footer.jsp"%>   </div>
     </body>
 </html>

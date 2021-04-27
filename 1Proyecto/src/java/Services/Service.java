@@ -68,7 +68,7 @@ public class Service {
     }
     public profesor buscar_profesor(String id) throws Exception{
         profesor result = null;
-        result = profesor_dao.read(id);
+        result = profesor_dao.readbyuser(id);
         return result;        
     }
     

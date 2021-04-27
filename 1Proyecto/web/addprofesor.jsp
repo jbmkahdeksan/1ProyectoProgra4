@@ -23,8 +23,9 @@
             <p>Donde encontrarás cursos irónicamente útiles.</p>
             <div style="text-align: left">
                 <center><h2>Pagina de Administrador</h2></center>
-        </div>
-         <%@include file="index_topbar.jsp"%>
+            </div>
+            <%@include file="index_topbar.jsp"%></div>
+        <%@include file="index_topbar.jsp"%>
         <div id="wrapper"> 
             <div class="adminfunc" id="AddProfesor">
                 <p> <strong>Agregar nuevo</strong></p>
@@ -35,7 +36,7 @@
                         <input type="number"  name="id_profesor" required>
                         <label for="usuario"><b>ID_Usuario</b></label>
                         <input type="text"  name="usuario_id" required>
-                         <label for="apellido_1"><b>Primer Apellido</b></label>
+                        <label for="apellido_1"><b>Primer Apellido</b></label>
                         <input type="text"  name="apellido1" required>
                         <label for="apellido_2"><b>Segundo Apellido</b></label>
                         <input type="text"  name="apellido2" required>
@@ -46,11 +47,11 @@
                         <label for="correos"><b>Correo</b></label>
                         <input type="text"  name="e_mail" required>
                         <input type="submit" name="accion" value="Agregar" href="profesores.jsp">
-                </form>
-            </div>
+                        </form>
+                    </div>
             </div>
         </div>
-            
-                <div> <%@include file = "footer.jsp"%>   </div>
+
+        <div> <%@include file = "footer.jsp"%>   </div>
     </body>
 </html>

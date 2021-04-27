@@ -5,15 +5,12 @@
  */
 package Database;
 
-import Logic.curso;
+
 import Logic.profesor;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 
 
@@ -22,8 +19,8 @@ import java.util.List;
  * @author Joaquin
  */
 public class ProfesorDAO {
-    public profesor create(profesor cl) throws SQLException, Exception{
-        String sqlcommand =  "insert into profesor(id_profesor, usuario_id, apellido1, apellido2, nombre, telefono, email)"
+    public void create(profesor cl)  throws Exception{
+        String sqlcommand =  "insert into profesor(id_profesor, usuario_id, apellido1, apellido2, nombre, telefono, e_mail)"
                 + "values(?,?,?,?,?,?,?)";
         PreparedStatement stm = Database.instance().prepareStatement(sqlcommand);       
         stm.setString(1,Integer.toString(cl.getId_profesor()));
@@ -33,22 +30,32 @@ public class ProfesorDAO {
         stm.setString(5,cl.getNombre());
         stm.setString(6,cl.getTelefono());
         stm.setString(7,cl.getE_mail());
-     
-        System.out.println(stm);
         int count = Database.instance().executeUpdate(stm);
         if (count == 0) {
             
-            throw new Exception("Ya existe un profesor con esa información");
+            throw new Exception("Profesor ya existe");
             
         }
-        return cl;
         
     }
     
-    public profesor read(String id) throws Exception{        
-        String sqlcommand = "select * from profesor where usuario_id = ?";
+    public profesor read(int id_profesor) throws Exception{        
+        String sqlcommand = "select * from profesor where id_profesor=?";
         PreparedStatement stm = Database.instance().prepareStatement(sqlcommand);
-        stm.setString(1, id);
+        stm.setString(1, Integer.toString(id_profesor));
+        ResultSet rs =  Database.instance().executeQuery(stm);           
+        if (rs.next()) {          
+            return from(rs);
+        }
+        else{
+            throw new Exception ("No se encontró el profesor");
+        }
+    }
+    
+    public profesor readbyuser(String usuario_id) throws Exception{        
+        String sqlcommand = "select * from profesor where usuario_id=?";
+        PreparedStatement stm = Database.instance().prepareStatement(sqlcommand);
+        stm.setString(1, usuario_id);
         ResultSet rs =  Database.instance().executeQuery(stm);           
         if (rs.next()) {          
             return from(rs);
@@ -58,7 +65,7 @@ public class ProfesorDAO {
         }
     }
     public void update(profesor o) throws Exception{
-        String sql="update profesor set usuario_id=?,apellido1=?,apellido2=?, ,nombre=?, ,telefono=?, ,email=?  "+
+        String sql="update profesor set usuario_id=?,apellido1=?,apellido2=?,nombre=?,telefono=?,e_mail=?  "+
                 "where id_profesor=?";
         PreparedStatement stm = Database.instance().prepareStatement(sql);
         stm.setString(1, o.getUsuario_id());
@@ -115,7 +122,7 @@ public class ProfesorDAO {
     public profesor from (ResultSet rs){
         try {
             profesor p = new profesor();
-            p.setId_profesor(rs.getInt("id_profesor"));            
+            p.setId_profesor(rs.getInt("id_profesor"));               
             p.setUsuario_id(rs.getString("usuario_id"));            
             p.setApellido1(rs.getString("apellido1"));
             p.setApellido2(rs.getString("apellido2"));

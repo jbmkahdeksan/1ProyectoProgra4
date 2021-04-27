@@ -23,58 +23,60 @@
         <div class="header">
             <h2>CursosLibres.com</h2>
             <p>Donde encontrarás cursos irónicamente útiles.</p>
+
             <div style="text-align: left">
-                <center><h2>Pagina de Administrador</h2></center>
-        </div>
-        <%@include file="index_topbar.jsp"%>
-        <div>
-            <h1>Cursos </h1>
-            <div class="buscar">
-            <a class="Opciones" href="addcurso.jsp">Agregar</a>
-            <form  class="formbuscar">
-                    <input type="text" placeholder="Buscar curso..." name ="buscar">
-                    <input class="botonbuscar"type="submit" name="accion" value="Buscar">
-                </form> 
-            <%
-                
-                    
-            %>
+
+                <center><h2>Pagina de Administrador</h2></center>  
+
             </div>
-            <table>
-                <thead>
-                    <tr>
-                        <th>ID Curso</th>
-                        <th>Descripcion</th>
-                        <th>Area Tematica</th>
-                        <th>Acciones</th>
-                    </tr>
-                </thead>
-                <%
-                 cursoDao dao= new cursoDao();
-                 Iterator<curso> iter;
-                    List<curso>lista =dao.findAll();
-                    iter=lista.iterator();
-                    curso c = null;
-                    while(iter.hasNext()){
-                        c= iter.next();
-                    
-                %>
-                <tbody>
-                    <tr>
-                        <td><%=c.getCurso()%></td>
-                        <td><%=c.getDescripcion()%></td>
-                        <td><%=c.getArea_tematica_id()%></td>
-                        <td>
-                            <a class="Opciones" >Ver Grupos</a>
-                            <a class="Opciones" href="Controller_Cursos_Admin?accion=editar&id_curso=<%=c.getCurso()%>">Editar </a>
-                            <a class="Opciones" href="Controller_Cursos_Admin?accion=eliminar&id_curso=<%=c.getCurso()%>"">Eliminar</a>
-                            
-                        </td>
-                    </tr>
-                    <%}%>
-                </tbody>
-            </table>
-        </div>
-                <div> <%@include file = "footer.jsp"%>   </div>
+            <%@include file="index_topbar.jsp"%>
+
+            <div>
+                <h1>Cursos </h1>
+                <div class="buscar">
+                    <a class="Opciones" href="addcurso.jsp">Agregar</a>
+                    <form  class="formbuscar">
+                        <input type="text" placeholder="Buscar curso..." name ="buscar">
+                        <input class="botonbuscar"type="submit" name="accion" value="Buscar">
+                    </form> 
+                    <%
+
+                    %>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID Curso</th>
+                            <th>Descripcion</th>
+                            <th>Area Tematica</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <%                    cursoDao dao = new cursoDao();
+                        Iterator<curso> iter;
+                        List<curso> lista = dao.findAll();
+                        iter = lista.iterator();
+                        curso c = null;
+                        while (iter.hasNext()) {
+                            c = iter.next();
+
+                    %>
+                    <tbody>
+                        <tr>
+                            <td><%=c.getCurso()%></td>
+                            <td><%=c.getDescripcion()%></td>
+                            <td><%=c.getArea_tematica_id()%></td>
+                            <td>
+                                <a class="Opciones" >Ver Grupos</a>
+                                <a class="Opciones" href="Controller_Cursos_Admin?accion=editar&id_curso=<%=c.getCurso()%>">Editar </a>
+                                <a class="Opciones" href="Controller_Cursos_Admin?accion=eliminar&id_curso=<%=c.getCurso()%>"">Eliminar</a>
+
+                            </td>
+                        </tr>
+                        <%}%>
+                    </tbody>
+                </table>
+            </div>
+            <%@include file = "footer.jsp"%>
     </body>
 </html>
