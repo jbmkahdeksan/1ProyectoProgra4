@@ -6,7 +6,9 @@
 package Servlets;
 
 import Database.cursoDao;
+import Logic.administrador;
 import Logic.curso;
+import Services.Service;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -28,6 +30,7 @@ public class Controller_Cursos_Admin extends HttpServlet {
     String agregarcursos = "addcurso.jsp";
     String editarcursos = "editcurso.jsp";
     curso c = new curso();
+
     cursoDao cDao = new cursoDao();
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -72,7 +75,8 @@ public class Controller_Cursos_Admin extends HttpServlet {
             c.setDescripcion(descripcion);
             c.setArea_tematica_id(area_tematica_id);
             try {
-                cDao.create(c);
+                Service.instance().addCurso(c);
+//                cDao.create(c);
             } catch (Exception e) {
             }
 
@@ -90,7 +94,8 @@ public class Controller_Cursos_Admin extends HttpServlet {
             c.setDescripcion(descripcion);
             c.setArea_tematica_id(area_tematica_id);
             try {
-                cDao.update(c);
+                Service.instance().updateCurso(c);
+//                cDao.update(c);
             } catch (Exception e) {
             }
             acceso = listarcursos;
