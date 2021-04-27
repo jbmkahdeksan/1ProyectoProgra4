@@ -19,10 +19,7 @@
                 <h2>CursosLibres.com</h2>
                 <p>Donde encontrarás cursos irónicamente útiles.</p>
         </div>
-        <div class = "topbar">
-            <a href="home">Inicio</a>
-            <a class="active" href="login.jsp">Ingresar</a>   
-        </div>
+        <%@include file="index_topbar.jsp"%>
         <div id="wrapper"> 
             <div id = "Bienvenido">  
                 <p> <strong>Ingreso</strong></p>

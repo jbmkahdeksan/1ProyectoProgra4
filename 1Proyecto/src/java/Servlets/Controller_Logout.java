@@ -5,6 +5,8 @@
  */
 package Servlets;
 
+import Models.Model_Login;
+import Services.Service;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -12,21 +14,49 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author Joaquin
  */
-@WebServlet(name="home", urlPatterns = {"/home", "/volverInicio"})
-public class Controller_Index extends javax.servlet.http.HttpServlet {
+@WebServlet(name = "CerrarSesion", urlPatterns = {"/CerrarSesion"})
+public class Controller_Logout extends HttpServlet {
 
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    private Service service;
+    private Model_Login model;
+
+    public Controller_Logout() {
+        this.service = new Service();
+        this.model = new Model_Login();
+    } 
+    
+    public Service getService() {
+        return service;
+    }
+
+    public void setService(Service service) {
+        this.service = service;
+    }
+
+    public Model_Login getModel() {
+        return model;
+    }
+
+    public void setModel(Model_Login model) {
+        this.model = model;
+    }
+    
+    
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
-        String respuesta = "index.jsp";
-        
-        request.getRequestDispatcher(respuesta).forward(request, response);
-        
+        System.out.println("Llega al servlet");
+        String respuesta = "/home";
+        HttpSession session = request.getSession(true);
+        session.removeAttribute("Usuario");
+        model.setCurrent_user(null);
+        request.getRequestDispatcher(respuesta).forward(request, response);        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

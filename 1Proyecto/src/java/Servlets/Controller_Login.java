@@ -84,9 +84,10 @@ public class Controller_Login extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {   
+        
         System.out.println("Entrando al servlet de ingresar");
         response.setContentType("text/html;charset=UTF-8");
-        String respuesta = "index.jsp";
+        String respuesta = "home";
         String cedula_request = request.getParameter("cedula");
         String contrasena_request = request.getParameter("contrasena");        
         Date date = new Date(System.currentTimeMillis());          
@@ -105,7 +106,8 @@ public class Controller_Login extends HttpServlet {
             try {
                 administrador admin = Service.instance().buscar_administrador(u.getId());
                 System.out.println(admin.getNombre());
-                request.setAttribute("administrador", admin);
+                session.setAttribute("administrador", admin);
+                respuesta = "admin.jsp";
             } catch (Exception ex) {
                 Logger.getLogger(Controller_Login.class.getName()).log(Level.SEVERE, null, ex);
             }

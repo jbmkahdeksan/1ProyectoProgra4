@@ -14,7 +14,12 @@
         <link href="css/default.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
+        <div class="header">
+                <h2>CursosLibres.com</h2>
+                <p>Donde encontrarás cursos irónicamente útiles.</p>
+        </div>
         <%@include file="index_topbar.jsp"%>
+        
         <div id="wrapper">
             <table>
                 

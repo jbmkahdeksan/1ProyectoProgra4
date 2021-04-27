@@ -26,7 +26,7 @@ and open the template in the editor.
   margin: 0; /* Important for vertical align on mobile phones */
 }
 
-/* Add a red background color to navbar links on hover */
+/* Add a red background color to topbar links on hover */
 .Menu:hover .BotonMenu {
   background-color: #111;
   color: white;
