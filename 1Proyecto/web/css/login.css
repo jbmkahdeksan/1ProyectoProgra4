@@ -31,7 +31,7 @@ form {
 }
 
 /* estilo para los campos para ingresar informacion*/
-input[type=text], input[type=password] {
+input[type=text], input[type=password], input[type=number]{
   width: 90%;
   padding: 12px 20px;
   margin: 8px 0;
@@ -40,7 +40,8 @@ input[type=text], input[type=password] {
   box-sizing: border-box;
 }
 /*estilo del boton para ingresar*/
-button {
+
+input[type=submit], #boton{
   background-color: #333;
   color: white;
   padding: 14px 20px;
@@ -49,8 +50,7 @@ button {
   cursor: pointer;
   width: 90%;
 }
-
-button:hover {
+input[type=submit]:hover, #boton:hover {
   opacity: 0.6;
 }
 /*estilo para label de registro*/

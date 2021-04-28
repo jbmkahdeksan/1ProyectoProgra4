@@ -12,7 +12,7 @@
         <meta charset="UTF-8">        
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="css/default.css" rel="stylesheet" type="text/css"/>
-        <link href="css/register.css" rel="stylesheet" type="text/css"/>
+        <link href="css/login.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
         <div class="header">
@@ -42,7 +42,7 @@
                         <input type="text" placeholder="Ingrese su email" name="correo" required>
                         <label for="telefono"><b>Teléfono</b></label>
                         <input type="text" placeholder="Ingrese su número de teléfono" name="telefono" required>
-                        <button type="submit">Registrar</button>
+                        <button class="boton" type="submit">Registrar</button>
                         <div class="container">
                             <span class="registro">¿Ya tienes cuenta? <a href="login.jsp">Ingresa aquí</a></span>
                         </div>

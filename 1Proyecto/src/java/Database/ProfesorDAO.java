@@ -56,7 +56,9 @@ public class ProfesorDAO {
         String sqlcommand = "select * from profesor where usuario_id=?";
         PreparedStatement stm = Database.instance().prepareStatement(sqlcommand);
         stm.setString(1, usuario_id);
-        ResultSet rs =  Database.instance().executeQuery(stm);           
+        ResultSet rs =  Database.instance().executeQuery(stm);      
+        System.out.println(stm);
+        System.out.println(rs);
         if (rs.next()) {          
             return from(rs);
         }

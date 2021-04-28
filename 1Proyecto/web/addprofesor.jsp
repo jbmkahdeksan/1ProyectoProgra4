@@ -14,7 +14,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="css/default.css" rel="stylesheet" type="text/css"/>
         <link href="css/admin.css" rel="stylesheet" type="text/css"/>
-        <link href="css/register.css" rel="stylesheet" type="text/css"/>
+        <link href="css/login.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
 
@@ -24,7 +24,7 @@
             <div style="text-align: left">
                 <center><h2>Pagina de Administrador</h2></center>
             </div>
-            <%@include file="index_topbar.jsp"%></div>
+            
         <%@include file="index_topbar.jsp"%>
         <div id="wrapper"> 
             <div class="adminfunc" id="AddProfesor">

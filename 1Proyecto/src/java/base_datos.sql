@@ -277,13 +277,18 @@ insert into usuario(id_usuario, rol_id, clave, ultimo_aceso, activo)
     values("6789", 1, "qaqaqa", CURDATE(), 1);
 insert into usuario(id_usuario, rol_id, clave, ultimo_aceso, activo) 
     values("11111", 2, "qqqq", CURDATE(), 1);
+insert into usuario(id_usuario, rol_id, clave, ultimo_aceso, activo) 
+    values("1212", 3, "1111", CURDATE(), 1);
     
 insert into administrador(id_administrador, usuario_id, apellido1, apellido2, nombre, telefono, e_mail)
-        values(123456, "12345", "Barrientos", "Monge", "Joaquin", "1010911", "admin@cursoslibres.com");
+        values(123456, "12345", "Barrientos", "Monge", "Joaquin", "1010911", "admin01@cursoslibres.com");
 insert into administrador(id_administrador, usuario_id, apellido1, apellido2, nombre, telefono, e_mail)
-        values(6789, "6789", "Sandoval", "Blandon", "Kathy", "0544245", "admin2@cursoslibres.com");
+        values(6789, "6789", "Sandoval", "Blandon", "Kathy", "0544245", "admin02@cursoslibres.com");
 insert into profesor(id_profesor, usuario_id, apellido1, apellido2, nombre, telefono, e_mail)
         values(11111, "11111", "Elizondo", "Quesada", "Ramiro", "90909090", "profe01@cursoslibres.com");
+insert into estudiante(id_estudiante, usuario_id, apellido1, apellido2, nombre, telefono, e_mail)
+        values(1212, "1212", "Herrera", "Viquez", "Fulano", "666999666", "estudiante01@cursoslibres.com");
+
 
 insert into area_tematica (id_area, descripcion) values (100, "Redes");
 insert into area_tematica (id_area, descripcion) values (200, "Base de Datos");
