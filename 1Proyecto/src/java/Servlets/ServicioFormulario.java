@@ -6,14 +6,23 @@
 package Servlets;
 
 import Logic.Estudiante;
+import Logic.usuario;
+import Services.Service;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.DateFormat;
 import java.text.ParseException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.text.SimpleDateFormat;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -23,7 +32,7 @@ import javax.servlet.http.HttpServletResponse;
 public class ServicioFormulario extends javax.servlet.http.HttpServlet {
         
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, Exception {
             String respuesta = "";
             
             response.setContentType("text/html;charset=UTF-8");
@@ -36,7 +45,14 @@ public class ServicioFormulario extends javax.servlet.http.HttpServlet {
                 request.getParameter("apellido1"),
                 request.getParameter("apellido2"),
                 request.getParameter("telefono"),
-                request.getParameter("email"));
+                request.getParameter("correo")); 
+            
+            Service s = Service.instance();
+            DateFormat simpleFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");  
+            Date now = new Date();
+            s.crearUsuario(new usuario(request.getParameter("cedula"), "qwerty", now, 1, 3));            
+            s.crearEstudiante(e);          
+           
         } catch (NumberFormatException ex){
             System.err.printf("Expection: '%s'%n", ex.getMessage());
         }
@@ -56,7 +72,11 @@ public class ServicioFormulario extends javax.servlet.http.HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (Exception ex) {
+            Logger.getLogger(ServicioFormulario.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -70,7 +90,11 @@ public class ServicioFormulario extends javax.servlet.http.HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (Exception ex) {
+            Logger.getLogger(ServicioFormulario.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

@@ -17,15 +17,15 @@ import java.util.Date;
  */
 public class UsuariosDAO {
     public usuario create(usuario cl) throws SQLException, Exception{
-        String sqlcommand =  "insert into usuario(id_usuario, rol_id, clave, ulitmo_acceso, activo)"
-                + "values(?,?,?,?,?)";
+        String sqlcommand =  "insert into usuario(id_usuario, rol_id, clave, ultimo_aceso, activo)"
+                + "values(?,?,?,CURDATE(),?)";
         PreparedStatement stm = Database.instance().prepareStatement(sqlcommand);       
         stm.setString(1,cl.getId());
         stm.setString(2,Integer.toString(cl.getRol_id()));
         stm.setString(3,cl.getClave());
         DateFormat simpleFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
-        stm.setString(4,simpleFormat.format(cl.getUltimo_acceso()));
-        stm.setString(5,Integer.toString(cl.getActivo()));
+        //stm.setString(4,simpleFormat.format(cl.getUltimo_acceso()));
+        stm.setString(4,Integer.toString(cl.getActivo()));
      
         System.out.println(stm);
         int count = Database.instance().executeUpdate(stm);

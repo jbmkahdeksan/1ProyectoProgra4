@@ -92,11 +92,6 @@ public class Service {
         result = usuarios_dao.read(u.getId());
         if(result == null)
             throw new Exception("Usuario no encontrado");
-//               System.out.println("Contrassena de base de datos: "+result.getContrasenna());
-//        System.out.println("Contrassena de usuario: "+u.getContrasenna());
-//            if((result.getContrasenna()).equals(u.getContrasenna())){
-//               System.out.println("Correcto");  
-//            }
         if(!(result.getClave()).equals(u.getClave())){
             throw new Exception("Usuario con mala contrasenna");
         }
@@ -128,10 +123,12 @@ public class Service {
         return curso_dao.findByDescripcion(o); 
     }
     
-    //falta solo de implementar en service, ya exise el metodo en dao respectivo
-    //FALTA leer grupos por curso
-    //FALTA LEER profesor por grupo
-    //FALTAleer grupos por profe
-    //FALTAgrupos por estudiante(historial)
-    //FALTAEstudiantes por grupo
+    public void crearEstudiante(Estudiante e) throws Exception{
+        estudiantes_dao.create(e);    
+    }
+    
+    
+    public void crearUsuario(usuario u) throws Exception{
+        usuarios_dao.create(u);
+    }
 }

@@ -21,9 +21,8 @@
         <%@include file="index_topbar.jsp"%>
         
         <div id="wrapper">
-            <table>
-                
-            </table>  
+            
+            
         </div>  
     </body>
         <%@include file="footer.jsp"%>
