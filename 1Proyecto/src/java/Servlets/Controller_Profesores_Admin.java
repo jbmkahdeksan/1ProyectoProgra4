@@ -7,8 +7,13 @@ package Servlets;
 
 import Database.ProfesorDAO;
 import Logic.profesor;
+import Logic.usuario;
+import Services.Service;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -79,7 +84,12 @@ public class Controller_Profesores_Admin extends HttpServlet {
             p.setTelefono(telefono);
             p.setE_mail(e_mail);
             try {
-                pDao.create(p);
+                Service s = Service.instance();
+                DateFormat simpleFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");  
+                Date now = new Date();
+                s.crearUsuario(new usuario(request.getParameter("usuario_id"), "qwerty", now, 1, 2));            
+                s.crearProfesor(p);  
+               
             } catch (Exception e) {
             }
             acceso = listarprofesores;

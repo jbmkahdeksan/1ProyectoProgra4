@@ -30,6 +30,7 @@ public class ProfesorDAO {
         stm.setString(5,cl.getNombre());
         stm.setString(6,cl.getTelefono());
         stm.setString(7,cl.getE_mail());
+        System.out.println(stm);
         int count = Database.instance().executeUpdate(stm);
         if (count == 0) {
             

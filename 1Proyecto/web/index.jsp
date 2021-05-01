@@ -4,6 +4,12 @@
     Author     : Joaquin
 --%>
 
+<%@page import="java.util.List"%>
+<%@page import="java.util.Iterator"%>
+<%@page import="Logic.curso"%>
+<%@page import="Database.cursoDao"%>
+<%@page import="Database.cursoDao"%>
+<%@page import="Logic.usuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -13,17 +19,41 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="css/default.css" rel="stylesheet" type="text/css"/>
     </head>
+    
+    
     <body>
+        <%usuario current = (usuario) session.getAttribute("Usuario");%>
         <div class="header">
-                <h2>CursosLibres.com</h2>
-                <p>Donde encontrarás cursos irónicamente útiles.</p>
+            <h2>CursosLibres.com</h2>
+            <p>Donde encontrarás cursos irónicamente útiles.</p>
         </div>
         <%@include file="index_topbar.jsp"%>
-        
+        <h1>Nuestro catálogo de cursos</h1>
         <div id="wrapper">
-            
-            
+            <div>
+                <div>
+                   <ul>
+                        <%
+                            cursoDao dao = new cursoDao();
+                            Iterator<curso> iter;
+                            List<curso> lista = dao.findAll();
+                            iter = lista.iterator();
+                            curso c = null;
+                            while (iter.hasNext()) {
+                                c = iter.next();
+                        %>
+                        <li>
+                            <img src="images/cursos/<%=c.getCurso()%>.jpg">
+                            <span style="vertical-align:middle"><strong><%out.print(c.getDescripcion());%></strong></span>
+                            <div class="enroll"><a  href="#"><strong>Más información</strong></a></div>
+                        </li>
+                        <%}%>
+                    </ul>
+                </div>  
+            </div>
+
+
         </div>  
     </body>
-        <%@include file="footer.jsp"%>
+    <%@include file="footer.jsp"%>
 </html>

@@ -131,4 +131,8 @@ public class Service {
     public void crearUsuario(usuario u) throws Exception{
         usuarios_dao.create(u);
     }
+    
+    public void crearProfesor(profesor p) throws Exception{
+        profesor_dao.create(p);
+    }
 }

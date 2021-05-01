@@ -107,3 +107,38 @@ footer {
 .topbar .search-container button:hover {
   background: #ccc;
 }
+
+img {
+     vertical-align:middle;
+     width: 150px;
+     height:90px;
+     margin-right: 40px;
+}
+span {
+     vertical-align:middle;
+     
+}
+
+li{
+    background-color:#ccc ;
+    padding: 25px;
+    border: 1px solid black;
+    margin: 25px;
+    width: 50%;
+}
+
+li:hover {
+    background-color: white;
+    border: 1px solid #ff6633;    
+}
+
+ul{
+    list-style-type:none;
+}
+
+
+#enroll a{
+    float: right;
+    border: 0.5px solid #111;
+    
+}

@@ -52,7 +52,8 @@
                             <th>Acciones</th>
                         </tr>
                     </thead>
-                    <%                    cursoDao dao = new cursoDao();
+                    <%                   
+                        cursoDao dao = new cursoDao();
                         Iterator<curso> iter;
                         List<curso> lista = dao.findAll();
                         iter = lista.iterator();
