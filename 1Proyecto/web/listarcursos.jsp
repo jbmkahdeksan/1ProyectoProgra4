@@ -23,11 +23,8 @@
         <div class="header">
             <h2>CursosLibres.com</h2>
             <p>Donde encontrarás cursos irónicamente útiles.</p>
-
             <div style="text-align: left">
-
                 <center><h2>Pagina de Administrador</h2></center>  
-
             </div>
             <%@include file="index_topbar.jsp"%>
 
@@ -68,7 +65,7 @@
                             <td><%=c.getDescripcion()%></td>
                             <td><%=c.getArea_tematica_id()%></td>
                             <td>
-                                <a class="Opciones" >Ver Grupos</a>
+                                <a class="Opciones" href="Controller_Grupos_Admin?accion=VerGrupos&id_curso=<%=c.getCurso()%>">Ver Grupos</a>
                                 <a class="Opciones" href="Controller_Cursos_Admin?accion=editar&id_curso=<%=c.getCurso()%>">Editar </a>
                                 <a class="Opciones" href="Controller_Cursos_Admin?accion=eliminar&id_curso=<%=c.getCurso()%>"">Eliminar</a>
 

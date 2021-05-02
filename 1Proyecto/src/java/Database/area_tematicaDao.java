@@ -94,6 +94,20 @@ public class area_tematicaDao {
         return r;
     }
     
+    public List<area_tematica> findByID(area_tematica o){
+        List<area_tematica> r= new ArrayList<>();
+        String sql="select * from area_tematica where id_area like ?";
+        try {        
+            PreparedStatement stm = Database.instance().prepareStatement(sql);
+            stm.setString(1, "%"+o.getId_area()+"%");   
+            ResultSet rs =  Database.instance().executeQuery(stm); 
+            while (rs.next()) {
+                r.add(from(rs));
+            }
+        } catch (SQLException ex) { }
+        return r;
+    }
+    
     public area_tematica from (ResultSet rs){
         try {
             area_tematica r= new area_tematica();

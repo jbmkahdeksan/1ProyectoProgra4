@@ -6,10 +6,11 @@
 package Servlets;
 
 import Database.cursoDao;
-import Models.Model_curso;
-
+import Database.grupoDao;
 import Logic.curso;
+import Logic.grupo;
 import Services.Service;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -24,18 +25,26 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author ksand
  */
-@WebServlet(name = "Administrador", urlPatterns = {"/Administrador"})
-public class Controller_Cursos_Admin extends HttpServlet {
-
-    String listarcursos = "listarcursos.jsp";
-    String agregarcursos = "addcurso.jsp";
-    String editarcursos = "editcurso.jsp";
+@WebServlet(name = "Grupos_Admin", urlPatterns = {"/Grupos_Admin"})
+public class Controller_Grupos_Admin extends HttpServlet {
+String listarcursos = "listarcursos.jsp";
+String vergrupos = "admin_vergrupos.jsp";
+String editargrupos = "admin_editargrupo.jsp";
     curso c = new curso();
+    grupo g = new grupo();
 
     cursoDao cDao = new cursoDao();
-    Model_curso model;
+    grupoDao gDao = new grupoDao();
 
-
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -44,10 +53,10 @@ public class Controller_Cursos_Admin extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet Controller_Admin</title>");
+            out.println("<title>Servlet Controller_Grupos_Admin</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet Controller_Admin at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet Controller_Grupos_Admin at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -67,69 +76,77 @@ public class Controller_Cursos_Admin extends HttpServlet {
             throws ServletException, IOException {
         String acceso = "";
         String action = request.getParameter("accion");
-
-        if (action.equalsIgnoreCase("listar")) {
- 
-            acceso = listarcursos;
-        } else if (action.equalsIgnoreCase("Agregar")) {
+        
+        if (action.equalsIgnoreCase("VerGrupos")) {
+            request.setAttribute("id_edit", request.getParameter("id_curso"));
+            System.out.println(request.getAttribute("id_edit"));
+            int id = Integer.parseInt((String) request.getAttribute("id_edit"));
+            c.setCurso(id);
+            acceso = vergrupos;
+    } else if (action.equalsIgnoreCase("Agregar")) {
             
-            int id_curso = Integer.parseInt(request.getParameter("id_curso"));
-            String descripcion = request.getParameter("descripcion");
-            int area_tematica_id = Integer.parseInt(request.getParameter("area_tematica_id"));
-            c.setCurso(id_curso);
-            c.setDescripcion(descripcion);
-            
-            c.setArea_tematica_id(area_tematica_id);
+            int num_grupo = Integer.parseInt(request.getParameter("num_grupo"));
+            int curso_id = Integer.parseInt(request.getParameter("curso_id"));
+            int profesor_id = Integer.parseInt(request.getParameter("profesor_id"));
+            g.setNum_grupo(num_grupo);
+            g.setCurso_id(curso_id);          
+            g.setProfesor_id(profesor_id);
 
             try { 
             
-                Service.instance().addCurso(c);
+                Service.instance().addGrupo(g);
 
-//                cDao.create(c);
             } catch (Exception e) {
             }
 
 
-            acceso = listarcursos;
+            acceso = vergrupos;
         } else if (action.equalsIgnoreCase("editar")) {
-            request.setAttribute("id_edit", request.getParameter("id_curso"));
-            System.out.println(request.getAttribute("id_edit"));
+            request.setAttribute("id_g_edit", request.getParameter("num_grupo"));
+            System.out.println(request.getAttribute("id_g_edit"));
             
-            acceso = editarcursos;
+            acceso = editargrupos;
         } else if (action.equalsIgnoreCase("Actualizar")) {
-            int id_curso = Integer.parseInt(request.getParameter("id_curso"));
-            String descripcion = request.getParameter("descripcion");
-            int area_tematica_id = Integer.parseInt(request.getParameter("area_tematica_id"));
-            c.setCurso(id_curso);
-            c.setDescripcion(descripcion);
-            c.setArea_tematica_id(area_tematica_id);
+            int num_grupo = Integer.parseInt(request.getParameter("num_grupo"));
+            int curso_id = Integer.parseInt(request.getParameter("curso_id"));
+            int profesor_id = Integer.parseInt(request.getParameter("profesor_id"));
+            g.setNum_grupo(num_grupo);
+            g.setCurso_id(curso_id);          
+            g.setProfesor_id(profesor_id);
             try {
-                Service.instance().updateCurso(c);
-                
-//                cDao.update(c);
+                Service.instance().updateGrupo(g);
+
             } catch (Exception e) {
             }
-            acceso = listarcursos;
+            request.setAttribute("id_edit", request.getParameter("curso_id"));
+            System.out.println(request.getAttribute("id_edit"));
+            acceso = vergrupos;
         } else if (action.equalsIgnoreCase("eliminar")){
-            int id_curso = Integer.parseInt(request.getParameter("id_curso"));
-            c.setCurso(id_curso);
+            
+            int num_grupo = Integer.parseInt(request.getParameter("num_grupo"));
+            String curso_id = request.getParameter("curso_id");
+            g.setNum_grupo(num_grupo);
+            
             try {
-                cDao.delete(c);
-                model.setLista_cursos(Service.instance().getCursos());
+                
+                gDao.delete(g);
+                
             } catch (Exception e) {
             }
-            acceso = listarcursos;
+            request.setAttribute("id_edit", curso_id);
+            acceso = vergrupos;
         } else if (action.equalsIgnoreCase("Buscar")){
             String filtro = request.getParameter("buscar");
-            curso c1 = new curso();
-            c1.setDescripcion(filtro);
-            List<curso>lista=cDao.findByDescripcion(c);
+            grupo gf = new grupo();
             
-            acceso = listarcursos;
+            List<grupo>lista=gDao.findByCurso(c);
+            
+            acceso = vergrupos;
         }
         RequestDispatcher vista = request.getRequestDispatcher(acceso);
         vista.forward(request, response);
     }
+        
 
     /**
      * Handles the HTTP <code>POST</code> method.

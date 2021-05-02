@@ -5,8 +5,10 @@
  */
 package Database;
 
-import Logic.especialidad;
+
+import Logic.curso;
 import Logic.grupo;
+import Logic.profesor;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -83,19 +85,30 @@ public class grupoDao {
         return r;
     }
 
-    public List<grupo> findByCurso(grupo o) {
-        List<grupo> r = new ArrayList<>();
-        String sql = "select * from grupo where curso_id like ?";
-        try {
+    public List<grupo> findByCurso(curso o){
+        List<grupo> r= new ArrayList<>();
+        String sql="select * from grupo g inner join curso c on g.curso_id=c.id_curso where g.curso_id=?";
+        sql = String.format(sql,o.getCurso());
+        try {         
             PreparedStatement stm = Database.instance().prepareStatement(sql);
-            stm.setString(1, "%" + Integer.toString(o.getCurso_id()) + "%");
-            ResultSet rs = Database.instance().executeQuery(stm);
-            while (rs.next()) {
-                r.add(from(rs));
-            }
-        } catch (SQLException ex) {
-        }
-        return r;
+             stm.setString(1, Integer.toString(o.getCurso()));       
+            ResultSet rs =  Database.instance().executeQuery(stm);         
+            while (rs.next()) { r.add(from(rs)); } 
+        } catch (SQLException ex) { }
+            return r;
+    }
+    
+    public List<grupo> findByProfesor(profesor o){
+        List<grupo> r= new ArrayList<>();
+        String sql="select * from grupo g inner join profesor p on g.profesor_id=p.id_profesor where g.profesor_id=?";
+        sql = String.format(sql,o.getId_profesor());
+        try {         
+            PreparedStatement stm = Database.instance().prepareStatement(sql);
+             stm.setString(1, Integer.toString(o.getId_profesor()));       
+            ResultSet rs =  Database.instance().executeQuery(stm);         
+            while (rs.next()) { r.add(from(rs)); } 
+        } catch (SQLException ex) { }
+            return r;
     }
 
     public grupo from(ResultSet rs) {

@@ -295,7 +295,7 @@ insert into area_tematica (id_area, descripcion) values (200, "Base de Datos");
 insert into area_tematica (id_area, descripcion) values (300, "Idiomas");
 
 
-insert into curso (id_curso, descripcion, area_tematica_id) values (1000, "Introduccion a Base de Datos",200);
+insert into curso (id_curso, descripcion, area_tematica_id) values (2000, "Introduccion a Base de Datos",200);
 insert into usuario(id_usuario, rol_id, clave, ultimo_aceso, activo) 
     values("437837123", 2, "profe", '2020-01-01 00:00:01', 1);
 

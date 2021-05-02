@@ -13,8 +13,7 @@
         <meta charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="css/default.css" rel="stylesheet" type="text/css"/>
-        <link href="css/admin.css" rel="stylesheet" type="text/css"/>
-        <link href="css/login.css" rel="stylesheet" type="text/css"/>
+        <link href="css/forms_admin.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
 
@@ -30,7 +29,7 @@
             <div class="adminfunc" id="AddProfesor">
                 <p> <strong>Agregar nuevo</strong></p>
                 <p>Por favor llenar los siguientes campos para agregar un profesor nuevo. </p>
-                <form action="AdminProfes">
+                <form class="admin" action="AdminProfes">
                     <div class="container">
                         <label for="ID Profesor"><b>ID Profesor </b></label>
                         <input type="number"  name="id_profesor" required>

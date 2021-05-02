@@ -19,7 +19,9 @@ import Database.horarioDao;
 import Database.matriculaDao;
 import Logic.Estudiante;
 import Logic.administrador;
+import Logic.area_tematica;
 import Logic.curso;
+import Logic.grupo;
 import Logic.profesor;
 import Logic.usuario;
 import java.util.List;
@@ -116,11 +118,62 @@ public class Service {
 
     public void updateCurso(curso o)throws Exception{
         curso_dao.update(o);
-        curso stored=this.getCurso(o);
     }
     
     public List<curso> searchCurso(curso o){
         return curso_dao.findByDescripcion(o); 
+    }
+    // ------------ Grupos -------------    
+
+    public List<grupo> getGrupos() {
+        return grupo_dao.findAll();
+    }
+    public List<grupo> getGrupos(curso o) {
+        return grupo_dao.findByCurso(o);
+    }
+    public void addGrupo(grupo o)throws Exception{
+        grupo_dao.create(o);
+    }
+
+    public grupo getGrupo(grupo o) throws Exception{
+        return grupo_dao.read(o.getNum_grupo());
+    }  
+
+    public void updateGrupo(grupo o)throws Exception{
+        grupo_dao.update(o);
+    }
+    
+    public List<grupo> searchGrupo_C(curso o){
+        return grupo_dao.findByCurso(o); 
+    }
+    public List<grupo> searchGrupo_P(profesor o){
+        return grupo_dao.findByProfesor(o); 
+    }
+    // ------------ Area_Tematica -------------    
+
+    public List<area_tematica> getArea_tematicas() {
+        return area_dao.findAll();
+    }
+    
+    public void add(area_tematica o)throws Exception{
+        area_dao.create(o);
+    }
+
+    public area_tematica get(area_tematica o) throws Exception{
+        return area_dao.read(o.getId_area());
+    }  
+
+    public void update(area_tematica o)throws Exception{
+        area_dao.update(o);
+        area_tematica stored=this.get(o);
+    }
+    
+    public List<area_tematica> searchD(area_tematica o){
+        return area_dao.findByDescripcion(o); 
+    }
+    
+    public List<area_tematica> searchID(area_tematica o){
+        return area_dao.findByDescripcion(o); 
     }
     
     public void crearEstudiante(Estudiante e) throws Exception{

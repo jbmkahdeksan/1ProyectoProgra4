@@ -14,8 +14,7 @@
         <meta charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="css/default.css" rel="stylesheet" type="text/css"/>
-        <link href="css/admin.css" rel="stylesheet" type="text/css"/>
-        <link href="css/register.css" rel="stylesheet" type="text/css"/>
+        <link href="css/forms_admin.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
         <div class="header">
@@ -40,7 +39,7 @@
 
                     <p> <strong>Editar profesor</strong></p>
                     <p>Por favor llenar los siguientes campos para editar el profesor</p>
-                    <form action="AdminProfes">
+                    <form class = "admin" action="AdminProfes">
                         <div class="container">
                             <input type="hidden" name="id_profesor" value="<%=p.getId_profesor()%>">
                             <label for="usuario"><b>ID Usuario</b></label>

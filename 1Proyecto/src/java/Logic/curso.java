@@ -5,6 +5,8 @@
  */
 package Logic;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -15,14 +17,18 @@ public class curso {
     private int curso;
     private String descripcion;
     private int area_tematica_id;
+    private List<grupo> grupos; 
 
-    public curso(int curso, String descripcion, int area_tematica_id) {
+    public curso(int curso, String descripcion, int area_tematica_id, List<grupo> grupos) {
         this.curso = curso;
         this.descripcion = descripcion;
         this.area_tematica_id = area_tematica_id;
+        this.grupos = grupos;
     }
+
     public curso() {
-        this(0,"",0); 
+        curso=0;
+        grupos = new ArrayList<>();
     }
 
     public int getCurso() {
@@ -49,12 +55,23 @@ public class curso {
         this.area_tematica_id = area_tematica_id;
     }
 
+    
+
+    public List<grupo> getGrupos() {
+        return grupos;
+    }
+
+    public void setGrupos(List<grupo> grupos) {
+        this.grupos = grupos;
+    }
+
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 23 * hash + this.curso;
-        hash = 23 * hash + Objects.hashCode(this.descripcion);
-        hash = 23 * hash + this.area_tematica_id;
+        hash = 97 * hash + this.curso;
+        hash = 97 * hash + Objects.hashCode(this.descripcion);
+        hash = 97 * hash + Objects.hashCode(this.area_tematica_id);
+        hash = 97 * hash + Objects.hashCode(this.grupos);
         return hash;
     }
 
@@ -73,14 +90,19 @@ public class curso {
         if (this.curso != other.curso) {
             return false;
         }
-        if (this.area_tematica_id != other.area_tematica_id) {
+        if (!Objects.equals(this.descripcion, other.descripcion)) {
             return false;
         }
-        if (!Objects.equals(this.descripcion, other.descripcion)) {
+        if (!Objects.equals(this.area_tematica_id, other.area_tematica_id)) {
+            return false;
+        }
+        if (!Objects.equals(this.grupos, other.grupos)) {
             return false;
         }
         return true;
     }
+
+   
 
     @Override
     public String toString() {

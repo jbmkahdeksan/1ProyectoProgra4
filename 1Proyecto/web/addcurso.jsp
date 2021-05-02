@@ -13,8 +13,7 @@
         <meta charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="css/default.css" rel="stylesheet" type="text/css"/>
-        <link href="css/admin.css" rel="stylesheet" type="text/css"/>
-        <link href="css/login.css" rel="stylesheet" type="text/css"/>
+        <link href="css/forms_admin.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
         <div class="header">
@@ -28,7 +27,7 @@
                 <div id="AddCurso">
                     <p> <strong>Crear curso nuevo</strong></p>
                     <p>Por favor llenar los siguientes campos para crear un curso nuevo. </p>
-                    <form action="Administrador">
+                    <form class = "admin" action="Administrador">
                         <div class="container">
                             <label for="ID Curso"><b>ID Curso</b></label>
                             <input type="number"  name="id_curso" required>

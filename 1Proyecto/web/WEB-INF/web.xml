@@ -28,6 +28,10 @@
         <servlet-name>Controller_Logout</servlet-name>
         <servlet-class>Servlets.Controller_Logout</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Controller_Grupos_Admin</servlet-name>
+        <servlet-class>Servlets.Controller_Grupos_Admin</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ServicioFormulario</servlet-name>
         <url-pattern>/ServicioFormulario</url-pattern>
@@ -55,6 +59,10 @@
     <servlet-mapping>
         <servlet-name>Controller_Logout</servlet-name>
         <url-pattern>/Controller_Logout</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Controller_Grupos_Admin</servlet-name>
+        <url-pattern>/Controller_Grupos_Admin</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

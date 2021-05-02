@@ -4,6 +4,8 @@
     Author     : ksand
 --%>
 
+<%@page import="Database.area_tematicaDao"%>
+<%@page import="Logic.area_tematica"%>
 <%@page import="Logic.curso"%>
 <%@page import="java.lang.String"%>
 <%@page import="Database.cursoDao"%>
@@ -16,8 +18,8 @@
         <meta charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="css/default.css" rel="stylesheet" type="text/css"/>
-        <link href="css/admin.css" rel="stylesheet" type="text/css"/>
-        <link href="css/register.css" rel="stylesheet" type="text/css"/>
+        <link href="css/forms_admin.css" rel="stylesheet" type="text/css"/>
+
     </head>
     <body>
         <div class="header">
@@ -31,10 +33,14 @@
             <div id="EditarCurso">
                 <%
                     cursoDao cDao = new cursoDao();
+                    area_tematicaDao areaDao= new area_tematicaDao();
                     curso c = new curso();
+  
+                    
                     int id=Integer.parseInt((String) request.getAttribute("id_edit"));
                     try {
                         c = (curso) cDao.read(id);
+                        
                     } catch (Exception e) {
                     }
 
@@ -42,7 +48,7 @@
 
                 <p> <strong>Editar curso</strong></p>
                 <p>Por favor llenar los siguientes campos para editar el curso</p>
-                <form action="Administrador">
+                <form  class ="admin" action="Administrador">
                     <div class="container">
                         <input type="hidden" name="id_curso" value="<%=c.getCurso()%>">
                         <label for="descripcion"><b>Descripcion</b></label>
@@ -51,7 +57,7 @@
                         <input type="number" name="area_tematica_id" required value="<%=c.getArea_tematica_id()%>">
 
                         <input type="submit" name="accion" value="Actualizar">
-                        <a href="Controller_Cursos_Admin?accion=listar">Regresar</a>
+                        <a href="listarcursos.jsp">Regresar</a>
 
                 </form>
             </div>
