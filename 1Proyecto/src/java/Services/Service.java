@@ -22,6 +22,7 @@ import Logic.administrador;
 import Logic.area_tematica;
 import Logic.curso;
 import Logic.grupo;
+import Logic.horario;
 import Logic.profesor;
 import Logic.usuario;
 import java.util.List;
@@ -71,6 +72,11 @@ public class Service {
     public profesor buscar_profesor(String id) throws Exception{
         profesor result = null;
         result = profesor_dao.readbyuser(id);
+        return result;        
+    }
+     public profesor buscar_profesor(int id) throws Exception{
+        profesor result = null;
+        result = profesor_dao.read(id);
         return result;        
     }
     
@@ -136,7 +142,7 @@ public class Service {
     }
 
     public grupo getGrupo(grupo o) throws Exception{
-        return grupo_dao.read(o.getNum_grupo());
+        return grupo_dao.read(o.getNum_grupo(),o.getCurso_id());
     }  
 
     public void updateGrupo(grupo o)throws Exception{
@@ -148,6 +154,29 @@ public class Service {
     }
     public List<grupo> searchGrupo_P(profesor o){
         return grupo_dao.findByProfesor(o); 
+    }
+    // ------------ Horarios -------------    
+
+    public List<horario> getHorarios() {
+        return horario_dao.findAll();
+    }
+    public List<horario> getGrupos(horario o) {
+        return horario_dao.findByCurso(o);
+    }
+    public void addHorario(horario o)throws Exception{
+        horario_dao.create(o);
+    }
+
+    public horario gethorario(int num_grupo, int curso_id ) throws Exception{
+        return horario_dao.read(num_grupo,curso_id);
+    }  
+
+    public void updateHorario(horario o)throws Exception{
+        horario_dao.update(o);
+    }
+    
+    public List<horario> searchHorario(horario o){
+        return horario_dao.findByCurso(o); 
     }
     // ------------ Area_Tematica -------------    
 
@@ -174,6 +203,11 @@ public class Service {
     
     public List<area_tematica> searchID(area_tematica o){
         return area_dao.findByDescripcion(o); 
+    }
+     public area_tematica buscar_at(int id) throws Exception{
+        area_tematica result = null;
+        result = area_dao.read(id);
+        return result;        
     }
     
     public void crearEstudiante(Estudiante e) throws Exception{

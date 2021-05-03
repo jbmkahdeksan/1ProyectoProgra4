@@ -33,8 +33,9 @@
                             <input type="number"  name="id_curso" required>
                             <label for="descripcion"><b>Descripcion</b></label>
                             <input type="text"  name="descripcion" required>
-                            <label for="areatematica"><b>Area Tematica</b></label>
-                            <input type="number" name="area_tematica_id" required>     
+                            <label for="areatematica" ><b>Area Tematica</b></label><br>
+                            <label for="areatematica2" >(Ingrese el numero del area usando las referencias)</label><br>
+                            <input type="number" placeholder="100, Redes 200, Base de Datos 300, Idiomas" name="area_tematica_id" required>     
                             <input type="submit" name="accion" value="Agregar" href="listarcursos.jsp">
                         </div>
                     </form>

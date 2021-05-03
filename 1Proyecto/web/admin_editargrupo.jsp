@@ -33,8 +33,9 @@
   
                     
                     int id=Integer.parseInt((String) request.getAttribute("id_g_edit"));
+                    int id_c=Integer.parseInt((String) request.getAttribute("id_c_edit"));
                     try {
-                        g = (grupo) gDao.read(id);
+                        g = (grupo) gDao.read(id, id_c);
                         
                     } catch (Exception e) {
                     }
@@ -47,8 +48,8 @@
                     <div class="container">
                         <input type="hidden" name="num_grupo" value="<%=g.getNum_grupo()%>">
                         <label for="idcurso"><b>ID Curso</b></label>
-                        <input type="number"  name="curso_id" required value="<%=g.getCurso_id()%>">
-                        <label for="idprofesor"><b>ID Profesor</b></label>
+                        <input type="number"  name="curso_id" required value="<%=g.getCurso_id()%>"><br>
+                        <label for="idprofesor"><b>ID Profesor</b></label><br>
                         <input type="number" name="profesor_id" required value="<%=g.getProfesor_id()%>">
 
                         <input type="submit" name="accion" value="Actualizar">

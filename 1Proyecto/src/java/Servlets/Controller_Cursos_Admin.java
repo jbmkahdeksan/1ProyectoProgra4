@@ -71,8 +71,10 @@ public class Controller_Cursos_Admin extends HttpServlet {
         if (action.equalsIgnoreCase("listar")) {
  
             acceso = listarcursos;
-        } else if (action.equalsIgnoreCase("Agregar")) {
             
+        } else if (action.equalsIgnoreCase("Agregar")) {
+            request.setAttribute("id_edit", request.getParameter("id_curso"));
+
             int id_curso = Integer.parseInt(request.getParameter("id_curso"));
             String descripcion = request.getParameter("descripcion");
             int area_tematica_id = Integer.parseInt(request.getParameter("area_tematica_id"));

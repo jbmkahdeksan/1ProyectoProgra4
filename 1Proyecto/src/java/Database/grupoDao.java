@@ -34,11 +34,12 @@ public class grupoDao {
         }
     }
 
-    public grupo read(int num_grupo) throws Exception{
+    public grupo read(int num_grupo, int curso_id) throws Exception{
        grupo r;
-        String sql="select * from grupo where num_grupo=?";
+        String sql="select * from grupo g inner join curso c on g.curso_id=c.id_curso where g.num_grupo=? AND g.curso_id=?";
         PreparedStatement stm = Database.instance().prepareStatement(sql);
         stm.setString(1, Integer.toString(num_grupo));
+        stm.setString(2, Integer.toString(curso_id));
         ResultSet rs =  Database.instance().executeQuery(stm); 
         if (rs.next()) {
             r = from(rs);

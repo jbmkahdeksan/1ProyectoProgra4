@@ -73,7 +73,7 @@
                         <td><%=p.getTelefono()%></td>
                         <td><%=p.getE_mail() %></td>
                         <td>
-                            <a class="Opciones" >Ver Especialidades</a>
+                            
                             <a class="Opciones" href="Controller_Profesores_Admin?accion=editar&id_profesor=<%=p.getId_profesor()%>">Editar </a>
                             <a class="Opciones" href="Controller_Profesores_Admin?accion=eliminar&id_profesor=<%=p.getId_profesor()%>"">Eliminar</a>
                             

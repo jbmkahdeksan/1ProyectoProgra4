@@ -4,6 +4,8 @@
     Author     : ksand
 --%>
 
+<%@page import="Services.Service"%>
+<%@page import="Logic.area_tematica"%>
 <%@page import="java.util.Iterator"%>
 <%@page import="Logic.curso"%>
 <%@page import="java.util.List"%>
@@ -56,16 +58,20 @@
                         iter = lista.iterator();
                         curso c = null;
                         while (iter.hasNext()) {
+                            area_tematica at = new area_tematica();
                             c = iter.next();
+                            at = Service.instance().buscar_at(c.getArea_tematica_id());
 
                     %>
                     <tbody>
                         <tr>
                             <td><%=c.getCurso()%></td>
                             <td><%=c.getDescripcion()%></td>
-                            <td><%=c.getArea_tematica_id()%></td>
+                            <td><%=at.getId_area()+ ", " + at.getDescripcion() %></td>
                             <td>
+                                <a class="Opciones" href="Controller_Grupos_Admin?accion=agregargrupo&id_curso=<%=c.getCurso()%>">Agregar grupo</a>
                                 <a class="Opciones" href="Controller_Grupos_Admin?accion=VerGrupos&id_curso=<%=c.getCurso()%>">Ver Grupos</a>
+                                
                                 <a class="Opciones" href="Controller_Cursos_Admin?accion=editar&id_curso=<%=c.getCurso()%>">Editar </a>
                                 <a class="Opciones" href="Controller_Cursos_Admin?accion=eliminar&id_curso=<%=c.getCurso()%>"">Eliminar</a>
 
