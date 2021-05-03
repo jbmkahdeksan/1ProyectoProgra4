@@ -82,6 +82,19 @@ public class cursoDao {
         } catch (SQLException ex) { }
         return r;
     }
+    
+    public List<curso> findEnOferta() {
+        List<curso> r = new ArrayList<>();
+        String sql = "select * from curso where id_curso in (select curso_id from grupo);";
+        try {         
+            PreparedStatement stm = Database.instance().prepareStatement(sql);
+            ResultSet rs =  Database.instance().executeQuery(stm); 
+             while (rs.next()) {
+                r.add(from(rs));
+            }
+        } catch (SQLException ex) { }
+        return r;
+    }
 
     public List<curso> findByDescripcion(curso o) {
         List<curso> r = new ArrayList<>();

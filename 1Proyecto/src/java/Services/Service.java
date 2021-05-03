@@ -108,6 +108,10 @@ public class Service {
         return curso_dao.findAll();
     }
     
+    public List<curso> getCursosOferta(){
+        return curso_dao.findEnOferta();
+    }
+    
     public void addCurso(curso o)throws Exception{
         curso_dao.create(o);
     }

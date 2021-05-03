@@ -7,8 +7,7 @@
 <%@page import="java.util.List"%>
 <%@page import="java.util.Iterator"%>
 <%@page import="Logic.curso"%>
-<%@page import="Database.cursoDao"%>
-<%@page import="Database.cursoDao"%>
+<%@page import="Servlets.Controller_Index"%>
 <%@page import="Logic.usuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -33,15 +32,15 @@
             <div>
                 <div>
                    <ul>
-                        <%
-                            cursoDao dao = new cursoDao();
-                            Iterator<curso> iter;
-                            List<curso> lista = dao.findAll();
-                            iter = lista.iterator();
-                            curso c = null;
-                            while (iter.hasNext()) {
-                                c = iter.next();
-                        %>
+                    <%
+                    List<curso> cursos_oferta = (List<curso>) request.getAttribute("ListaCursos");
+                    System.out.println("Lista de cursos en oferta: " + cursos_oferta);
+                    Iterator<curso> iter;                    
+                    iter = cursos_oferta.iterator();
+                    curso c = null;
+                    while (iter.hasNext()) {
+                        c = iter.next();
+                    %>
                         <li>
                             <img src="images/cursos/<%=c.getCurso()%>.jpg">
                             <span style="vertical-align:middle"><strong><%out.print(c.getDescripcion());%></strong></span>

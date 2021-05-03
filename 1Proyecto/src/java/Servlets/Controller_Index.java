@@ -5,8 +5,11 @@
  */
 package Servlets;
 
+import Logic.curso;
+import Services.Service;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -24,6 +27,11 @@ public class Controller_Index extends javax.servlet.http.HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         
         String respuesta = "index.jsp";
+        
+        Service s = Service.instance();
+        List<curso> cursos_oferta = s.getCursosOferta();
+        System.out.println("Lista de cursos en oferta (service): " + cursos_oferta);
+        request.setAttribute("ListaCursos", cursos_oferta);
         
         request.getRequestDispatcher(respuesta).forward(request, response);
         
