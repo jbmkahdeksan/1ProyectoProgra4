@@ -79,6 +79,11 @@ public class Service {
         result = profesor_dao.read(id);
         return result;        
     }
+     public curso buscar_curso(int id) throws Exception{
+        curso result = null;
+        result = curso_dao.read(id);
+        return result;        
+    }
     
     public administrador buscar_administrador(String id) throws Exception{
         administrador result = null;

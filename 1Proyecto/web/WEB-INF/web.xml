@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
-
     <servlet>
         <servlet-name>ServicioFormulario</servlet-name>
         <servlet-class>Servlets.ServicioFormulario</servlet-class>
@@ -32,6 +31,10 @@
     <servlet>
         <servlet-name>Controller_Grupos_Admin</servlet-name>
         <servlet-class>Servlets.Controller_Grupos_Admin</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Controller_Grupos_Profe</servlet-name>
+        <servlet-class>Servlets.Controller_Grupos_Profe</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>ServicioFormulario</servlet-name>
@@ -65,10 +68,14 @@
         <servlet-name>Controller_Grupos_Admin</servlet-name>
         <url-pattern>/Controller_Grupos_Admin</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Controller_Grupos_Profe</servlet-name>
+        <url-pattern>/Controller_Grupos_Profe</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
-       
+    
 </web-app>

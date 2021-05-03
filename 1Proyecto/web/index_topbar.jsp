@@ -41,7 +41,7 @@
             <div class="dropdown">
                 <button class="dropbtn">Opciones de Profesor</button>
                 <div class="dropdown-content">
-                    <a href="#">Grupos</a>
+                    <a href="Controller_Grupos_Profe?accion=VerGrupos&profesor_id=<%=profesor.getUsuario_id()%>">Grupos</a>
                 </div>
             </div>
             <%}%>
