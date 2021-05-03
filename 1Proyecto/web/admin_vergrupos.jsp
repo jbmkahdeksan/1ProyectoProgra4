@@ -4,6 +4,9 @@
     Author     : ksand
 --%>
 
+<%@page import="Database.horarioDao"%>
+<%@page import="Logic.horario"%>
+<%@page import="Services.Service"%>
 <%@page import="java.util.Iterator"%>
 <%@page import="Logic.grupo"%>
 <%@page import="java.util.List"%>
@@ -28,31 +31,33 @@
             <p>Donde encontrarás cursos irónicamente útiles.</p>
             <div style="text-align: left">
                 <center><h2>Pagina de Administrador</h2></center>     
-        </div>
-        <%@include file="index_topbar.jsp"%>
-       <h1>Grupos </h1>
-                <div class="buscar">
-                    <a class="Opciones" href="#">Agregar</a>
-                    <form  class="formbuscar">
-                        <input type="text" placeholder="Buscar grupo..." name ="buscar">
-                        <input class="botonbuscar"type="submit" name="accion" value="Buscar">
-                    </form> 
-                    </div>
-        <div>
-                
+            </div>
+            <%@include file="index_topbar.jsp"%>
+            <h1>Grupos </h1>
+            <div class="buscar">
+                <form  class="formbuscar">
+                    <input type="text" placeholder="Buscar grupo..." name ="buscar">
+                    <input class="botonbuscar"type="submit" name="accion" value="Buscar">
+                </form> 
+            </div>
+            <div>
+
                 <table>
                     <thead>
                         <tr>
                             <th>N Grupo</th>
                             <th>Curso</th>
                             <th>Profesor</th>
+                            <th>Horario</th>
                             <th>Acciones</th>
                         </tr>
                     </thead>
-                    <%                    
+                    <%
                         cursoDao cDao = new cursoDao();
                         grupoDao gDao = new grupoDao();
+                        horarioDao hDao = new horarioDao();
                         curso c = new curso();
+                        horario h = new horario();
 
                         int id = Integer.parseInt((String) request.getAttribute("id_edit"));
                         try {
@@ -65,26 +70,67 @@
                         iter = listag.iterator();
                         grupo g = null;
                         while (iter.hasNext()) {
+                            profesor p = new profesor();
+
                             g = iter.next();
+                            p = Service.instance().buscar_profesor(g.getProfesor_id());                          
+                            try {                              
+                                h = (horario) hDao.read(g.getNum_grupo(), g.getCurso_id());
+                            } catch (Exception e) {
+                                h = new horario();
+                            }
+                            String dia = "";
+                            switch (h.getDia()){
+                                case 1:
+                                    dia = "Lunes";
+                                    break;
+                                case 2:
+                                    dia = "Martes";
+                                    break;
+                                case 3:
+                                    dia = "Miercoles";
+                                    break;
+                                case 4:
+                                    dia = "Jueves";
+                                    break;
+                                case 5:
+                                    dia = "Viernes";
+                                    break;
+                                case 6:
+                                    dia = "Sabado";
+                                    break;
+                                case 7:
+                                    dia = "Domingo";
+                                    break;
+                                default:
+                                    dia= "No asignado";
+                               
+                            }
+
 
                     %>
 
                     <tbody>
                         <tr>
                             <td><%=g.getNum_grupo()%></td>
-                            <td><%=c.getDescripcion()%></td>
-                            <td><%=g.getProfesor_id()%></td>
-                            <td>
-                                <a class="Opciones" href="#">Ver Horarios</a>
-                                <a class="Opciones" href="Controller_Grupos_Admin?accion=editar&num_grupo=<%=g.getNum_grupo()%>">Editar</a>
+                            <td><%=c.getCurso() + ", " + c.getDescripcion()%></td>
+                            <td><%=p.getNombre() + " " + p.getApellido1()%></td>
+                            <td><b>Dia: </b><%=dia + " Hora: "+ h.getHora()+ ":00"%></td>
+                            <td> 
+                                <% if (dia.equals("No asignado")) {%>
+                                <a class="Opciones" href="Controller_Grupos_Admin?accion=horario&num_grupo=<%=g.getNum_grupo()%>&curso_id=<%=g.getCurso_id()%>">Agregar Horario</a>
+                                <a class="Opciones" href="Controller_Grupos_Admin?accion=editar&num_grupo=<%=g.getNum_grupo()%>&curso_id=<%=g.getCurso_id()%>">Editar</a>
                                 <a class="Opciones" href="Controller_Grupos_Admin?accion=eliminar&num_grupo=<%=g.getNum_grupo()%>&curso_id=<%=g.getCurso_id()%>">Eliminar</a>
-
+                                <%} else {%>
+                                <a class="Opciones" href="Controller_Grupos_Admin?accion=editar&num_grupo=<%=g.getNum_grupo()%>&curso_id=<%=g.getCurso_id()%>">Editar</a>
+                                <a class="Opciones" href="Controller_Grupos_Admin?accion=eliminar&num_grupo=<%=g.getNum_grupo()%>&curso_id=<%=g.getCurso_id()%>">Eliminar</a>
+                                <%}%>
                             </td>
                         </tr>
                         <%}%>
                     </tbody>
                 </table>
-                    <a href="listarcursos.jsp">Regresar</a>
+                <a href="listarcursos.jsp">Regresar</a>
             </div>
             <%@include file = "footer.jsp"%>
     </body>

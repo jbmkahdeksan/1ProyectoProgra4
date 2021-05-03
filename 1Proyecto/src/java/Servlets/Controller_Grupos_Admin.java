@@ -9,6 +9,7 @@ import Database.cursoDao;
 import Database.grupoDao;
 import Logic.curso;
 import Logic.grupo;
+import Logic.horario;
 import Services.Service;
 
 import java.io.IOException;
@@ -27,12 +28,14 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "Grupos_Admin", urlPatterns = {"/Grupos_Admin"})
 public class Controller_Grupos_Admin extends HttpServlet {
-String listarcursos = "listarcursos.jsp";
-String vergrupos = "admin_vergrupos.jsp";
-String editargrupos = "admin_editargrupo.jsp";
+
+    String listarcursos = "listarcursos.jsp";
+    String vergrupos = "admin_vergrupos.jsp";
+    String editargrupos = "admin_editargrupo.jsp";
+    String agregargrupo = "admin_addgrupo.jsp";
     curso c = new curso();
     grupo g = new grupo();
-
+    horario h = new horario();
     cursoDao cDao = new cursoDao();
     grupoDao gDao = new grupoDao();
 
@@ -53,7 +56,7 @@ String editargrupos = "admin_editargrupo.jsp";
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet Controller_Grupos_Admin</title>");            
+            out.println("<title>Servlet Controller_Grupos_Admin</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet Controller_Grupos_Admin at " + request.getContextPath() + "</h1>");
@@ -76,42 +79,49 @@ String editargrupos = "admin_editargrupo.jsp";
             throws ServletException, IOException {
         String acceso = "";
         String action = request.getParameter("accion");
-        
+
         if (action.equalsIgnoreCase("VerGrupos")) {
             request.setAttribute("id_edit", request.getParameter("id_curso"));
             System.out.println(request.getAttribute("id_edit"));
             int id = Integer.parseInt((String) request.getAttribute("id_edit"));
             c.setCurso(id);
             acceso = vergrupos;
-    } else if (action.equalsIgnoreCase("Agregar")) {
-            
+        } else if (action.equalsIgnoreCase("agregargrupo")) {
+            request.setAttribute("id_edit", request.getParameter("id_curso"));
+            System.out.println(request.getAttribute("id_edit"));
+
+            acceso = agregargrupo;
+        } else if (action.equalsIgnoreCase("Agregar")) {
             int num_grupo = Integer.parseInt(request.getParameter("num_grupo"));
             int curso_id = Integer.parseInt(request.getParameter("curso_id"));
             int profesor_id = Integer.parseInt(request.getParameter("profesor_id"));
+
             g.setNum_grupo(num_grupo);
-            g.setCurso_id(curso_id);          
+            g.setCurso_id(curso_id);
             g.setProfesor_id(profesor_id);
 
-            try { 
-            
+            try {
+
                 Service.instance().addGrupo(g);
 
             } catch (Exception e) {
             }
-
-
+            request.setAttribute("id_edit", request.getParameter("curso_id"));
+            System.out.println(request.getAttribute("id_edit"));
             acceso = vergrupos;
+
         } else if (action.equalsIgnoreCase("editar")) {
             request.setAttribute("id_g_edit", request.getParameter("num_grupo"));
+            request.setAttribute("id_c_edit", request.getParameter("curso_id"));
             System.out.println(request.getAttribute("id_g_edit"));
-            
+
             acceso = editargrupos;
         } else if (action.equalsIgnoreCase("Actualizar")) {
             int num_grupo = Integer.parseInt(request.getParameter("num_grupo"));
             int curso_id = Integer.parseInt(request.getParameter("curso_id"));
             int profesor_id = Integer.parseInt(request.getParameter("profesor_id"));
             g.setNum_grupo(num_grupo);
-            g.setCurso_id(curso_id);          
+            g.setCurso_id(curso_id);
             g.setProfesor_id(profesor_id);
             try {
                 Service.instance().updateGrupo(g);
@@ -121,32 +131,82 @@ String editargrupos = "admin_editargrupo.jsp";
             request.setAttribute("id_edit", request.getParameter("curso_id"));
             System.out.println(request.getAttribute("id_edit"));
             acceso = vergrupos;
-        } else if (action.equalsIgnoreCase("eliminar")){
-            
+        } else if (action.equalsIgnoreCase("eliminar")) {
+
             int num_grupo = Integer.parseInt(request.getParameter("num_grupo"));
             String curso_id = request.getParameter("curso_id");
             g.setNum_grupo(num_grupo);
-            
+
             try {
-                
+
                 gDao.delete(g);
-                
+
             } catch (Exception e) {
             }
             request.setAttribute("id_edit", curso_id);
             acceso = vergrupos;
-        } else if (action.equalsIgnoreCase("Buscar")){
+        } else if (action.equalsIgnoreCase("Buscar")) {
             String filtro = request.getParameter("buscar");
             grupo gf = new grupo();
-            
-            List<grupo>lista=gDao.findByCurso(c);
-            
+
+            List<grupo> lista = gDao.findByCurso(c);
+
+            acceso = vergrupos;
+        } else if (action.equalsIgnoreCase("horario")) {
+            request.setAttribute("id_g_edit", request.getParameter("num_grupo"));
+            request.setAttribute("id_c_edit", request.getParameter("curso_id"));
+
+            acceso = "admin_addhorario.jsp";
+        } else if (action.equalsIgnoreCase("Agregar Horario")) {
+            int grupo_curso_id = Integer.parseInt(request.getParameter("grupo_curso_id"));
+            int grupo_num = Integer.parseInt(request.getParameter("grupo_num"));
+            String dia_s = request.getParameter("dia");
+            int dia = 0;
+            switch (dia_s) {
+                case "Lunes":
+                    dia = 1;
+                    break;
+                case "Martes":
+                    dia = 2;
+                    break;
+                case "Miercoles":
+                    dia = 3;
+                    break;
+                case "Jueves":
+                    dia = 4;
+                    break;
+                case "Viernes":
+                    dia = 5;
+                    break;
+                case "Sabado":
+                    dia = 6;
+                    break;
+                case "Domingo":
+                    dia = 7;
+                    break;
+                default:
+                    dia = 0;
+            }
+
+            int hora = Integer.parseInt(request.getParameter("hora"));
+
+            h.setGrupo_num(grupo_num);
+            h.setGrupo_curso_id(grupo_curso_id);
+            h.setDia(dia);
+            h.setHora(hora);
+            try {
+
+                Service.instance().addHorario(h);
+
+            } catch (Exception e) {
+            }
+            request.setAttribute("id_edit", request.getParameter("grupo_curso_id"));
+            System.out.println(request.getAttribute("id_edit"));
             acceso = vergrupos;
         }
         RequestDispatcher vista = request.getRequestDispatcher(acceso);
         vista.forward(request, response);
     }
-        
 
     /**
      * Handles the HTTP <code>POST</code> method.

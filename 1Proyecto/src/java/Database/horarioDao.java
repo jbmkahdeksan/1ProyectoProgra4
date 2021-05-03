@@ -20,25 +20,26 @@ import java.util.List;
 public class horarioDao {
 
     public void create(horario o) throws Exception {
-        String sql = "insert into horario (seq, grupo_num, grupo_curso_id, dia, hora) "
-                + "values(?,?,?,?,?)";
+        String sql = "insert into horario (grupo_num, grupo_curso_id, dia, hora) "
+                + "values(?,?,?,?)";
         PreparedStatement stm = Database.instance().prepareStatement(sql);
-        stm.setString(1, Integer.toString(o.getSeq()));
-        stm.setString(2, Integer.toString(o.getGrupo_num()));
-        stm.setString(3, Integer.toString(o.getGrupo_curso_id()));
-        stm.setString(4, Integer.toString(o.getDia()));
-        stm.setString(5, Integer.toString(o.getHora()));
+        stm.setString(1, Integer.toString(o.getGrupo_num()));
+        stm.setString(2, Integer.toString(o.getGrupo_curso_id()));
+        stm.setString(3, Integer.toString(o.getDia()));
+        stm.setString(4, Integer.toString(o.getHora()));
         int count = Database.instance().executeUpdate(stm);
         if (count == 0) {
             throw new Exception("Horario ya existe");
         }
     }
 
-    public horario read(int seq) throws Exception{
+    public horario read(int grupo_num, int grupo_curso_id) throws Exception{
        horario r;
-        String sql="select * from horario where seq=?";
+        String sql="select * from horario h inner join grupo g on h.grupo_curso_id=g.curso_id where h.grupo_num=? AND h.grupo_curso_id=?";
+        
         PreparedStatement stm = Database.instance().prepareStatement(sql);
-        stm.setString(1, Integer.toString(seq));
+        stm.setString(1, Integer.toString(grupo_num));
+        stm.setString(2, Integer.toString(grupo_curso_id));
         ResultSet rs =  Database.instance().executeQuery(stm); 
         if (rs.next()) {
             r = from(rs);

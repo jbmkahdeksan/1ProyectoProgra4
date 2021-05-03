@@ -1,13 +1,11 @@
 <%-- 
-    Document   : editcurso
-    Created on : 25/04/2021, 01:25:32 PM
+    Document   : admin_addgrupo
+    Created on : 02/05/2021, 01:46:02 PM
     Author     : ksand
 --%>
 
-<%@page import="Database.area_tematicaDao"%>
-<%@page import="Logic.area_tematica"%>
 <%@page import="Logic.curso"%>
-<%@page import="java.lang.String"%>
+<%@page import="Database.area_tematicaDao"%>
 <%@page import="Database.cursoDao"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -19,10 +17,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="css/default.css" rel="stylesheet" type="text/css"/>
         <link href="css/forms_admin.css" rel="stylesheet" type="text/css"/>
-
     </head>
     <body>
-        <div class="header">
+       <div class="header">
             <h2>CursosLibres.com</h2>
             <p>Donde encontrarás cursos irónicamente útiles.</p>
             <div style="text-align: left">
@@ -33,7 +30,7 @@
             <div id="EditarCurso">
                 <%
                     cursoDao cDao = new cursoDao();
-                    area_tematicaDao areaDao= new area_tematicaDao();
+                   
                     curso c = new curso();
   
                     
@@ -46,25 +43,25 @@
 
                 %>
 
-                <p> <strong>Editar curso</strong></p>
-                <p>Por favor llenar los siguientes campos para editar el curso</p>
-                <form  class ="admin" action="Administrador">
+                <p> <strong>Agregar grupo</strong></p>
+                <p>Por favor llenar los siguientes campos para agregar un grupo nuevo al curso: <%=c.getDescripcion()%>.</p>
+                <form  class ="admin" action="Grupos_Admin">
                     <div class="container">
-                        <input type="hidden" name="id_curso" value="<%=c.getCurso()%>">
-                        <label for="descripcion"><b>Descripcion</b></label>
-                        <input type="text"  name="descripcion" required value="<%=c.getDescripcion()%>">
-                        <label for="areatematica"><b>Area Tematica</b></label><br>
-                        <label for="areatematica2" >(Cambie el numero del area usando las referencias)</label><br>
-                        <input type="number" name="area_tematica_id" placeholder="100, Redes 200, Base de Datos 300, Idiomas" required value="<%=c.getArea_tematica_id()%>">
-
-                        <input type="submit" name="accion" value="Actualizar">
+                        <label for="cursoid"><b>Curso: </b></label>
+                        <input type="text" name="cursoidshow" value ="<%=c.getDescripcion()%>" readonly><br>
+                        <label for="numgrupo"><b>Numero de grupo</b></label>
+                        <input type="number"  name="num_grupo" required><br>
+                        <input type="hidden" name="curso_id" value="<%=c.getCurso()%>">
+                        <label for="prodesorid"><b>ID del profesor</b></label><br>
+                        <input type="number"  name="profesor_id" required>
+                        <input type="submit" name="accion" value="Agregar">
                         <a href="listarcursos.jsp">Regresar</a>
-
+                     
                 </form>
             </div>
         </div>
     </div>
 
     <div> <%@include file = "footer.jsp"%>   </div>
-</body>
+    </body>
 </html>
