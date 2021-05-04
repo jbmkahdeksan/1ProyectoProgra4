@@ -36,6 +36,10 @@
         <servlet-name>Controller_Grupos_Profe</servlet-name>
         <servlet-class>Servlets.Controller_Grupos_Profe</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Controller_CursosInicio</servlet-name>
+        <servlet-class>Servlets.Controller_CursosInicio</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ServicioFormulario</servlet-name>
         <url-pattern>/ServicioFormulario</url-pattern>
@@ -72,10 +76,13 @@
         <servlet-name>Controller_Grupos_Profe</servlet-name>
         <url-pattern>/Controller_Grupos_Profe</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Controller_CursosInicio</servlet-name>
+        <url-pattern>/Controller_CursosInicio</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
-    
 </web-app>

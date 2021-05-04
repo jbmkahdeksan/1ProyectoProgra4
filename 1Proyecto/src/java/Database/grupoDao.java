@@ -123,6 +123,20 @@ public class grupoDao {
             return null;
         }
     }
+    
+    public List<grupo> encuentraPorCurso(curso c){
+        List<grupo> r= new ArrayList<>();
+        String sql="select grupo.num_grupo, curso.descripcion, horario.dia, horario.hora, profesor.nombre, profesor.apellido1 from grupo inner join curso on grupo.curso_id = curso.id_curso inner join horario on horario.grupo_curso_id = curso.id_curso inner join profesor on grupo.profesor_id = profesor.id_profesor where curso.id_curso=?";
+        sql = String.format(sql,c.getCurso());
+        try {         
+            PreparedStatement stm = Database.instance().prepareStatement(sql);
+             stm.setString(1, Integer.toString(c.getCurso()));       
+            ResultSet rs =  Database.instance().executeQuery(stm);         
+            while (rs.next()) { r.add(from(rs)); } 
+        } catch (SQLException ex) { }
+            return r;
+    }
+    
 
     public void close() {
     }

@@ -117,6 +117,7 @@ public class Controller_Login extends HttpServlet {
                 profesor p = Service.instance().buscar_profesor(u.getId());
                 System.out.println(p.getNombre());
                 session.setAttribute("profesor", p);
+                respuesta = "perfil_profe.jsp";
             } catch (Exception ex) {
                 Logger.getLogger(Controller_Login.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -125,6 +126,7 @@ public class Controller_Login extends HttpServlet {
             try {
                 Estudiante e = Service.instance().buscar_estudiante(u.getId());
                 session.setAttribute("Estudiante", e);
+                respuesta = "estudiante.jsp";
             } catch (Exception ex) {
                 Logger.getLogger(Controller_Login.class.getName()).log(Level.SEVERE, null, ex);
             }

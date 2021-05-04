@@ -90,7 +90,6 @@
                         <%}%>
                     </tbody>
                 </table>
-                <a href="listarcursos.jsp">Regresar</a>
             </div>
             <%@include file = "footer.jsp"%>
     </body>

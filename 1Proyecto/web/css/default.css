@@ -119,17 +119,13 @@ span {
      
 }
 
-li{
-    background-color:#ccc ;
+
+li {
+    background-color: white;
+    border: 1px solid #ff6633; 
     padding: 25px;
-    border: 1px solid black;
     margin: 25px;
     width: 50%;
-}
-
-li:hover {
-    background-color: white;
-    border: 1px solid #ff6633;    
 }
 
 ul{
@@ -137,8 +133,12 @@ ul{
 }
 
 
-#enroll a{
-    float: right;
-    border: 0.5px solid #111;
-    
+ #info{
+     
+    float:right; 
+    text-decoration: none;
+}
+
+#info:hover{
+    border-bottom: 1px solid black;
 }

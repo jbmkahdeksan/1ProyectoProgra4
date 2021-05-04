@@ -44,6 +44,22 @@ public class cursoDao {
         }
         return r;
     }
+    
+    public List<curso> findByDescripcion_String(String c) {
+        List<curso> r = new ArrayList<>();
+        String sql = "select * from curso where descripcion like ?";
+        try {
+            PreparedStatement stm = Database.instance().prepareStatement(sql);
+            stm.setString(1, "%" + c + "%");
+            ResultSet rs = Database.instance().executeQuery(stm);
+            while (rs.next()) {
+                r.add(from(rs));
+            }
+        } catch (SQLException ex) {
+        }
+        return r;
+    }
+    
 
     public void update(curso o) throws Exception {
         String sql = "update curso set descripcion=?, area_tematica_id=? "

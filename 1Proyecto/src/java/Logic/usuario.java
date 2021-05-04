@@ -5,6 +5,7 @@
  */
 package Logic;
 
+import java.security.SecureRandom;
 import java.util.Date;
 
 /*
@@ -75,6 +76,6 @@ public class usuario {
 
     public void setRol_id(int rol_id) {
         this.rol_id = rol_id;
-    }  
+    }
 }
 

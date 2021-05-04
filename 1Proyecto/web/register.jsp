@@ -27,6 +27,9 @@
         <div id="wrapper"> 
             <div id = "Bienvenido">  
                 <p> <strong>Registro</strong></p>
+                <% String error = (String) request.getAttribute("Error");%>
+                <%if (error != null){%>
+                <p style="color:red"> <%out.print(error);}%> </p>
                 <p>Por favor llenar los siguientes campos para registrarse. </p>
                 <form action="ServicioFormulario" method="POST">
                     <div class="container">

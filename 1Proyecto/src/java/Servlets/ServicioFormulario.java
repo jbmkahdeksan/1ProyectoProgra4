@@ -10,6 +10,7 @@ import Logic.usuario;
 import Services.Service;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.security.SecureRandom;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.time.LocalDateTime;
@@ -20,6 +21,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -34,6 +36,7 @@ public class ServicioFormulario extends javax.servlet.http.HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, Exception {
             String respuesta = "";
+            String error_msg = "";
             
             response.setContentType("text/html;charset=UTF-8");
         
@@ -50,11 +53,24 @@ public class ServicioFormulario extends javax.servlet.http.HttpServlet {
             Service s = Service.instance();
             DateFormat simpleFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");  
             Date now = new Date();
-            s.crearUsuario(new usuario(request.getParameter("cedula"), "qwerty", now, 1, 3));            
+            String password = generateRandomPassword(4);
+            usuario u = new usuario(request.getParameter("cedula"), "qaz", now, 1, 3);
+            s.crearUsuario(u);            
             s.crearEstudiante(e);          
-           
-        } catch (NumberFormatException ex){
+            respuesta = "estudiante.jsp";
+            request.removeAttribute("Error");
+            HttpSession session = request.getSession(true);  
+            session.setAttribute("Usuario", u);
+            session.setAttribute("Estudiante", e);
+            request.getRequestDispatcher(respuesta).forward(request, response);
+            
+            
+        } catch (Exception ex){
+            error_msg = "Hubo un error al registrarse";
+            respuesta = "register.jsp";
             System.err.printf("Expection: '%s'%n", ex.getMessage());
+            request.setAttribute("Error", error_msg);
+            request.getRequestDispatcher(respuesta).forward(request, response);
         }
         
         
@@ -107,4 +123,25 @@ public class ServicioFormulario extends javax.servlet.http.HttpServlet {
         return "Short description";
     }// </editor-fold>
 
+public static String generateRandomPassword(int len)
+    {
+        // ASCII range – alphanumeric (0-9, a-z, A-Z)
+        final String chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+ 
+        SecureRandom random = new SecureRandom();
+        StringBuilder sb = new StringBuilder();
+ 
+        // each iteration of the loop randomly chooses a character from the given
+        // ASCII range and appends it to the `StringBuilder` instance
+ 
+        for (int i = 0; i < len; i++)
+        {
+            int randomIndex = random.nextInt(chars.length());
+            sb.append(chars.charAt(randomIndex));
+        }
+ 
+        return sb.toString();
+    }
 }
+
+

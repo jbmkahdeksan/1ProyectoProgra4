@@ -37,7 +37,7 @@
             <%}%>
             <%if (u.getRol_id() == 2) {%>
             <jsp:useBean class="Logic.profesor" id="profesor" scope="session"></jsp:useBean>
-            <a class="active" href="#">Perfil de ${profesor.getNombre()}</a>
+            <a class="active" href="perfil_profe.jsp">Perfil de ${profesor.getNombre()}</a>
             <div class="dropdown">
                 <button class="dropbtn">Opciones de Profesor</button>
                 <div class="dropdown-content">
@@ -47,7 +47,8 @@
             <%}%>
             <%if (u.getRol_id() == 3) {%>
             <jsp:useBean class="Logic.Estudiante" id="Estudiante" scope="session"></jsp:useBean>
-            <a class="active" href="#">Perfil de ${Estudiante.getNombre()}</a>
+            <%System.out.println(Estudiante.getNombre());%>
+            <a class="active" href="estudiante.jsp">Perfil de ${Estudiante.getNombre()}</a>
             <div class="dropdown">
                 <button class="dropbtn">Opciones de Estudiantes</button>
                 <div class="dropdown-content">
@@ -60,7 +61,7 @@
             <%String myURI = request.getRequestURI(); System.out.println(myURI); %>
             <%if (myURI.equals("/1Proyecto/index.jsp") || myURI.equals("/1Proyecto/")){%>
             <div class="search-container">
-                <form>
+                <form action="buscarCurso">
                     <input type="text" placeholder="Buscar curso..." name ="search">
                     <button type="submit">🔍</button>
                 </form>

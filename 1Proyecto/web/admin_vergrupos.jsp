@@ -45,7 +45,7 @@
                 <table>
                     <thead>
                         <tr>
-                            <th>N Grupo</th>
+                            <th>N° Grupo</th>
                             <th>Curso</th>
                             <th>Profesor</th>
                             <th>Horario</th>

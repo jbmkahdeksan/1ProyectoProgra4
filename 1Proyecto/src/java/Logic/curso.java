@@ -5,6 +5,7 @@
  */
 package Logic;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -13,7 +14,7 @@ import java.util.Objects;
  *
  * @author ksand
  */
-public class curso {
+public class curso implements Serializable{
     private int curso;
     private String descripcion;
     private int area_tematica_id;

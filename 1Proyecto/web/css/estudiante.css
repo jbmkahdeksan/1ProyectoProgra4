@@ -1,0 +1,26 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : May 3, 2021, 4:22:35 PM
+    Author     : Joaquin
+*/
+.card {
+  padding: 8px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 500px;
+  height: 400px;
+  margin: auto;
+  margin-bottom: 20px;
+  vertical-align: middle;
+  text-align: left;
+}
+
+.title {
+  color: grey;
+  font-size: 18px;
+}
+
+

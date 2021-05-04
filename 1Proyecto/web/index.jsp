@@ -44,7 +44,9 @@
                         <li>
                             <img src="images/cursos/<%=c.getCurso()%>.jpg">
                             <span style="vertical-align:middle"><strong><%out.print(c.getDescripcion());%></strong></span>
-                            <div class="enroll"><a  href="#"><strong>Más información</strong></a></div>
+                            <small>
+                                <a id="info" href="grupos_curso?codigo=<%=c.getCurso()%>"><strong>Más información</strong></a>
+                            </small>
                         </li>
                         <%}%>
                     </ul>

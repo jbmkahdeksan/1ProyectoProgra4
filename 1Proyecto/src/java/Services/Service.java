@@ -7,6 +7,7 @@ package Services;
  */
 import Database.AdministradorDAO;
 import Database.EstudiantesDAO;
+import Database.GruposAuxDAO;
 import Database.ProfesorDAO;
 import Database.RolDAO;
 import Database.UsuariosDAO;
@@ -22,6 +23,7 @@ import Logic.administrador;
 import Logic.area_tematica;
 import Logic.curso;
 import Logic.grupo;
+import Logic.grupo_aux;
 import Logic.horario;
 import Logic.profesor;
 import Logic.usuario;
@@ -44,6 +46,7 @@ public class Service {
     private grupoDao grupo_dao;
     private horarioDao horario_dao;
     private matriculaDao matricula_dao;
+    private GruposAuxDAO grupoAux_dao;
     
     private static Service theInstance;
     
@@ -67,6 +70,7 @@ public class Service {
         grupo_dao = new grupoDao();
         horario_dao = new horarioDao();
         matricula_dao = new matriculaDao();
+        grupoAux_dao = new GruposAuxDAO();
         
     }
     public profesor buscar_profesor(String id) throws Exception{
@@ -129,7 +133,11 @@ public class Service {
 
     public curso getCurso(curso o) throws Exception{
         return curso_dao.read(o.getCurso());
-    }  
+    } 
+    
+    public curso getCurso_int(int o) throws Exception{
+        return curso_dao.read(o);
+    }
 
     public void updateCurso(curso o)throws Exception{
         curso_dao.update(o);
@@ -231,4 +239,14 @@ public class Service {
     public void crearProfesor(profesor p) throws Exception{
         profesor_dao.create(p);
     }
+    
+    public List<curso> getCursosFiltro(String c){
+        return curso_dao.findByDescripcion_String(c);
+    }
+    
+    public List<grupo_aux> getGruposEspecifico(curso c) throws Exception{
+        System.out.println("Entra al service");
+        return grupoAux_dao.read(Integer.toString(c.getCurso()));
+    }
+    
 }

@@ -18,25 +18,25 @@
             <p>Donde encontrarás cursos irónicamente útiles.</p>
         </div>
         <%@include file="index_topbar.jsp"%>
-        <%usuario us = (usuario) session.getAttribute("Usuario");%>
+        <%usuario usu = (usuario) session.getAttribute("Usuario");%>
         <div class="card">
-            <h1>${Estudiante.getNombre()}</h1>
+            <h1>${profesor.getNombre()}</h1>
             <p class="title">Estudiante de CursosLibres.com</p>
             <p style="float:left;">Información:</p>
             <ul style="float:left;">
-                <li><strong>Identificación: </strong>${Estudiante.getId_estudiante()}</li>
+                <li><strong>Identificación: </strong>${profesor.getId_profesor()}</li>
                 <li><strong>Nombre completo: </strong>
-                    ${Estudiante.getNombre()}
-                    ${Estudiante.getApellido1()} 
-                    ${Estudiante.getApellido2()} 
+                    ${profesor.getNombre()}
+                    ${profesor.getApellido1()} 
+                    ${profesor.getApellido2()} 
                 </li>                
-                <li><strong>Correo: </strong>${Estudiante.getE_mail()}</li>
-                <li><strong>Teléfono: </strong>${Estudiante.getTelefono()}</li>
+                <li><strong>Correo: </strong>${profesor.getE_mail()}</li>
+                <li><strong>Teléfono: </strong>${profesor.getTelefono()}</li>
             </ul>
             <p style="float:left;">Credenciales:</p>
             <ul style="float:left;">
-                <li><strong>ID: </strong><%out.print(us.getId());%></li>
-                <li><strong>Clave: </strong><%out.print(us.getClave());%></li>
+                <li><strong>ID: </strong><%out.print(usu.getId());%></li>
+                <li><strong>Clave: </strong><%out.print(usu.getClave());%></li>
             </ul>
         </div>
     </body>
