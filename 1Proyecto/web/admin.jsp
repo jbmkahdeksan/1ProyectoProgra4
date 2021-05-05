@@ -26,8 +26,8 @@
         <div class="card">
             <h1> Bienvenido/a, ${administrador.getNombre()}</h1>
             <p class="title">Administrador de CursosLibres.com</p>
-            <p style="float:left;">Información:</p>
-            <ul style="float:left;">
+            <p>Información:</p>
+            <ul>
                 <li><strong>Identificación: </strong>${administrador.getId_administrador()}</li>
                 <li><strong>Nombre completo: </strong>
                     ${administrador.getNombre()}
@@ -37,8 +37,8 @@
                 <li><strong>Correo: </strong>${administrador.getE_mail()}</li>
                 <li><strong>Teléfono: </strong>${administrador.getTelefono()}</li>
             </ul>
-            <p style="float:left;">Credenciales:</p>
-            <ul style="float:left;">
+            <p>Credenciales:</p>
+            <ul>
                 <li><strong>ID: </strong><%out.print(usu.getId());%></li>
                 <li><strong>Clave: </strong><%out.print(usu.getClave());%></li>
             </ul>
