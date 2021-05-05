@@ -36,7 +36,7 @@
             <h1>Profesores</h1>
             <div class="buscar">
             <a class="Opciones" href="addprofesor.jsp">Agregar</a>
-            <form  class="formbuscar">
+            <form  class="formbuscar" action="AdminProfes">
                     <input type="text" placeholder="Buscar profesor/a..." name ="buscar">
                     <input class="botonbuscar"type="submit" name="accion" value="Buscar">
                 </form> 
@@ -54,11 +54,10 @@
                         <th>Acciones</th>
                     </tr>
                 </thead>
-                <%
-                 ProfesorDAO dao= new ProfesorDAO();
-                 Iterator<profesor> iter;
-                    List<profesor>lista= dao.findAll();
-                    iter= lista.iterator();
+                <%                  
+                    List<profesor> profesores = (List<profesor>) request.getAttribute("ListaProfesores");
+                    Iterator<profesor> iter;                    
+                    iter = profesores.iterator();
                     profesor p = null;
                     while(iter.hasNext()){
                         p= iter.next();

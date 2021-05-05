@@ -21,7 +21,7 @@
         <%usuario usu = (usuario) session.getAttribute("Usuario");%>
         <div class="card">
             <h1>${profesor.getNombre()}</h1>
-            <p class="title">Estudiante de CursosLibres.com</p>
+            <p class="title">Profesor/a de CursosLibres.com</p>
             <p style="float:left;">Información:</p>
             <ul style="float:left;">
                 <li><strong>Identificación: </strong>${profesor.getId_profesor()}</li>

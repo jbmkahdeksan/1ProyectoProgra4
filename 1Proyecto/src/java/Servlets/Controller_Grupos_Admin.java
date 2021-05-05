@@ -27,6 +27,7 @@ import javax.servlet.http.HttpServletResponse;
  * @author ksand
  */
 @WebServlet(name = "Grupos_Admin", urlPatterns = {"/Grupos_Admin"})
+
 public class Controller_Grupos_Admin extends HttpServlet {
 
     String listarcursos = "listarcursos.jsp";
@@ -134,16 +135,19 @@ public class Controller_Grupos_Admin extends HttpServlet {
         } else if (action.equalsIgnoreCase("eliminar")) {
 
             int num_grupo = Integer.parseInt(request.getParameter("num_grupo"));
-            String curso_id = request.getParameter("curso_id");
+            int curso_id = Integer.parseInt(request.getParameter("curso_id"));
             g.setNum_grupo(num_grupo);
+            g.setCurso_id(curso_id);
 
             try {
 
                 gDao.delete(g);
 
             } catch (Exception e) {
+                System.out.println("Grupo tiene un horario y por eso no se puede eliminar.");
             }
-            request.setAttribute("id_edit", curso_id);
+           request.setAttribute("id_edit", request.getParameter("curso_id"));
+            System.out.println(request.getAttribute("id_edit"));
             acceso = vergrupos;
         } else if (action.equalsIgnoreCase("Buscar")) {
             String filtro = request.getParameter("buscar");
@@ -203,7 +207,7 @@ public class Controller_Grupos_Admin extends HttpServlet {
             request.setAttribute("id_edit", request.getParameter("grupo_curso_id"));
             System.out.println(request.getAttribute("id_edit"));
             acceso = vergrupos;
-        }
+        } 
         RequestDispatcher vista = request.getRequestDispatcher(acceso);
         vista.forward(request, response);
     }

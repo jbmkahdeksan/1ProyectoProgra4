@@ -55,7 +55,7 @@
                         <label for="prodesorid"><b>ID del profesor</b></label><br>
                         <input type="number"  name="profesor_id" required>
                         <input type="submit" name="accion" value="Agregar">
-                        <a href="listarcursos.jsp">Regresar</a>
+                        <a href="cursos?accion=ver">Regresar</a>
                      
                 </form>
             </div>

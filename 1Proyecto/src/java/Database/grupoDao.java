@@ -63,9 +63,10 @@ public class grupoDao {
         }
     }    
     public void delete(grupo o) throws Exception {
-        String sql = "delete from grupo where num_grupo=?";
+        String sql = "delete from grupo where num_grupo=? AND curso_id=?";
         PreparedStatement stm = Database.instance().prepareStatement(sql);
         stm.setString(1, Integer.toString(o.getNum_grupo()));
+        stm.setString(2, Integer.toString(o.getCurso_id()));
         int count = Database.instance().executeUpdate(stm);
         if (count == 0) {
             throw new Exception("Grupo no existe");

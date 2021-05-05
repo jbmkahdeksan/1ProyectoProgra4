@@ -30,8 +30,8 @@
             <div class="dropdown">
                 <button class="dropbtn">Opciones de Administrador</button>
                 <div class="dropdown-content">
-                    <a href="profesores.jsp">Profesores</a>
-                    <a href="listarcursos.jsp">Cursos</a>
+                    <a href="AdminProfes?accion=ver">Profesores</a>
+                    <a href="cursos?accion=ver">Cursos</a>
                 </div>
             </div> 
             <%}%>

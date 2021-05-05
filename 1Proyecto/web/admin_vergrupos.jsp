@@ -35,10 +35,7 @@
             <%@include file="index_topbar.jsp"%>
             <h1>Grupos </h1>
             <div class="buscar">
-                <form  class="formbuscar">
-                    <input type="text" placeholder="Buscar grupo..." name ="buscar">
-                    <input class="botonbuscar"type="submit" name="accion" value="Buscar">
-                </form> 
+                
             </div>
             <div>
 
@@ -130,7 +127,7 @@
                         <%}%>
                     </tbody>
                 </table>
-                <a href="listarcursos.jsp">Regresar</a>
+                <a href="cursos?accion=ver">Regresar</a>
             </div>
             <%@include file = "footer.jsp"%>
     </body>

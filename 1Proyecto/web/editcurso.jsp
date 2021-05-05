@@ -58,7 +58,7 @@
                         <input type="number" name="area_tematica_id" placeholder="100, Redes 200, Base de Datos 300, Idiomas" required value="<%=c.getArea_tematica_id()%>">
 
                         <input type="submit" name="accion" value="Actualizar">
-                        <a href="listarcursos.jsp">Regresar</a>
+                        <a href="cursos?accion=ver">Regresar</a>
 
                 </form>
             </div>

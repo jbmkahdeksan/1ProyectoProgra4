@@ -37,18 +37,10 @@ public class Controller_Profesores_Admin extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet Controller_Profesores_Admin</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet Controller_Profesores_Admin at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
+        String origen = request.getServletPath();
+        String action = request.getParameter("accion");
+        Service s = Service.instance();
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -66,8 +58,11 @@ public class Controller_Profesores_Admin extends HttpServlet {
         String acceso = "";
         String action = request.getParameter("accion");
 
-        if (action.equalsIgnoreCase("listar")) {
-            acceso = listarprofesores;
+        if (action.equalsIgnoreCase("ver")) {
+            List<profesor> profesores = Service.instance().getProfesores();
+            request.setAttribute("ListaProfesores", profesores);
+            request.getRequestDispatcher(listarprofesores).forward(request, response);
+
         } else if (action.equalsIgnoreCase("Agregar")) {
             int id_profesor = Integer.parseInt(request.getParameter("id_profesor"));
             String usuario_id = request.getParameter("usuario_id");
@@ -127,11 +122,12 @@ public class Controller_Profesores_Admin extends HttpServlet {
             }
             acceso = listarprofesores;
         } else if (action.equalsIgnoreCase("Buscar")){
-            String filtro = request.getParameter("buscar");
-            p.setNombre(filtro);
-            List<profesor>lista=pDao.findByNombre(p);
             
-            acceso = listarprofesores;
+            String filtro = request.getParameter("buscar");
+            List<profesor> lista = Service.instance().searchProfesor(filtro);
+           request.setAttribute("ListaProfesores", lista);
+            request.getRequestDispatcher(listarprofesores).forward(request, response);
+
         }
         RequestDispatcher vista = request.getRequestDispatcher(acceso);
         vista.forward(request, response);

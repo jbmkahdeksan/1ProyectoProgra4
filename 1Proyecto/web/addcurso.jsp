@@ -27,7 +27,7 @@
                 <div id="AddCurso">
                     <p> <strong>Crear curso nuevo</strong></p>
                     <p>Por favor llenar los siguientes campos para crear un curso nuevo. </p>
-                    <form class = "admin" action="Administrador">
+                    <form class = "admin" action="CursosAdmin">
                         <div class="container">
                             <label for="ID Curso"><b>ID Curso</b></label>
                             <input type="number"  name="id_curso" required>
@@ -36,7 +36,7 @@
                             <label for="areatematica" ><b>Area Tematica</b></label><br>
                             <label for="areatematica2" >(Ingrese el numero del area usando las referencias)</label><br>
                             <input type="number" placeholder="100, Redes 200, Base de Datos 300, Idiomas" name="area_tematica_id" required>     
-                            <input type="submit" name="accion" value="Agregar" href="listarcursos.jsp">
+                            <input type="submit" name="accion" value="Agregar" href="cursos?accion=ver">
                         </div>
                     </form>
                 </div>

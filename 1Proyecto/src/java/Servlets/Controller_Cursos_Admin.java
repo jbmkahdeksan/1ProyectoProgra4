@@ -24,7 +24,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author ksand
  */
-@WebServlet(name = "Administrador", urlPatterns = {"/Administrador"})
+@WebServlet(name = "Administrador", urlPatterns = {"/Administrador", "/CursosAdmin", "/cursos"})
 public class Controller_Cursos_Admin extends HttpServlet {
 
     String listarcursos = "listarcursos.jsp";
@@ -34,7 +34,6 @@ public class Controller_Cursos_Admin extends HttpServlet {
 
     cursoDao cDao = new cursoDao();
     Model_curso model;
-
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -67,11 +66,14 @@ public class Controller_Cursos_Admin extends HttpServlet {
             throws ServletException, IOException {
         String acceso = "";
         String action = request.getParameter("accion");
+        Service s = Service.instance();
 
-        if (action.equalsIgnoreCase("listar")) {
- 
-            acceso = listarcursos;
-            
+        if (action.equalsIgnoreCase("ver")) {
+            List<curso> cursos_oferta = s.getCursos();
+            request.setAttribute("ListaCursos", cursos_oferta);
+
+            request.getRequestDispatcher(listarcursos).forward(request, response);
+
         } else if (action.equalsIgnoreCase("Agregar")) {
             request.setAttribute("id_edit", request.getParameter("id_curso"));
 
@@ -80,23 +82,23 @@ public class Controller_Cursos_Admin extends HttpServlet {
             int area_tematica_id = Integer.parseInt(request.getParameter("area_tematica_id"));
             c.setCurso(id_curso);
             c.setDescripcion(descripcion);
-            
+
             c.setArea_tematica_id(area_tematica_id);
 
-            try { 
-            
+            try {
+
                 Service.instance().addCurso(c);
 
 //                cDao.create(c);
             } catch (Exception e) {
             }
-
-
-            acceso = listarcursos;
+            List<curso> cursos_oferta = s.getCursos();
+            request.setAttribute("ListaCursos", cursos_oferta);
+            request.getRequestDispatcher(listarcursos).forward(request, response);
         } else if (action.equalsIgnoreCase("editar")) {
             request.setAttribute("id_edit", request.getParameter("id_curso"));
             System.out.println(request.getAttribute("id_edit"));
-            
+
             acceso = editarcursos;
         } else if (action.equalsIgnoreCase("Actualizar")) {
             int id_curso = Integer.parseInt(request.getParameter("id_curso"));
@@ -107,12 +109,15 @@ public class Controller_Cursos_Admin extends HttpServlet {
             c.setArea_tematica_id(area_tematica_id);
             try {
                 Service.instance().updateCurso(c);
-                
+
 //                cDao.update(c);
             } catch (Exception e) {
             }
-            acceso = listarcursos;
-        } else if (action.equalsIgnoreCase("eliminar")){
+            List<curso> cursos_oferta = s.getCursos();
+            request.setAttribute("ListaCursos", cursos_oferta);
+            request.getRequestDispatcher(listarcursos).forward(request, response);
+            
+        } else if (action.equalsIgnoreCase("eliminar")) {
             int id_curso = Integer.parseInt(request.getParameter("id_curso"));
             c.setCurso(id_curso);
             try {
@@ -120,14 +125,17 @@ public class Controller_Cursos_Admin extends HttpServlet {
                 model.setLista_cursos(Service.instance().getCursos());
             } catch (Exception e) {
             }
-            acceso = listarcursos;
-        } else if (action.equalsIgnoreCase("Buscar")){
-            String filtro = request.getParameter("buscar");
-            curso c1 = new curso();
-            c1.setDescripcion(filtro);
-            List<curso>lista=cDao.findByDescripcion(c);
+            List<curso> cursos_oferta = s.getCursos();
+            request.setAttribute("ListaCursos", cursos_oferta);
+            request.getRequestDispatcher(listarcursos).forward(request, response);
             
-            acceso = listarcursos;
+        } else if (action.equalsIgnoreCase("Buscar")) {
+
+            String filtro = request.getParameter("buscar");
+             List<curso> lista = Service.instance().getCursosFiltro(filtro);
+           request.setAttribute("ListaCursos", lista);
+           request.getRequestDispatcher(listarcursos).forward(request, response);
+
         }
         RequestDispatcher vista = request.getRequestDispatcher(acceso);
         vista.forward(request, response);

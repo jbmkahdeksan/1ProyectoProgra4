@@ -247,6 +247,14 @@ public class Service {
     public List<grupo_aux> getGruposEspecifico(curso c) throws Exception{
         System.out.println("Entra al service");
         return grupoAux_dao.read(Integer.toString(c.getCurso()));
+        
+    }
+    
+     public List<profesor> getProfesores(){
+        return profesor_dao.findAll();}
+        
+        public List<profesor> searchProfesor(String o){
+        return profesor_dao.findByNombre(o); 
     }
     
 }

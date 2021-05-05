@@ -84,7 +84,7 @@
                             <td><%=g.getNum_grupo()%></td>
                             <td><%=c.getDescripcion()%></td>
                             <td> 
-                                <a class="Opciones" href="#">Ver Estudiantes</a>
+                                <a class="Opciones" href="profe_grupoestudiantes.jsp">Ver Estudiantes</a>
                             </td>
                         </tr>
                         <%}%>

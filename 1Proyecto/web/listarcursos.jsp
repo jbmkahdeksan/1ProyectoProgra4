@@ -34,7 +34,7 @@
                 <h1>Cursos </h1>
                 <div class="buscar">
                     <a class="Opciones" href="addcurso.jsp">Agregar</a>
-                    <form  class="formbuscar">
+                    <form  class="formbuscar" action="CursosAdmin">
                         <input type="text" placeholder="Buscar curso..." name ="buscar">
                         <input class="botonbuscar"type="submit" name="accion" value="Buscar">
                     </form> 
@@ -52,11 +52,11 @@
                         </tr>
                     </thead>
                     <%                   
-                        cursoDao dao = new cursoDao();
-                        Iterator<curso> iter;
-                        List<curso> lista = dao.findAll();
-                        iter = lista.iterator();
-                        curso c = null;
+                        List<curso> cursos_oferta = (List<curso>) request.getAttribute("ListaCursos");
+                    System.out.println("Lista de cursos en oferta: " + cursos_oferta);
+                    Iterator<curso> iter;                    
+                    iter = cursos_oferta.iterator();
+                    curso c = null;
                         while (iter.hasNext()) {
                             area_tematica at = new area_tematica();
                             c = iter.next();
@@ -69,11 +69,11 @@
                             <td><%=c.getDescripcion()%></td>
                             <td><%=at.getId_area()+ ", " + at.getDescripcion() %></td>
                             <td>
-                                <a class="Opciones" href="Controller_Grupos_Admin?accion=agregargrupo&id_curso=<%=c.getCurso()%>">Agregar grupo</a>
-                                <a class="Opciones" href="Controller_Grupos_Admin?accion=VerGrupos&id_curso=<%=c.getCurso()%>">Ver Grupos</a>
+                                <a class="Opciones" href="Grupos_Admin?accion=agregargrupo&id_curso=<%=c.getCurso()%>">Agregar grupo</a>
+                                <a class="Opciones" href="Grupos_Admin?accion=VerGrupos&id_curso=<%=c.getCurso()%>">Ver Grupos</a>
                                 
-                                <a class="Opciones" href="Controller_Cursos_Admin?accion=editar&id_curso=<%=c.getCurso()%>">Editar </a>
-                                <a class="Opciones" href="Controller_Cursos_Admin?accion=eliminar&id_curso=<%=c.getCurso()%>"">Eliminar</a>
+                                <a class="Opciones" href="CursosAdmin?accion=editar&id_curso=<%=c.getCurso()%>">Editar </a>
+                                <a class="Opciones" href="CursosAdmin?accion=eliminar&id_curso=<%=c.getCurso()%>"">Eliminar</a>
 
                             </td>
                         </tr>

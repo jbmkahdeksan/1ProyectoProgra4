@@ -107,12 +107,14 @@ public class ProfesorDAO {
         return r;
     }
 
-    public List<profesor> findByNombre(profesor o){
+    public List<profesor> findByNombre(String o){
         List<profesor> r= new ArrayList<>();
-        String sql="select * from profesor where nombre like ?";
+        String sql="select * from profesor where nombre like ? OR apellido1 like ? OR apellido2 like ?";
         try {        
             PreparedStatement stm = Database.instance().prepareStatement(sql);
-            stm.setString(1, "%"+o.getNombre()+"%");   
+            stm.setString(1, "%"+o +"%");
+            stm.setString(2, "%"+o +"%");   
+            stm.setString(3, "%"+o +"%");   
             ResultSet rs =  Database.instance().executeQuery(stm); 
             while (rs.next()) {
                 r.add(from(rs));
