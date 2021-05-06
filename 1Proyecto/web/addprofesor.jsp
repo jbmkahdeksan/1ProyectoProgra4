@@ -45,7 +45,7 @@
                         <input type="text"  name="telefono" required>
                         <label for="correos"><b>Correo</b></label>
                         <input type="text"  name="e_mail" required>
-                        <input type="submit" name="accion" value="Agregar" href="profesores.jsp">
+                        <input type="submit" name="accion" value="Agregar" href="AdminProfes">
                         </form>
                     </div>
             </div>

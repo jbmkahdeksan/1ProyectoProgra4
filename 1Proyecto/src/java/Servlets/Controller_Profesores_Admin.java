@@ -57,6 +57,7 @@ public class Controller_Profesores_Admin extends HttpServlet {
             throws ServletException, IOException {
         String acceso = "";
         String action = request.getParameter("accion");
+        System.out.println(action);
 
         if (action.equalsIgnoreCase("ver")) {
             List<profesor> profesores = Service.instance().getProfesores();
@@ -129,6 +130,8 @@ public class Controller_Profesores_Admin extends HttpServlet {
             request.getRequestDispatcher(listarprofesores).forward(request, response);
 
         }
+        List<profesor> profesores = Service.instance().getProfesores();
+        request.setAttribute("ListaProfesores", profesores);
         RequestDispatcher vista = request.getRequestDispatcher(acceso);
         vista.forward(request, response);
     }
