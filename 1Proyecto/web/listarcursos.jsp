@@ -52,7 +52,7 @@
                         </tr>
                     </thead>
                     <%                   
-                        List<curso> cursos_oferta = (List<curso>) request.getAttribute("ListaCursos");
+                    List<curso> cursos_oferta = (List<curso>) request.getAttribute("ListaCursos");
                     System.out.println("Lista de cursos en oferta: " + cursos_oferta);
                     Iterator<curso> iter;                    
                     iter = cursos_oferta.iterator();

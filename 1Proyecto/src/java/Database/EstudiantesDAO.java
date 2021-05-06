@@ -6,11 +6,14 @@
 package Database;
 
 import Logic.Estudiante;
+import Logic.matricula;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -49,6 +52,7 @@ public class EstudiantesDAO {
             throw new Exception ("No se encontró el estudiante");
         }
     }
+    
     
     
     public Estudiante from (ResultSet rs){

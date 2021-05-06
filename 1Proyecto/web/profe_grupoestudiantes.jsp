@@ -4,6 +4,10 @@
     Author     : ksand
 --%>
 
+<%@page import="Services.Service"%>
+<%@page import="java.util.Iterator"%>
+<%@page import="Logic.matricula"%>
+<%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -44,20 +48,28 @@
                         </tr>
                     </thead>
                     <%
-                                    
+                    List<matricula> matriculas = (List<matricula>) request.getAttribute("ListaMatricula");
+                    Iterator<matricula> iter;                    
+                    iter = matriculas.iterator();
+                    matricula m = null;
+                        while (iter.hasNext()) {
+                            Estudiante e = new Estudiante();
+                            m = iter.next();
+                            e = Service.instance().buscar_estudiante(Integer.toString(m.getEstudiante_id()));
+    
                             
                     %>
 
                     <tbody>
                         <tr>
-                            <td><%%></td>
-                            <td><%%></td>
-                            <td><%%></td>
+                            <td><%=e.getNombre()%></td>
+                            <td><%=e.getApellido1() + " " + e.getApellido2()%></td>
+                            <td><%=m.getNota()%></td>
                             <td> 
-                                <a class="Opciones" href="#">Actualizar Nota</a>
+                                <a class="Opciones" href="Controller_Estud_Profe?accion=nota&num_grupo=<%=m.getGrupo_num()%>&curso_id=<%=m.getCurso_id()%>&estudiante_id=<%=m.getEstudiante_id()%>">Actualizar Nota</a>
                             </td>
                         </tr>
-                        
+                         <%}%>
                     </tbody>
                 </table>
             </div>

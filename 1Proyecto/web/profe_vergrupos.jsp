@@ -84,7 +84,7 @@
                             <td><%=g.getNum_grupo()%></td>
                             <td><%=c.getDescripcion()%></td>
                             <td> 
-                                <a class="Opciones" href="profe_grupoestudiantes.jsp">Ver Estudiantes</a>
+                                <a class="Opciones" href="Controller_Estud_Profe?accion=ver&num_grupo=<%=g.getNum_grupo()%>&curso_id=<%=g.getCurso_id()%>">Ver Estudiantes</a>
                             </td>
                         </tr>
                         <%}%>

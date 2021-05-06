@@ -48,6 +48,23 @@ public class matriculaDao {
         }
         return r;
     }
+    
+    public matricula readall(int estudiante_id, int num_grupo, int curso_id) throws Exception{
+       matricula r;
+        String sql="select * from matricula where estudiante_id=? and grupo_num=? and curso_id=?";
+        PreparedStatement stm = Database.instance().prepareStatement(sql);
+        stm.setString(1, Integer.toString(estudiante_id));
+        stm.setString(2, Integer.toString(num_grupo));
+        stm.setString(3, Integer.toString(curso_id));
+        ResultSet rs =  Database.instance().executeQuery(stm); 
+        if (rs.next()) {
+            r = from(rs);
+        }
+        else{
+            throw new Exception ("Horario no Existe");
+        }
+        return r;
+    }
     public void update(matricula o) throws Exception{
         String sql="update matricula set grupo_num=?,curso_id=?,estado_id=?,nota=? "+
                 "where estudiante_id=?";
@@ -85,6 +102,18 @@ public class matriculaDao {
         } catch (SQLException ex) {
         }
         return r;
+    }
+    public List<matricula> findByMatricula(matricula o) {
+        List<matricula> r = new ArrayList<>();
+        String sql = "select * from matricula where grupo_num=? AND curso_id=?";
+        try {         
+            PreparedStatement stm = Database.instance().prepareStatement(sql);
+             stm.setString(1, Integer.toString(o.getGrupo_num())); 
+             stm.setString(2, Integer.toString(o.getCurso_id()));
+            ResultSet rs =  Database.instance().executeQuery(stm);         
+            while (rs.next()) { r.add(from(rs)); } 
+        } catch (SQLException ex) { }
+            return r;
     }
 
     public List<matricula> findByCurso(matricula o) {
