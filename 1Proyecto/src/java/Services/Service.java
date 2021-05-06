@@ -28,6 +28,7 @@ import Logic.horario;
 import Logic.profesor;
 import Logic.usuario;
 import java.util.List;
+import Logic.matricula;
 
 /**
  *
@@ -183,7 +184,7 @@ public class Service {
     public void addHorario(horario o)throws Exception{
         horario_dao.create(o);
     }
-
+    
     public horario gethorario(int num_grupo, int curso_id ) throws Exception{
         return horario_dao.read(num_grupo,curso_id);
     }  
@@ -257,4 +258,7 @@ public class Service {
         return profesor_dao.findByNombre(o); 
     }
     
+    public void Matricular(matricula m) throws Exception{
+        matricula_dao.create(m);    
+    }
 }

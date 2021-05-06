@@ -290,6 +290,8 @@ insert into estudiante(id_estudiante, usuario_id, apellido1, apellido2, nombre, 
         values(1212, "1212", "Herrera", "Viquez", "Fulano", "666999666", "estudiante01@cursoslibres.com");
 
 
+insert into estado (id_estado, descripcion) values(1, "Matriculado");
+
 insert into area_tematica (id_area, descripcion) values (100, "Redes");
 insert into area_tematica (id_area, descripcion) values (200, "Base de Datos");
 insert into area_tematica (id_area, descripcion) values (300, "Idiomas");

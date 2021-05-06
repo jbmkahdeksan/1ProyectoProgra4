@@ -32,8 +32,7 @@
             <div style="text-align: left">
             </div>
             <%@include file="index_topbar.jsp"%>
-
-            <%curso c = (curso) request.getAttribute("curso_actual");%>
+            <%curso c = (curso) request.getAttribute("curso_actual");%> 
             <h1><%out.print(c.getDescripcion());%></h1>
             <table>
                 <thead>
@@ -103,7 +102,7 @@
                         <td><%out.print(p.getNombre() + " " + p.getApellido1());%></td>
                         <td><%out.print("Dia: " + dia + " Hora: " + h.getHora() + ":00");%></td>
                         <td>
-                            <a class="Opciones" href="#">Matricular</a>
+                            <a class="Opciones" href="Controller_Matricula?codgrupo=<%=g.getNum_grupo()%>&codcurso=<%=c.getCurso()%>">Matricular</a>
                         </td>
                     </tr>
                     <%}%>

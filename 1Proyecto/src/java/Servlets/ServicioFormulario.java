@@ -54,7 +54,7 @@ public class ServicioFormulario extends javax.servlet.http.HttpServlet {
             DateFormat simpleFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");  
             Date now = new Date();
             String password = generateRandomPassword(4);
-            usuario u = new usuario(request.getParameter("cedula"), "qaz", now, 1, 3);
+            usuario u = new usuario(request.getParameter("cedula"), password, now, 1, 3);
             s.crearUsuario(u);            
             s.crearEstudiante(e);          
             respuesta = "estudiante.jsp";
@@ -123,23 +123,15 @@ public class ServicioFormulario extends javax.servlet.http.HttpServlet {
         return "Short description";
     }// </editor-fold>
 
-public static String generateRandomPassword(int len)
-    {
-        // ASCII range – alphanumeric (0-9, a-z, A-Z)
+public static String generateRandomPassword(int len){
         final String chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
- 
         SecureRandom random = new SecureRandom();
-        StringBuilder sb = new StringBuilder();
- 
-        // each iteration of the loop randomly chooses a character from the given
-        // ASCII range and appends it to the `StringBuilder` instance
- 
+        StringBuilder sb = new StringBuilder(); 
         for (int i = 0; i < len; i++)
         {
             int randomIndex = random.nextInt(chars.length());
             sb.append(chars.charAt(randomIndex));
         }
- 
         return sb.toString();
     }
 }

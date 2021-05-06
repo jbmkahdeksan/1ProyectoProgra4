@@ -22,8 +22,8 @@
         <div class="card">
             <h1>${Estudiante.getNombre()}</h1>
             <p class="title">Estudiante de CursosLibres.com</p>
-            <p style="float:left;">Información:</p>
-            <ul style="float:left;">
+            <p>Información:</p>
+            <ul>
                 <li><strong>Identificación: </strong>${Estudiante.getId_estudiante()}</li>
                 <li><strong>Nombre completo: </strong>
                     ${Estudiante.getNombre()}
@@ -33,8 +33,8 @@
                 <li><strong>Correo: </strong>${Estudiante.getE_mail()}</li>
                 <li><strong>Teléfono: </strong>${Estudiante.getTelefono()}</li>
             </ul>
-            <p style="float:left;">Credenciales:</p>
-            <ul style="float:left;">
+            <p>Credenciales:</p>
+            <ul>
                 <li><strong>ID: </strong><%out.print(us.getId());%></li>
                 <li><strong>Clave: </strong><%out.print(us.getClave());%></li>
             </ul>

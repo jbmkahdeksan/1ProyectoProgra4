@@ -40,6 +40,10 @@
         <servlet-name>Controller_CursosInicio</servlet-name>
         <servlet-class>Servlets.Controller_CursosInicio</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Controller_Matricula</servlet-name>
+        <servlet-class>Servlets.Controller_Matricula</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ServicioFormulario</servlet-name>
         <url-pattern>/ServicioFormulario</url-pattern>
@@ -79,6 +83,10 @@
     <servlet-mapping>
         <servlet-name>Controller_CursosInicio</servlet-name>
         <url-pattern>/Controller_CursosInicio</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Controller_Matricula</servlet-name>
+        <url-pattern>/Controller_Matricula</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -27,6 +27,7 @@ public class matriculaDao {
         stm.setString(3, Integer.toString(o.getCurso_id()));
         stm.setString(4, Integer.toString(o.getEstado_id()));
         stm.setString(5, Integer.toString(o.getNota()));
+        System.out.println(stm);
         int count = Database.instance().executeUpdate(stm);
         if (count == 0) {
             throw new Exception("Matricula ya existe");
