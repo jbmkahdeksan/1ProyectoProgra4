@@ -29,6 +29,7 @@ import Logic.profesor;
 import Logic.usuario;
 import java.util.List;
 import Logic.matricula;
+import Logic.estado;
 
 /**
  *
@@ -162,6 +163,10 @@ public class Service {
     public grupo getGrupo(grupo o) throws Exception{
         return grupo_dao.read(o.getNum_grupo(),o.getCurso_id());
     }  
+    
+    public grupo getGrupo_INTS(int g, int c) throws Exception{
+        return grupo_dao.read(g,c);
+    } 
 
     public void updateGrupo(grupo o)throws Exception{
         grupo_dao.update(o);
@@ -266,4 +271,11 @@ public class Service {
         return matricula_dao.findAll(e);
     
     }
+    
+    
+    public estado getEstado(int e) throws Exception{
+        return estado_dao.read(e);
+    }
+        
+        
 }

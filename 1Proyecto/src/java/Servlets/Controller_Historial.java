@@ -7,9 +7,12 @@ package Servlets;
 
 import Logic.Estudiante;
 import Logic.curso;
+import Logic.estado;
 import Logic.grupo;
 import Logic.grupo_aux;
+import Logic.horario;
 import Logic.matricula;
+import Logic.profesor;
 import Services.Service;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -48,9 +51,10 @@ public class Controller_Historial extends javax.servlet.http.HttpServlet {
             
             List<matricula> en_historial = s.getHistorial(e.getId_estudiante());
             
-            System.out.println(en_historial);
             
-            session.setAttribute("historico", en_historial);
+            String lista = construyeHistorial(en_historial);
+            
+            session.setAttribute("historico", lista);
             
             request.getRequestDispatcher(respuesta).forward(request, response);
             
@@ -105,4 +109,41 @@ public class Controller_Historial extends javax.servlet.http.HttpServlet {
         return "Short description";
     }// </editor-fold>
 
+    public String construyeHistorial(List<matricula> h) throws Exception{
+        Service s = Service.instance();
+        StringBuilder r = new StringBuilder();
+        for (matricula m: h){
+           grupo g = s.getGrupo_INTS(m.getGrupo_num(), m.getCurso_id());
+           curso c = s.buscar_curso(g.getCurso_id());
+           estado e = s.getEstado(m.getEstado_id());
+           horario ho = s.gethorario(m.getGrupo_num(), m.getCurso_id());
+           profesor pr = s.buscar_profesor(g.getProfesor_id());
+           String dia = "";
+           switch(ho.getDia()){
+               case 1:{dia = "Lunes"; break;}
+               case 2:{dia = "Martes"; break;}
+               case 3:{dia = "Miercoles"; break;}
+               case 4:{dia = "Jueves"; break;}
+               case 5:{dia = "Viernes"; break;}
+               case 6:{dia = "Sabado"; break;}
+               case 7:{dia = "Domingo"; break;}              
+               
+           }
+           
+           r.append("<tr>");
+           r.append("<td>"+c.getDescripcion()+"</td>");
+           r.append("<td><strong>Dia: </strong>"+dia+ " <strong> Hora </strong>"+ho.getHora()+":00 </td>");
+           r.append("<td>"+pr.getNombre()+" "+pr.getApellido1()+"</td>");
+           r.append("<td>"+e.getDescripcion()+"</td>");
+           if (m.getNota() >= 0){
+               r.append("<td>"+m.getNota()+"</td>");
+           }else{
+               r.append("<td>N/A</td>");
+           }
+           r.append("</tr>");
+        }      
+        return r.toString();
+    }
+    
+    
 }

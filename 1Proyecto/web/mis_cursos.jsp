@@ -34,24 +34,13 @@
                 </tr>
             </thead>
             <tbody>
-                <% List<matricula> current = (List<matricula>) session.getAttribute("historico");
-
-                    for (matricula m : current) {%>
-                <tr>
-                    <td><%out.print(m.getEstudiante_id());%></td>
-                    <td><%out.print(m.getGrupo_num());%></td>
-                    <td><%out.print(m.getCurso_id());%></td>
-                    <td><%out.print(m.getEstado_id());%></td>
-                    <td><%
-                        if (m.getNota() >= 0) {
-                            out.print(m.getNota());
-                        } else {%>
-                        N/A
-                        <%}%></td>
-                </tr>
-                <%}%>
+                <% String current = (String) session.getAttribute("historico");
+                    out.print(current);
+                 %>
             </tbody>
         </table>
+            <div style="margin: auto;"><a href="#">EXPORTAR A PDF</a></div>    
+            
     </body>
     <%@include file="footer.jsp"%>
 </html>
