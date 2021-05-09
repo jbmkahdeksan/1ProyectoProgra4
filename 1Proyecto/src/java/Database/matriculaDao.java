@@ -90,11 +90,12 @@ public class matriculaDao {
         }
     }
 
-    public List<matricula> findAll() {
+    public List<matricula> findAll(int e) {
         List<matricula> r = new ArrayList<>();
-        String sql = "select * from matricula";
+        String sql = "select * from matricula where estudiante_id = ?";
         try {
             PreparedStatement stm = Database.instance().prepareStatement(sql);
+            stm.setString(1, Integer.toString(e));
             ResultSet rs = Database.instance().executeQuery(stm);
             while (rs.next()) {
                 r.add(from(rs));

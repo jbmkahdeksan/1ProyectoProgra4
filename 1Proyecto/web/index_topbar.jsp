@@ -52,7 +52,7 @@
             <div class="dropdown">
                 <button class="dropbtn">Opciones de Estudiantes</button>
                 <div class="dropdown-content">
-                    <a href="#">Historial de cursos</a>
+                    <a href="Controller_Historial">Historial de cursos</a>
                 </div>
             </div>
             <%}%>

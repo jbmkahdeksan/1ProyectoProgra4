@@ -55,7 +55,7 @@ public class Controller_Matricula extends HttpServlet {
                     System.out.println(codigo_curso);
                     System.out.println(codigo_grupo);
                     matricula m;
-                    m = new matricula(e.getId_estudiante(), Integer.parseInt(codigo_grupo), Integer.parseInt(codigo_curso), 1, 0);
+                    m = new matricula(e.getId_estudiante(), Integer.parseInt(codigo_grupo), Integer.parseInt(codigo_curso), 1, -1);
                     System.out.println(m);
                     System.out.println( "Este es el estudiante que se matriculara: " + e.getNombre());
                     s.Matricular(m);

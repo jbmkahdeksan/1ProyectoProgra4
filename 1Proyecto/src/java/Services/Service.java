@@ -261,4 +261,9 @@ public class Service {
     public void Matricular(matricula m) throws Exception{
         matricula_dao.create(m);    
     }
+    
+    public List<matricula> getHistorial(int e) throws Exception{
+        return matricula_dao.findAll(e);
+    
+    }
 }

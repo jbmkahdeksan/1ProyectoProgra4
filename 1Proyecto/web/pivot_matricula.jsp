@@ -26,7 +26,7 @@
             %>
             <h4 style="color:<%out.print(color);%>;"><%out.print(msg);%></h4>
             <%}%>
-            <a href="#">Ir a 'Mis Cursos'</a>
+            <a href="Controller_Historial">Ir a 'Mis Cursos'</a>
         </div>
     </body>
     <%@include file="footer.jsp"%>
