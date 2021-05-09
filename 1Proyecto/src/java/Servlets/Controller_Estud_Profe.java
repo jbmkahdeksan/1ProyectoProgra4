@@ -105,7 +105,7 @@ public class Controller_Estud_Profe extends HttpServlet {
                 estado = 103;
             } else if (nota >= 70){
                 estado = 101;
-            } else if (nota == 0){
+            } else if (nota == -1){
                 estado = 102;
             }
             m.setGrupo_num(grupo_num);
@@ -117,6 +117,7 @@ public class Controller_Estud_Profe extends HttpServlet {
                 mdao.update(m);
 
             } catch (Exception e) {
+                
             }
             List<matricula> matricula = mdao.findByMatricula(m);
             request.setAttribute("ListaMatricula", matricula);

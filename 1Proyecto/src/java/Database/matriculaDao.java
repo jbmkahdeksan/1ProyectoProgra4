@@ -66,14 +66,14 @@ public class matriculaDao {
         return r;
     }
     public void update(matricula o) throws Exception{
-        String sql="update matricula set grupo_num=?,curso_id=?,estado_id=?,nota=? "+
-                "where estudiante_id=?";
+        String sql="update matricula set estado_id=?,nota=? "+
+                "where estudiante_id=? AND grupo_num=? AND curso_id=?";
         PreparedStatement stm = Database.instance().prepareStatement(sql);
-        stm.setString(1, Integer.toString(o.getGrupo_num())); 
-        stm.setString(2, Integer.toString(o.getCurso_id())); 
-        stm.setString(3, Integer.toString(o.getEstado_id()));
-        stm.setString(4, Integer.toString(o.getNota())); 
-        stm.setString(5, Integer.toString(o.getEstudiante_id())); 
+        stm.setString(1, Integer.toString(o.getEstado_id()));
+        stm.setString(2, Integer.toString(o.getNota())); 
+        stm.setString(3, Integer.toString(o.getEstudiante_id())); 
+        stm.setString(4, Integer.toString(o.getGrupo_num())); 
+        stm.setString(5, Integer.toString(o.getCurso_id())); 
         
         int count=Database.instance().executeUpdate(stm);
         if (count==0){
