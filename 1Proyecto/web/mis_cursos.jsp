@@ -39,7 +39,12 @@
                  %>
             </tbody>
         </table>
-            <div style="margin: auto;"><a href="#">EXPORTAR A PDF</a></div>    
+            <div style="margin: auto;">
+                
+                <a href="Constancia" target="_blank"> Generar PDF </a>
+                
+            </div>  
+            
             
     </body>
     <%@include file="footer.jsp"%>

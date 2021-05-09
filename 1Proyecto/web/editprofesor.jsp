@@ -55,7 +55,7 @@
                             <label for="Correo1"><b>Correo</b></label>
                             <input type="text"  name="e_mail" required value="<%=p.getE_mail()%>">
                             <input type="submit" name="accion" value="Actualizar">
-                            <a href="Controller_Profesores_Admin?accion=listar">Regresar</a>
+                            <a href="Controller_Profesores_Admin?accion=ver">Regresar</a>
 
                     </form>
                 </div>
