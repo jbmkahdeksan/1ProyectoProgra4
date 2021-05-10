@@ -39,9 +39,15 @@
                  %>
             </tbody>
         </table>
-            <div style="margin: auto;">
+            <div style="margin: auto; margin-bottom: 40px;
+                 background-color: #333;
+                 text-align: center;
+                 width: 230px; height: 30px;">
                 
-                <a href="Constancia" target="_blank"> Generar PDF </a>
+                <a href="Constancia" target="_blank"
+                style="color: white;
+                text-decoration: none;
+                padding-buttom: 50px;"><strong>Generar constancia PDF</strong></a>
                 
             </div>  
             

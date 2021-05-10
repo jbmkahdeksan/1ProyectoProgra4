@@ -1,7 +1,9 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+    Programación 4
+    I Ciclo - 2021
+    Proyecto 1 - Cursos Libres.com
+    117440348 - Joaquin Barrientos Monge
+    A00144883 - Kathy Sandoval Blandon
  */
 package Servlets;
 
@@ -32,33 +34,34 @@ import javax.servlet.http.HttpSession;
  *
  * @author Joaquin
  */
-@WebServlet(name="Controller_Historial", urlPatterns = {"/Controller_Historial"})
+@WebServlet(name = "Controller_Historial", urlPatterns = {"/Controller_Historial"})
 public class Controller_Historial extends javax.servlet.http.HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, Exception {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            
-            System.out.println("Entra a controller_historial ");
-            HttpSession session = request.getSession(true);  
+
+            HttpSession session = request.getSession(true);
             String respuesta = "mis_cursos.jsp";
-                       
+
             Service s = Service.instance();
             Estudiante e = (Estudiante) session.getAttribute("Estudiante");
-            
-            System.out.println("Estudiante haciendo request " + e);
-            
+
+
             List<matricula> en_historial = s.getHistorial(e.getId_estudiante());
+
+                        
+            try{
+                String lista = construyeHistorial(en_historial);
+                session.setAttribute("historico", lista);
+                request.getRequestDispatcher(respuesta).forward(request, response);
+            }catch(Exception ex){
+                request.getRequestDispatcher("home").forward(request, response);
+            }
             
             
-            String lista = construyeHistorial(en_historial);
-            
-            session.setAttribute("historico", lista);
-            
-            request.getRequestDispatcher(respuesta).forward(request, response);
-            
-            
+
         }
     }
 
@@ -109,41 +112,67 @@ public class Controller_Historial extends javax.servlet.http.HttpServlet {
         return "Short description";
     }// </editor-fold>
 
-    public String construyeHistorial(List<matricula> h) throws Exception{
+    public String construyeHistorial(List<matricula> h) throws Exception {
         Service s = Service.instance();
         StringBuilder r = new StringBuilder();
-        for (matricula m: h){
-           grupo g = s.getGrupo_INTS(m.getGrupo_num(), m.getCurso_id());
-           curso c = s.buscar_curso(g.getCurso_id());
-           estado e = s.getEstado(m.getEstado_id());
-           horario ho = s.gethorario(m.getGrupo_num(), m.getCurso_id());
-           profesor pr = s.buscar_profesor(g.getProfesor_id());
-           String dia = "";
-           switch(ho.getDia()){
-               case 1:{dia = "Lunes"; break;}
-               case 2:{dia = "Martes"; break;}
-               case 3:{dia = "Miercoles"; break;}
-               case 4:{dia = "Jueves"; break;}
-               case 5:{dia = "Viernes"; break;}
-               case 6:{dia = "Sabado"; break;}
-               case 7:{dia = "Domingo"; break;}              
-               
-           }
-           
-           r.append("<tr>");
-           r.append("<td>"+c.getDescripcion()+"</td>");
-           r.append("<td><strong>Dia: </strong>"+dia+ " <strong> Hora </strong>"+ho.getHora()+":00 </td>");
-           r.append("<td>"+pr.getNombre()+" "+pr.getApellido1()+"</td>");
-           r.append("<td>"+e.getDescripcion()+"</td>");
-           if (m.getNota() >= 0){
-               r.append("<td>"+m.getNota()+"</td>");
-           }else{
-               r.append("<td>N/A</td>");
-           }
-           r.append("</tr>");
-        }      
+        for (matricula m : h) {
+            grupo g = s.getGrupo_INTS(m.getGrupo_num(), m.getCurso_id());
+            curso c = s.buscar_curso(g.getCurso_id());
+            estado e = s.getEstado(m.getEstado_id());
+            horario ho = s.gethorario(m.getGrupo_num(), m.getCurso_id());
+            profesor pr = s.buscar_profesor(g.getProfesor_id());
+            String dia = "";
+            String aux_horario = "";
+
+            switch (ho.getDia()) {
+                case 1: {
+                    dia = "Lunes";
+                    break;
+                }
+                case 2: {
+                    dia = "Martes";
+                    break;
+                }
+                case 3: {
+                    dia = "Miercoles";
+                    break;
+                }
+                case 4: {
+                    dia = "Jueves";
+                    break;
+                }
+                case 5: {
+                    dia = "Viernes";
+                    break;
+                }
+                case 6: {
+                    dia = "Sabado";
+                    break;
+                }
+                case 7: {
+                    dia = "Domingo";
+                    break;
+                }
+
+            }
+
+            r.append("<tr>");
+            r.append("<td>" + c.getDescripcion() + "</td>");
+            if (h != null) {
+                r.append("<td><strong>Dia: </strong>" + dia + " <strong> Hora </strong>" + ho.getHora() + ":00 </td>");
+            } else {
+                r.append("<td>Por definir</td>");
+            }
+            r.append("<td>" + pr.getNombre() + " " + pr.getApellido1() + "</td>");
+            r.append("<td>" + e.getDescripcion() + "</td>");
+            if (m.getNota() >= 0) {
+                r.append("<td>" + m.getNota() + "</td>");
+            } else {
+                r.append("<td>N/A</td>");
+            }
+            r.append("</tr>");
+        }
         return r.toString();
     }
-    
-    
+
 }

@@ -1,7 +1,9 @@
 <%-- 
-    Document   : grupos_curso
-    Created on : May 3, 2021, 7:03:03 PM
-    Author     : Joaquin
+    Programación 4
+    I Ciclo - 2021
+    Proyecto 1 - Cursos Libres.com
+    117440348 - Joaquin Barrientos Monge
+    A00144883 - Kathy Sandoval Blandon
 --%>
 
 <%@page import="Services.Service"%>
@@ -32,7 +34,8 @@
             <div style="text-align: left">
             </div>
             <%@include file="index_topbar.jsp"%>
-            <%curso c = (curso) request.getAttribute("curso_actual");%> 
+            <%curso c = (curso) request.getAttribute("curso_actual");
+              usuario ux = (usuario) session.getAttribute("Usuario"); %> 
             <h1><%out.print(c.getDescripcion());%></h1>
             <table>
                 <thead>
@@ -41,12 +44,12 @@
                         <th>Curso</th>
                         <th>Profesor</th>
                         <th>Horario</th>
+                        <%if(ux == null || ux.getRol_id() == 3){%>
                         <th>Acciones</th>
+                        <%}%>
                     </tr>
                 </thead>
                 <tbody>
-
-
                     <%
                         cursoDao cDao = new cursoDao();
                         grupoDao gDao = new grupoDao();
@@ -101,9 +104,11 @@
                         <td><%out.print(c.getDescripcion());%></td>
                         <td><%out.print(p.getNombre() + " " + p.getApellido1());%></td>
                         <td><%out.print("Dia: " + dia + " Hora: " + h.getHora() + ":00");%></td>
+                        <%if(ux == null || ux.getRol_id() == 3){%>
                         <td>
                             <a class="Opciones" href="Controller_Matricula?codgrupo=<%=g.getNum_grupo()%>&codcurso=<%=c.getCurso()%>">Matricular</a>
                         </td>
+                        <%}%>
                     </tr>
                     <%}%>
 

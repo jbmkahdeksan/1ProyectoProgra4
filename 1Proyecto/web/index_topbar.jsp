@@ -1,7 +1,9 @@
 <%-- 
-    Document   : index_topbar
-    Created on : Apr 24, 2021, 8:26:29 PM
-    Author     : Joaquin
+    Programación 4
+    I Ciclo - 2021
+    Proyecto 1 - Cursos Libres.com
+    117440348 - Joaquin Barrientos Monge
+    A00144883 - Kathy Sandoval Blandon
 --%>
 
 <%@page import="Servlets.Controller_Logout"%>

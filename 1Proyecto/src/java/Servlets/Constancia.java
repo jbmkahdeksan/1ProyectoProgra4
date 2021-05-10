@@ -1,7 +1,9 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+    Programación 4
+    I Ciclo - 2021
+    Proyecto 1 - Cursos Libres.com
+    117440348 - Joaquin Barrientos Monge
+    A00144883 - Kathy Sandoval Blandon
  */
 package Servlets;
 
@@ -144,7 +146,12 @@ public class Constancia extends HttpServlet {
             String horario = "Dia: " + dia + " Hora: " + ho.getHora();
             String profesor = p.getNombre() + " " + p.getApellido1() + " " + p.getApellido2();
             String estado = s.getEstado(en_historial.get(i).getEstado_id()).getDescripcion();
-            String nota = Integer.toString(en_historial.get(i).getNota());
+            String nota = "";
+            if (en_historial.get(i).getNota() >= 0){
+                nota = Integer.toString(en_historial.get(i).getNota());
+            }else{
+                nota = "N/A";
+            }
             tabla.addCell(curso);
             tabla.addCell(horario);
             tabla.addCell(profesor);

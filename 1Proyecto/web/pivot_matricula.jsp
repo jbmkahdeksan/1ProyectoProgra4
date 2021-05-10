@@ -1,7 +1,9 @@
 <%-- 
-    Document   : pivot_matricula
-    Created on : May 5, 2021, 9:36:36 PM
-    Author     : Joaquin
+    Programación 4
+    I Ciclo - 2021
+    Proyecto 1 - Cursos Libres.com
+    117440348 - Joaquin Barrientos Monge
+    A00144883 - Kathy Sandoval Blandon
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

@@ -1,7 +1,9 @@
 <%-- 
-    Document   : index
-    Created on : Apr 17, 2021, 7:40:09 PM
-    Author     : Joaquin
+    Programación 4
+    I Ciclo - 2021
+    Proyecto 1 - Cursos Libres.com
+    117440348 - Joaquin Barrientos Monge
+    A00144883 - Kathy Sandoval Blandon
 --%>
 
 <%@page import="java.util.List"%>
@@ -21,7 +23,6 @@
     
     
     <body>
-        <%usuario current = (usuario) session.getAttribute("Usuario");%>
         <div class="header">
             <h2>CursosLibres.com</h2>
             <p>Donde encontrarás cursos irónicamente útiles.</p>

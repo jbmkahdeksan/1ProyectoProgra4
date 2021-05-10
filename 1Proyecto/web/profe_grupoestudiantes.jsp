@@ -1,7 +1,9 @@
 <%-- 
-    Document   : profe_grupoestudiantes
-    Created on : 04/05/2021, 09:50:18 PM
-    Author     : ksand
+    Programación 4
+    I Ciclo - 2021
+    Proyecto 1 - Cursos Libres.com
+    117440348 - Joaquin Barrientos Monge
+    A00144883 - Kathy Sandoval Blandon
 --%>
 
 <%@page import="Services.Service"%>
@@ -32,12 +34,6 @@
             
             <%@include file="index_topbar.jsp"%>
             <h1>Estudiantes</h1>
-            <div class="buscar">
-                <form  class="formbuscar">
-                    <input type="text" placeholder="Buscar estudiante..." name ="buscar">
-                    <input class="botonbuscar"type="submit" name="accion" value="Buscar">
-                </form> 
-            </div>
             <table>
                     <thead>
                         <tr>

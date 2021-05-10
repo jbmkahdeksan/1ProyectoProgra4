@@ -1,7 +1,9 @@
 <%-- 
-    Document   : profesores
-    Created on : 25/04/2021, 06:26:03 PM
-    Author     : ksand
+    Programación 4
+    I Ciclo - 2021
+    Proyecto 1 - Cursos Libres.com
+    117440348 - Joaquin Barrientos Monge
+    A00144883 - Kathy Sandoval Blandon
 --%>
 
 <%@page import="java.util.List"%>

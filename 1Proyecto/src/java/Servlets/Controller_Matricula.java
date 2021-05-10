@@ -1,7 +1,9 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+    Programación 4
+    I Ciclo - 2021
+    Proyecto 1 - Cursos Libres.com
+    117440348 - Joaquin Barrientos Monge
+    A00144883 - Kathy Sandoval Blandon
  */
 package Servlets;
 
@@ -66,6 +68,7 @@ public class Controller_Matricula extends HttpServlet {
                     request.setAttribute("color", color);
                     request.getRequestDispatcher(respuesta).forward(request, response);
                 }catch(Exception ex){
+                    System.out.println(ex);
                     color = "red";
                     mensaje = e.getNombre() + " "+ e.getApellido1() + " ya se encuentra matriculad@ en este grupo.";
                     request.setAttribute("mensaje", mensaje);
